@@ -1,0 +1,29 @@
+Design Patterns
+
+Scope:
+
+			
+Class 	Scope:
+
+specifies whether the pattern applies
+primarily to classes or to objects. Class patterns deal with relationships between
+classes and their subclasses. These relationships are established through
+inheritance, so they are static—fixed at compile-time.
+
+
+Object  Scope:
+
+Object patterns deal with
+object relationships, which can be changed at run-time and are more dynamic. Almost
+all patterns use inheritance to some extent. So the only patterns labeled "class
+patterns" are those that focus on class relationships. Note that most patterns
+are in the Object scope.
+
+
+Creational class patterns defer some part of object creation to subclasses, while
+Creational object patterns defer it to another object. The Structural class
+patterns use inheritance to compose classes, while the Structural object patterns
+describe ways to assemble objects. The Behavioral class patterns use inheritance
+to describe algorithms and flow of control, whereas the Behavioral object patterns
+describe how a group of objects cooperate to perform a task that no single object
+can carry out alone.
