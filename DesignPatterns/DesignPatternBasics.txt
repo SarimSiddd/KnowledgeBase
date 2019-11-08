@@ -27,3 +27,36 @@ describe ways to assemble objects. The Behavioral class patterns use inheritance
 to describe algorithms and flow of control, whereas the Behavioral object patterns
 describe how a group of objects cooperate to perform a task that no single object
 can carry out alone.
+
+
+Concepts for design Patterns:
+
+Object Granularity: Size of object, how much it is used.
+
+Dynamic Binding:
+
+Dynamic binding means that issuing a request doesn't commit you to a particular
+implementation until run-time. Consequently, you can write programs that expect
+an object with a particular interface, knowing that any object that has the correct
+interface will accept the request. Moreover, dynamic binding lets you substitute
+objects that have identical interfaces for each other at run-time. This
+substitutability is known as polymorphism, and it's a key concept in
+object-oriented systems. It lets a client object make few assumptions about other
+objects beyond supporting a particular interface. Polymorphism simplifies the
+definitions of clients, decouples objects from each other, and lets them vary
+their relationships to each other at run-time.
+
+Why Use Interfaces?
+
+There are two benefits to manipulating objects solely in terms of the interface
+defined by abstract classes:
+1. Clients remain unaware of the specific types of objects they use, as long
+as the objects adhere to the interface that clients expect.
+2. Clients remain unaware of the classes that implement these objects. Clients
+only know about the abstract class(es) defining the interface.
+This so greatly reduces implementation dependencies between subsystems that it
+leads to the following principle of reusable object-oriented design:
+Program to an interface, not an implementation.
+Don't declare variables to be instances of particular concrete classes. Instead,
+commit only to an interface defined by an abstract class.
+

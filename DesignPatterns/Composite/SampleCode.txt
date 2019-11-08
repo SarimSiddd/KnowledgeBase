@@ -1,0 +1,56 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		
+		SomeItem Leaf1 = new SomeItem();
+		Leaf1.CreateItem(new SomeItem2());
+		
+	}
+
+public interface Component {
+	
+	 void Name();
+	 void getSize();
+	 void getWidth();
+}
+
+//Leaf
+public class SomeItem : Composite 	{
+	
+	public void Name () {
+	}
+	public void getSize(){
+		
+	}
+	public void getWidth(){
+	}
+	
+	public void CreateItem(Component Item) {}
+}
+	
+//Leaf2	
+public class SomeItem2 : Composite 	{
+	
+	public void Name () {
+	}
+	public void getSize(){
+		
+	}
+	public void getWidth(){
+	}
+	
+	public void CreateItem(Component Item){}
+	
+}
+//Composite
+public interface Composite : Component {
+		
+	void CreateItem (Component Item);
+}
+
+	
+	
+}

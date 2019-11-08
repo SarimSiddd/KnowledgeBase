@@ -1,0 +1,15 @@
+Exposes a common application context for various sorts of algorithm usage. Type of algorithm should change and not affect the client.
+
+Elements:
+
+Strategy:
+
+Base interface of the algorithm being implemented, all subsequent algorithms inherit.
+
+Context:
+
+Accesspoint for the client to call upon an algorithm.
+
+ConcreteStrategy:
+
+Actual implementation of the algorithm.

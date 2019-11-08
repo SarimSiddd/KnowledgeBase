@@ -1,0 +1,21 @@
+
+= Used for tree (part-whole hierarchies).
+= Allows for objects to be encapsulated in the Composite without static implication.
+= We can have leaf nodes (nodes that don't encapsulate other nodes) and Composite nodes (nodes which can encapsulate Component Nodes and leaf nodes).
+
+Elements:
+
+Component:
+
+Global interface/Smallest unit of understanding that the entire tree will have.
+
+Composite:
+
+= Can either be a interface or provide partial definition to base classes.
+= Will be inherited by classes that can encapsulate other classes.
+
+Leaf:
+
+= Classes that inherit from component and cannot encapsulate other classes.
+
+

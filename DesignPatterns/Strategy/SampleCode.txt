@@ -1,0 +1,51 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Context SortingContext = new Context(new QuickSort());
+		SortingContext.CallAlgo();
+	}
+
+//Interface strategy
+public interface Strategy {
+	
+	void sort();
+	
+}
+	
+public class BubbleSort : Strategy {
+
+	public void sort () {
+		
+		Console.WriteLine("Called BubbleSort");
+	}
+}
+	
+public class QuickSort : Strategy {
+
+	public void sort () {
+		
+		Console.WriteLine("Called QuickSort");
+	}
+} 	
+	
+public class Context {
+	
+	private Strategy _strategy;
+	
+	public Context (Strategy SomeStrategy){
+		
+		this._strategy = SomeStrategy;
+	}
+	
+	public void CallAlgo (){
+		
+		if (this._strategy!=null)
+			this._strategy.sort();
+		return;
+	}
+}
+	
+}
