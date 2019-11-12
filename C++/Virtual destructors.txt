@@ -1,0 +1,7 @@
+Virtual destructors, virtual
+assignment, and overriding virtualization
+
+
+If a  destructor is not overriden in derived class, only the base destructor is called.
+This is why base class destructor should be virtual and be overriden in the derived class.
+

@@ -1,0 +1,30 @@
+when a derived class inherits from a base class, the access specifiers may change
+depending on the method of inheritance. There are three different ways for classes to inherit from
+other classes: public, private, and protected.
+
+If you do not choose an inheritance type, C++ defaults to private inheritance (just like members
+default to private access if you do not specify otherwise).
+
+
+class Base
+{
+public:
+int m_nPublic;
+
+private:
+int m_nPrivate;
+protected:
+int m_nProtected;
+};
+
+Base can access it’s own members without restriction. The public can only access m_nPublic.
+Derived classes can access m_nPublic and m_nProtected.
+
+class D2: private Base
+{
+public:
+int m_nPublic2;
+private:
+int m_nPrivate2;
+protected:
+int m_nProtected2;
