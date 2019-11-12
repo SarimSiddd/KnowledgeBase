@@ -1,0 +1,42 @@
+Design Patterns:
+
+Creational:
+
+Abstract Factory:
+
+Used for groups of related families, used for creating factories dynamically
+
+Factory Method:
+
+Allows to return an object through a factory method
+
+Singleton:
+
+Creates a single instance throughout the application life
+
+Structural
+
+Adapter:
+
+Allows for an interface and implementation from 2 different places to work together
+
+Proxy:
+
+Access another subject using some other subject
+
+Facade:
+
+For providing a single class to access a subsystem
+
+Composite:
+
+For recursive Composition
+
+Behavioral
+
+Strategy:
+
+Allows for an interface to an algorithm which we can subclass 
+
+Command:
+

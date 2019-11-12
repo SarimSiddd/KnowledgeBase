@@ -1,0 +1,55 @@
+Template:
+
+template <typename Type>
+Type Max (Type nX, Type nY){
+	
+   if (nX>nY)
+   	return nX;
+   else 
+    return nY;
+
+
+}
+
+For classes:
+
+template <typename T>
+class Array
+{
+	
+	...
+}
+
+
+Expression Parameter Example:
+
+
+template <typename T, int nSize> // nSize is the expression parameter
+class Buffer
+{
+private:
+// The expression parameter controls the size of the array
+T m_atBuffer[nSize];
+public:
+
+T* GetBuffer() { return m_atBuffer; }
+T& operator[](int nIndex)
+{
+return m_atBuffer[nIndex];
+}
+};
+
+
+int main()
+{
+// declare an integer buffer with room for 12 chars
+Buffer<int, 12> cIntBuffer;
+
+}
+
+Template Specialization:
+
+void Storage<double>::Print()
+{
+std::cout << std::scientific << m_tValue << std::endl;
+}

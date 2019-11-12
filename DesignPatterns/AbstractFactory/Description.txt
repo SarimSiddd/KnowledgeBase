@@ -1,0 +1,19 @@
+
+
+Use Case:
+
+Used for groups of related families.
+
+A concrete factory (if required) can be created by the client and but a contxt class will take a factory as a input.
+
+Elements:
+
+AbstractFactory (can be same as concrete)
+
+ConcreteFactories
+
+Products
+
+AbstractProducts
+
+ClientContext

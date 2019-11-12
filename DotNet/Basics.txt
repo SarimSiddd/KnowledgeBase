@@ -1,0 +1,69 @@
+
+================================== PROGRAM EXECUTION =================================
+
+We can code using a variety of different languages (C#, C++, J# etc.) if we are looking to built applications with the .Net Framework.
+The language compiler compiles this code into what is called "Intermediate Language" (IL). This IL code is placed in assemblies (.exe, .dll).
+Now the CLR (Common Language Runtime) found in the .NET Framework comes into play, it takes these assemblies and using the JIT (Just in Time Compiler)
+converts this IL code into machine code or native code hence removing Platform dependency. Hence any OS capabable of running .NET framework can run these assemblies
+and execute the program.
+
+1) .Net will check the version of the dependencies (DA). This information is stored in the MANIFEST.
+2) .Net will check the GAC for the DA (if it is a weak named assembly).
+3) .Net will check for any config file which contains the filepath to the assembly, if no config file exists, .NET searches current directory for the assembly.
+4) If the assembly is found, the program executes otherwise it will crash.
+
+***.NET does not check the version of weak named assemblies so if you replace weak named assemblies with ones downloaded from the internet and replace the weak named assembly (which had methods that your progam depended upon) this will result in "DLL HELL" problem.
+
+================================= ILDASM AND ILASM 	========================================
+
+The assemblies generated through the .net framework can be disassembled using the "ILDASM" Visual Studio tool which allows us to view the assembly's manifest (essentially its metadeta) and its dependencies (which will also be assemblies), the ILDASM tool will return us a .il file. The ILASM tool or Intermediate language disassembler tool can help us to recreate the original assembly using its intermediate language code.
+
+There are two types of assemblies:
+
+1) Weak
+2) Strong
+
+================================ STRONG NAMED ASSEMBLIES =======================================
+
+Strong named assemblies need to signed with a public key pair. Only strong named assemblies can be put into the GAC (Global assembly cache) since they are unique. This pair can be generated with the sn.exe command that comes in visual studio tools. Strong named assemblies also allow us to avoid DLL hell problem.
+
+================================= GAC ================
+Global assembly cache
+
+References to assemblies (pre-installed) are in the GAC. 
+
+For versions 2.5-3.5: GAC location is C:/windows/assembly
+
+For version 4.0: GAC location is C:/Windows/Microsoft.NET/assembly and also the above location exists as well.
+
+We can add our own Strong named assembly to the GAC if we want using GAC tool with visual studio.
+
+Assemblies with different versions can both live "side-by-side" in the GAC. This is called side-by-side execution.
+
+Assemblies if referenced and installed in the GAC manually will require more than simple copy and pasting if porting to another PC.
+
+Reference to assemblies can be added locally to any project, creating a copy of that reference assembly's dll in the bin folder of the project.
+
+
+============================ DLL HELL =======================
+
+Two or more assemblies could be dependent on a shared assembly, if this assembly removes or changes methods; there is a chance that one or more of the dependent assemblies will break as this new .dll will not be backward compatabile.
+
+
+======================= RESOLUTION =============
+
+1) Create a strongly named assembly
+2) Add it to the GAC
+
+Now different versions can live together hence previous applications will also work
+
+SIDE NOTE:
+
+WHY ASP.NET is so great?
+
+ASP.NET came at a time when dynamic web pages were unheard of. ASP.net allowed requests to be processed completely server side and allowed webpages specifically tailored
+for the user visiting their page.
+
+WHY ENTITY FRAMEWORK?
+
+ENTITY FRAMEWORK allows programmers well versed in C# to communicate with the database directly through the C# language without having to go to the database. Entity Framework allows programmers to model their database into different classes. Entity framework abolished the need to maintain DB instances and allowed programmers to query the database in their language of choice rather than writing DB Language code.

@@ -1,13 +1,7 @@
 Casting/Operator overloading:
 
 Now in our example, we call PrintInt() like this:
-1
-2
-3
-4
-5
-6
-7
+
 int main()
 {
 Cents cCents(7);
@@ -22,3 +16,20 @@ will be passed to PrintInt().
 
 A copy constructor is a special constructor that initializes a new object from
 an existing object.
+
+class Cents
+{
+private:
+int m_nCents;
+public:
+Cents(int nCents)
+: m_nCents(nCents)
+{
+}
+friend bool operator>(Cents &c1, Cents&c2)
+{
+return (c1.m_nCents > c2.m_nCents) ? true: false;
+}
+};
+
+Overloads the > Operator

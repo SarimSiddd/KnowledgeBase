@@ -1,0 +1,20 @@
+Binding refers to the process that is used to convert identifiers (such as variable and function names) into machine language addresses. Although binding is used for both variables and functions, in this lesson we’re going to focus on function binding.
+
+
+Direct function calls can be resolved using a process known as early binding. Early binding (also called static binding) means the compiler is able to directly associate the identifier name (such as a function or variable name) with a machine address. Remember that all functions have a unique machine address. So when the compiler encounters a function call, it replaces the function call with a machine language instruction that tells the CPU to jump to the address of the function.
+
+
+In some programs, it is not possible to know which function will be called until runtime (when the program is run). This is known as late binding (or dynamic binding). In C++, one way to get late binding is to use function pointers.
+
+
+int Add(int nX, int nY)
+{
+return nX + nY;
+}
+int main()
+{
+// Create a function pointer and make it point to the Add function
+int (*pFcn)(int, int) = Add;
+cout << pFcn(5, 3) << endl; // add 5 + 3
+return 0;
+}

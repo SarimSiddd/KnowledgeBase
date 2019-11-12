@@ -1,0 +1,84 @@
+
+IMPORTANT C# CONCEPTS:
+
+1) Properties (Why properties? What are properties?)
+
+An autoimplemented property:
+string SomeThing {get; set;}
+https://www.youtube.com/watch?v=iGR425gMKeA&list=PLAC325451207E3105&index=27
+
+2) ACCESS MODIFIERS:
+
+You can only have 2 modifiers on types (Classes, interfaces, enums etc.)
+
+Public, internal
+
+You can have 5 modifers on type members (methods, value types)
+
+public, private, internal, protected, protected internal
+
+
+3) ENUMS
+
+Strongly typed constants:
+
+Need explicit and implicit Conversion
+
+See Example file
+
+3) NO MULTIPLE INHERITANCE
+
+https://www.youtube.com/watch?v=5KFCD-DxEhw&list=PLAC325451207E3105&index=34
+
+4) GENERICS
+
+Uses:
+
+1) allows to be independent of type
+2) performance gain since no boxing/unboxing needed
+
+MethodName<T> (T SomeValue, T SomeValue)
+
+
+5) LISTS
+
+
+6) DELEGATES
+
+
+7) Conversion between different data types (implicit vs explicit conversion) (Value Types vs Reference Types)
+
+8) Reflection
+
+Inspecting the metadeta of an assembly at run time.
+
+Uses:
+
+Late-binding
+
+Type.getType("Namespace.class")
+Typeof("class")
+ClassInstance.type
+
+No need for recompilation if using config file, can replace dll.
+Performance issues in late binding
+
+
+9) Attributes
+
+Two Types:
+
+Pre-defined, Customizable
+
+
+Add declarative information to our class, methods etc.
+
+A) [Obsolete]
+void SomeMethod(){}
+
+10) Partial Classes
+
+Boxing:
+
+Converting value type to reference types.
+

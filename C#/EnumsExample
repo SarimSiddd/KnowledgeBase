@@ -1,0 +1,27 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Hello World");
+		
+		string [] Genders = new string[3];
+		
+		Genders = (string [])Enum.GetNames(typeof(Gender));
+		foreach (string Gender in Genders) {
+				
+			Console.WriteLine(Gender);
+		}
+		
+	}
+	
+	
+	public enum Gender {
+		
+		Male,
+		Female,
+		Unknown
+			
+	}
+}

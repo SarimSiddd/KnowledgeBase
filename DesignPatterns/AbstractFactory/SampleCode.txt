@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Hello World");
+		
+		MazeContext MyMaze = new MazeContext(new EnchantedMazeFactory());
+		
+	}
+	
+	
+	public class MazeContext {
+		
+		private MazeFactory _MazeFactory;
+		
+		public MazeContext (MazeFactory Maze){
+			
+			_MazeFactory = Maze;
+
+		}
+		
+	}
+	
+	public interface Room {
+		
+		
+	}
+	
+	public interface Wall {
+		
+		
+	}
+	
+	public interface Door {
+		
+		
+	}
+	
+	public class CoolRoom : Room {
+		
+		
+	}
+	
+	public class CoolWall : Wall {
+		
+		
+	}
+	
+	public class CoolDoor : Door {
+		
+	}
+	
+	public abstract class MazeFactory {
+		
+		List <Room> RArray;
+		List <Wall> WArray;
+		List <Door> DArray;
+		
+		public virtual void createRooms(Room SomeRoom){
+		
+			RArray.Add(SomeRoom);
+		}
+		public virtual void createWalls(Wall SomeWall){
+		
+			WArray.Add(SomeWall);
+		}
+		public virtual void createDoors(Door SomeDoor){
+			
+			DArray.Add(SomeDoor);
+		}
+		
+	}
+	
+	
+	public class EnchantedMazeFactory : MazeFactory{
+
+		
+		
+	}
+	
+	public class UnEnchantedMazeFactory : MazeFactory{
+
+		
+		
+	}
+	
+	
+}
