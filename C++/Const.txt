@@ -1,0 +1,9 @@
+Once a const class object has been initialized via constructor, any attempt to modify the member
+variables of the object is disallowed, as it would violate the constness of the object. This includes
+both changing member variables directly (if they are public), or calling member functions that
+sets the value of member variables.
+
+const class objects can only call
+const member functions, GetValue() has not been marked as a const member function. A const
+member function is a member function that guarantees it will not change any class variables or
+call any non-const member functions.

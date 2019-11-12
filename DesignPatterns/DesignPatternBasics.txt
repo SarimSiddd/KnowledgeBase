@@ -60,3 +60,15 @@ Program to an interface, not an implementation.
 Don't declare variables to be instances of particular concrete classes. Instead,
 commit only to an interface defined by an abstract class.
 
+
+Composition over inheritance:
+
+Favoring object
+composition over class inheritance helps you keep each class encapsulated and
+focused on one task. Your classes and class hierarchies will remain small and
+will be less likely to grow into unmanageable monsters. On the other hand, a design
+based on object composition will have more objects (if fewer classes), and the
+system's behavior will depend on their interrelationships instead of being defined
+in one class.
+That leads us to our second principle of object-oriented design:
+Favor object composition over class inheritance.

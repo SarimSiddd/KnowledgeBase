@@ -1,0 +1,23 @@
+A shallow copy means that C++ copies each member of the class
+individually using the assignment operator. When classes are simple (eg. do not contain any
+dynamically allocated memory), this works very well.
+
+doing a shallow
+copy on pointer values in a copy constructor or overloaded assignment operator is almost always
+asking for trouble.
+
+A deep
+copy duplicates the object or variable being pointed to so that the destination (the object being
+assigned to) receives it’s own local copy. This way, the destination can do whatever it wants to
+it’s local copy and the object that was copied from will not be affected. Doing deep copies
+requires that we write our own copy constructors and overloaded assignment operators.
+
+The default copy constructor and default assignment operators do shallow copies, which
+is fine for classes that contain no dynamically allocated variables.
+ Classes with dynamically allocated variables need to have a copy constructor and
+assignment operator that do a deep copy.
+ The assignment operator is usually implemented using the same code as the copy
+constructor, but it checks for self-assignment, returns *this, and deallocates any
+previously allocated memory before deep copying.
+ If you don’t want a class to be copyable, use a private copy constructor and assignment
+operator prototype in the class header.

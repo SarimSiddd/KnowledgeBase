@@ -1,0 +1,124 @@
+Fundamentals:
+
+
+1) Pointers
+
+a) Memory Leaks, b) Dangling Pointers
+a) Explicit[Address passed directly to function argument],     b) Implicit[Function arguments take address]
+
+2) Friend Functions/Classes
+
+All member variables become available in the friend function; In case of a friend class, all member variables become available to all methods of the other class
+
+Method:
+
+friend int MyFunction(myClass);
+
+Class:
+
+class A{
+	
+	friend class B;
+};
+
+class B{
+	
+
+};
+
+Class B has access to all member variables of class A;
+
+3) Vectors
+
+There are two types of containers in the
+STL: sequence containers and associative
+containers.
+
+The vector data type is a sequence
+container.
+
+vector <int> Numbers;
+Operations:
+
+push_back(value)
+pop_back()
+clear()
+empty()
+at(index), can be used to set value at a specified index
+v1.swap(v2), swaps vector values
+
+4) Templates/Generic Programming
+
+In C++ generic programming is done using templates
+
+• Two kinds
+• Function Templates:
+Can be used to provide a "type T" for both input and output
+We can also add specializations for different type T's if necessary
+
+User Defined Types:
+
+friend bool operator ==(
+const String&, const String&)
+
+Operator overloading vs Templates
+
+• Class Templates
+
+5) ENUMS
+
+enum Fruit {apple, grape, whatever};
+Fruit Snack;
+snack = apple;
+
+6) Operator overloading
+
+
+7) Reference vs Pointers
+
+A reference is a name constant for an address. You need
+to initialize the reference during declaration.
+
+int & iRef; // Error: 'iRef' declared as reference but not
+initialized
+
+Once a reference is established to a variable, you cannot
+change the reference to reference another variable. In
+other words, the value of reference cannot be changed,
+i.e., it is a constant.
+
+To get the value pointed to by a pointer, you need to
+use the dereferencing operator '*' (e.g., if pNumber is
+a int pointer, *pNumber returns the value pointed to
+by pNumber. It is called dereferencing or
+indirection).
+
+8) Const vs non-const
+
+A const function formal parameter cannot be modified
+inside the function. Use const whenever possible as it
+protects you from inadvertently modifying the parameter
+and protects you against many programming errors.
+
+A const function parameter can receive both const and
+non-const argument. On the other hand, a non-const
+function reference/pointer parameter can only receive
+non-const argument.
+
+
+9) Streams:
+
+ifstream, ostream, ofstream, stringstream
+
+istream (no "f") parameters accept cin
+or ifstream objects as arguments
+• ostream (no "f") parameters accept cout
+or ofstream objects as arguments
+• Member function eof
+– Used to test for end of input file
+• Streams use inheritance to share common
+methods and variables in an “is-a”
+relationship between classes
+
+
+10) Forward Declaration
