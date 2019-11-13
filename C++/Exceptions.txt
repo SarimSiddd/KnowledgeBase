@@ -1,0 +1,3 @@
+Rule: Handlers for derived exception classes should be listed before those for base classes.
+
+Derived Class exceptions can be caught by a catch block of the base class.
