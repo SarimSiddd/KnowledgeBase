@@ -7,3 +7,10 @@ const class objects can only call
 const member functions, GetValue() has not been marked as a const member function. A const
 member function is a member function that guarantees it will not change any class variables or
 call any non-const member functions.
+
+
+Const vs constexpr
+
+constexpr is used for compile time constants.
+
+Const can be used for both, but it is preferable to use const in run-time constants.
