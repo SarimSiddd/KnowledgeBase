@@ -1,0 +1,51 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+std::vector<std::string> unique_names(const std::vector<std::string>& names1, const std::vector<std::string>& names2)
+{
+    vector<std::string> unique_names;
+    bool dup;
+    
+    
+    for (int i=0; i < names1.size(); i++){
+       
+       dup = false;
+   
+       for (int j=0; j< names2.size(); j++){
+           
+          if (std::find(unique_names.begin(), unique_names.end(), names2[j]) != unique_names.end()){
+              break;
+          }
+          else
+              unique_names.push_back(names2[j]);
+          
+             
+       } 
+        
+             
+          if (std::find(unique_names.begin(), unique_names.end(), names1[i]) != unique_names.end()){
+              break;
+          }
+          else
+              unique_names.push_back(names1[i]);
+
+    }
+    
+    return unique_names;
+    throw std::logic_error("Waiting to be implemented");
+}
+
+#ifndef RunTests
+int main()
+{
+    std::vector<std::string> names1 = {"Ava", "Emma", "Olivia"};
+    std::vector<std::string> names2 = {"Olivia", "Sophia", "Emma"};
+    
+    std::vector<std::string> result = unique_names(names1, names2);
+    for(auto element : result)
+    {
+        std::cout << element << ' '; // should print Ava Emma Olivia Sophia
+    }
+}
+#endif

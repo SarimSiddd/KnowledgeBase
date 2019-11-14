@@ -1,0 +1,1 @@
+Map CRUD to get,post, put and Delete. Use this mapping to develop explicit and easy to understand api calls

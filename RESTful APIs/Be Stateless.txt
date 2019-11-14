@@ -1,0 +1,1 @@
+Don't rely on the server. Process information on the client side. Application should work regardless of server state.

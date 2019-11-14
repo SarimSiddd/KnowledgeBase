@@ -1,0 +1,51 @@
+Template Example:
+
+
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+template <typename T, int TSize>
+class ArrayContanier {
+  
+  private:
+   T Array[TSize];
+   T Size;
+  public:
+   ArrayContanier(){
+      
+   }
+   
+   T& operator [] (int nIndex) {
+       
+       return Array[nIndex];
+   }
+   
+ 
+   void DoSomething(){}
+    
+};
+
+
+
+int main()
+{
+    ArrayContanier <int, 12> MyContainer;
+    
+    for (int i =0; i<12; i++){
+        
+        MyContainer[i] = i;
+    }
+    
+    MyContainer.DoSomething();
+
+    return 0;
+}

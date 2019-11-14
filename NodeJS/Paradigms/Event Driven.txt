@@ -1,0 +1,3 @@
+So, In simple, our server code will get executed only if there is an action.This is a simple example of event driven development in Node.
+
+http://thejackalofjavascript.com/node-js-design-patterns/

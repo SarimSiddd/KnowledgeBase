@@ -1,0 +1,1 @@
+Directory structure should be hierarchial and understandable and have coherent meaning

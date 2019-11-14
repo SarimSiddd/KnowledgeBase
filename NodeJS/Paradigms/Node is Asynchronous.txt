@@ -1,0 +1,4 @@
+Node is Asynchronous
+-I/O calls are non-blocking
+
+reference:http://thejackalofjavascript.com/node-js-design-patterns/

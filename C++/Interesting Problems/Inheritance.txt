@@ -1,0 +1,41 @@
+#include<iostream.h> 
+class Base
+{
+    int x, y; 
+    public:
+    Base() 
+    {
+        x = y = 0; 
+    } 
+    Base(int xx)
+    {
+        x = xx;
+    }
+    Base(int p, int q = 10)
+    {
+        x = p + q;
+        y = q; 
+    } 
+    void Display(void)
+    {
+        cout<< x << " " << y << endl;
+    } 
+}objDefault(1, 1);
+
+class Derived: public Base
+{
+    Base obj; 
+    public:
+    Derived(int xx, int yy): Base(xx, xx + 1)
+    { }
+    Derived(Base objB = objDefault)
+    { } 
+}; 
+int main()
+{
+    Derived objD(5, 3);
+    Derived *ptrD = new Derived(objD);
+    ptrD->Display();
+    delete ptrD;
+    return 0; 
+}

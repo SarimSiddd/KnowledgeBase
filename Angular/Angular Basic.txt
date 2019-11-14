@@ -1,0 +1,38 @@
+
+
+- Modular based architecture
+
+	RootModule (app Module)
+	
+	Module1 				Module2
+	
+	Module1a Module1b 			Module2b
+
+- Each module can have multiple sub modules
+
+	
+- Each module can also have multiple components and services
+
+- Each component can have multiple services and components
+
+
+We can generate a component using
+
+ng generate component [componentName]
+
+This creates a 
+
+.html, .scss and .ts file.
+
+This component is then added into the appModule.ts file.
+
+This component's html code can then be used anywhere in our project.
+
+
+=====================DIRECTIVES======================
+
+Structural Directives
+
+NgIf, NgFor, NgSwitch
+
+A component is also a directive.

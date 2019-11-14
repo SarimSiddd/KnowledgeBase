@@ -1,0 +1,6 @@
+-Function gets invoked when task is completed
+
+-Any async function in node accepts a callback as it’s last parameter.
+
+
+http://thejackalofjavascript.com/node-js-design-patterns/
