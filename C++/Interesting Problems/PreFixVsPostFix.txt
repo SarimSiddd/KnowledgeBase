@@ -11,3 +11,5 @@ int main()
     cout<< x << " " << y;
     return 0; 
 }
+
+https://stackoverflow.com/questions/18481740/pointer-expressions-ptr-ptr-and-ptr

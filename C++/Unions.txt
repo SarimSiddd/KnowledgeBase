@@ -1,0 +1,19 @@
+
+struct myunion{
+
+union {
+
+	int a;
+	float b;
+	double c;
+};
+};
+
+//A and b occupy the same memory
+
+Unions are just another way to do type punning or type casting
+
+myunion x;
+x.c = 55;
+
+cout << x.b; //c interpreted as a double.

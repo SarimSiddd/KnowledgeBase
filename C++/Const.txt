@@ -13,4 +13,17 @@ Const vs constexpr
 
 constexpr is used for compile time constants.
 
-Const can be used for both, but it is preferable to use const in run-time constants. 	
+Const can be used for both, but it is preferable to use const in run-time constants.
+
+
+
+friend Circle copy(const Circle &);
+
+friend Circle copy(Circle&) const;
+
+
+The first form means that the (state of the) Circle object bound to the reference which is the parameter of the copy() function won't be altered by copy() through that reference. The reference is a reference to const, so it won't be possible to invoke member functions of Circle through that reference which are not themselves qualified as const.
+
+The second form, on the other hand, is illegal: only member functions can be const-qualified (while what you are declaring there is a global, friend function).
+
+When const qualifies a member functions, the qualification refers to the implicit this argument. In other words, that function will not be allowed to alter the state of the object it is invoked on (the object pointed to by the implicit this pointer) - with the exception of mutable objects, but that's another story.

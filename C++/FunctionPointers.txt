@@ -1,0 +1,13 @@
+void Helloworld(){
+	
+
+}
+
+void main(){
+	
+	void(*HelloworldFunction)() = Helloworld;
+	HelloworldFunction();
+
+	//or just use auto
+
+}

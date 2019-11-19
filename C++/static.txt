@@ -1,0 +1,13 @@
+
+Static outside, class, functions:
+
+Symbol is only available in that particular file.
+
+Inside functions:
+
+Symbol is available outside the function but only modifiable inside the function.
+
+
+In Classes:
+
+Is same for all instances of that class.
