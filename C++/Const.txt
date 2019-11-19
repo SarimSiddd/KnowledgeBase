@@ -13,4 +13,4 @@ Const vs constexpr
 
 constexpr is used for compile time constants.
 
-Const can be used for both, but it is preferable to use const in run-time constants.
+Const can be used for both, but it is preferable to use const in run-time constants. 	

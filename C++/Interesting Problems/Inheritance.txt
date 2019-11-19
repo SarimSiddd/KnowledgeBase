@@ -20,7 +20,8 @@ class Base
     {
         cout<< x << " " << y << endl;
     } 
-}objDefault(1, 1);
+}
+objDefault(1, 1);
 
 class Derived: public Base
 {

@@ -2,8 +2,14 @@ accessing static variables
 
 Do I need to use virtual to override method in derived class?
 
-Can static variables be accessed in non static context
+Yes
+
+Can static variables be accessed in non static context?
+
+Yes but static methods can only access static variables
 
 Default value functions
 
 difference between L-value and R-value
+
+See file

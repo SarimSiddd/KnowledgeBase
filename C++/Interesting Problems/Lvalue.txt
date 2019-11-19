@@ -2,3 +2,11 @@ dispatch(i) : lvalue
 dispatch(std::move..)
 
 
+lvalue means any variable or object or anything that has an address.
+For e.g.
+int x = 10;
+int y = 50;
+
+Rvalue is anything that is not a lvalue.
+
+10, 50 in above case are rValues;
