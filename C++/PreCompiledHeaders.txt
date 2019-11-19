@@ -1,0 +1,10 @@
+
+PreCompiled headers contained header files already "compiled" for use throughout the project.
+
+We should use precompiled headers for includes that we need throughout our project like vectors, threads, string etc. from the STL Library.
+
+Doing so will reduce build times and also give all classes the same common STL includes so we don't need to do includes in each of our files.
+
+We shouldn't use precompiled headers for:
+
+1) file native to our own project that change [Since pch will need to be built again each time]

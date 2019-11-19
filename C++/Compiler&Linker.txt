@@ -1,0 +1,27 @@
+Compiler and Linker:
+
+Compiler works in two steps:
+
+1) Perprocessor:
+
+All #include and other preprocessor symbols are resolved first.
+(#include just copies the entire file on the line of the include file).
+
+2) Compilation:
+
+.Cpp files are compiled into .obj files. All .cpp files are compiled into different .obj files.
+It is not necessary to include a reference to another .cpp files' function when using it if part of the same project.
+
+We can choose the type of assembly that the compiler will generate (.exe, .dll etc.)
+
+Linker:
+
+The linker resolves all external references and throws an error in case of duplicate definition or no definition.
+
+We can choose to see the native code being generated, by choosing .asm in the project properties.
+
+
+Compilation errors start with C, Linker errors start with LNK.
+
+Have each .cpp have a .header file which will contain the function declarations of that class. Include that header file when you need to
+use any of the .cpp files methods.

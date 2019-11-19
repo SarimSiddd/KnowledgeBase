@@ -1,0 +1,43 @@
+
+dynamic cast used for runtime type checking.
+
+In other languages, this is done through:
+
+isinstanceof(); or is ();
+
+dynamic_cast <classA *> B; <- attempts to cast B (pointer ) as a classA pointer
+
+dynamic_cast can be used to evalue the type of an object at runtime.
+
+Example
+
+class A{
+	
+	
+	//need atleast one virtual function
+	virtual void dosomething(){}
+};
+
+class B : A{
+	
+	void onlyinB(){}
+};
+
+main (){
+	
+	//Creates a pointer of type A and points it to an object of type B 
+	A * objA = new B();
+
+	//We only have access to methods in A also defined in B;
+	//What if there is a method B not defined in A that we want to call?
+
+
+	if (B * Bptr = dynamic_cast<B *> (objA)) //check if cast is possible, if successful then call method unique to B
+		Bptr->onlyinB;
+
+}
+
+//This can also be useful if B,C are types of A. and we have a pointer of type A pointing to one of the derived objects 
+//We can check if the object that A * points to is actually an object of type B or C.
+
+
