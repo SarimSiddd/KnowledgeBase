@@ -1,0 +1,28 @@
+char * something = "asds";
+
+asds is created in read only memory;
+
+we can't modify or do something like:
+
+
+something[2] = 'a';
+
+As we are trying to modify read only memory this is not acceptable.
+
+
+char is 1 byte means 8 bit. means we can store 2^8 possibities or UTF-8 characters.
+
+For UTF-16 we use:
+
+char16_t * name1 = u"weqwe"
+
+For UTF-32 we use:
+
+char32_t * name = U"sadasd"
+
+For wide characters(2bytes):
+
+wchar_t * name3 = L"QWEQWE"
+
+
+
