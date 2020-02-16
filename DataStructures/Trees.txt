@@ -1,0 +1,51 @@
+
+Types of Trees:
+
+1) Binary Trees:
+
+
+A node can have at most 2 children
+
+Max Number of children at any node: 2^i where i is the current level
+
+
+Types of Binary Trees:
+
+Complete Binary Tree:
+
+All levels of the tree are filled except perhaps the last level which is filled left to right.
+
+Full Binary Tree:
+
+Every node has zero or 2 children
+
+Perfect Binary Tree:
+
+Both full and complete i.e. every node has either zero or 2 children and every level of the tree is filled.
+
+
+Traversal:
+
+In-order:
+
+LCR
+
+Pre-order:
+
+CLR
+
+Post Order:
+
+LRC
+
+
+Min Heap:
+
+A Min Heap is a complete binary tree.
+Each child is greater than the parent.
+
+
+Trie:
+
+A trie is a variant of an n-ary tree in which characters are stored at each node. Each path down the tree may
+represent a word.
