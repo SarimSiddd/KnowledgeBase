@@ -1,0 +1,41 @@
+
+
+1) Functions as first class values i.e. functions can be passed around like values.
+
+e.g.
+
+Func<int, int> triple = x => x * 3;
+var range = Enumerable.Range(1, 3);
+var triples = range.Select(triple);
+triples // => [3, 6, 9]
+
+2) Avoid state mutation i.e. original object is not changed
+
+e.g.
+
+int[] nums = { 1, 2, 3 };
+nums[0] = 7;
+nums // => [7, 2, 3]
+
+3) Functional approach greatly benefits concurrency
+
+pg 11 LINQ sheet
+
+
+here are several language constructs in C# that you can use to represent functions:
+ Methods
+ Delegates
+
+public delegate int Comparison<in T>(T x, T y);
+var list = Enumerable.Range(1, 10).Select(i => i * 3).ToList();
+list // => [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+Comparison<int> alphabetically = (l, r)
+=> l.ToString().CompareTo(r.ToString());
+list.Sort(alphabetically);
+list // => [12, 15, 18, 21, 24, 27, 3, 30, 6, 9]
+
+
+
+ Lambda expressions
+ Dictionaries
+
