@@ -1,0 +1,7 @@
+Static Cast is used to convert from one type to another. Primarily a pointer from a base class to a derived class and from a derived class to a base class. They should not be used to cast between pointer and non pointer types. There is no run time check done to ensure the cast results in a full type of the target type so the user has to ensure the type cast is safe.
+
+Const Cast is used to add or remove the const modifier to a variable this allows the developer to make a non modifiable variable modifiable or a modifiable variable non modifiable. Const cast can also be used to change a variables volatile modifier. Volatile is used to tell the compiler the variable can be modified by another process so when it is used it should check the value every time instead of storing it in the cache and re using it.
+
+Dynamic cast does a run time type check when performing the cast unlike the const cast. This means it is safer to use when you know less about the types involved. For instance, if you try to use a dynamic cast to convert a Base class to a derived class it will most likely return zero if the base class is not a complete instance of the derived class which would be pointless.
+
+Reinterpret cast will convert pointers between types and integers. Since reinterpret cast does not check the pointer type or the type pointed to it is possible to cast between unrelated and incompatible types and thus any dereference of the cast is likely to fail, thus reinterpret cast is not safe.

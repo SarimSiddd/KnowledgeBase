@@ -21,3 +21,8 @@ void Main(){
 	//e1.m_Name become = InputName;
 }
 // Need to initalize according to the order in which variables are defined in the class.
+
+  Circle foo (10.0);   // functional form
+  Circle bar = 20.0;   // assignment init.
+  Circle baz {30.0};   // uniform init.
+  Circle qux = {40.0}; // POD-like

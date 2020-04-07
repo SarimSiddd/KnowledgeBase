@@ -1,0 +1,9 @@
+class class_name {
+  access_specifier_1:
+    member1;
+  access_specifier_2:
+    member2;
+  ...
+} object_names;
+
+object_names declares an object of the type class_name onto the stack.

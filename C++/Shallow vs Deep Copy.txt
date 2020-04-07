@@ -21,3 +21,5 @@ constructor, but it checks for self-assignment, returns *this, and deallocates a
 previously allocated memory before deep copying.
  If you don’t want a class to be copyable, use a private copy constructor and assignment
 operator prototype in the class header.
+
+https://courses.edx.org/courses/course-v1:Microsoft+DEV210.3x+3T2019/courseware/a7f68d4c-620c-7eaf-df7e-f05e9c57a2fd/034b72f6-67e2-4912-6dbd-52bd98821edc/?child=first

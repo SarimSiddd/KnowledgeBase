@@ -1,0 +1,1 @@
+CMake automates the configuration of build systems. It controls the software compilation process by using simple configuration files, called CMakeLists.txt files. CMake generates native build configurations and workspaces that you can use in the compiler environment of your choice.

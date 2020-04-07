@@ -1,0 +1,13 @@
+Adapter functions
+Some HOFs don’t apply the given function at all, but rather return a new function,
+somehow related to the function given as an argument. For example, say you have a
+function that performs integer division:
+Func<int, int, int> divide = (x, y) => x / y;
+divide(10, 2) // => 5
+You want to change the order of the arguments so that the divisor comes first. This
+could be seen as a particular case of a more general problem: changing the order of
+the arguments.
+You can write a generic HOF that modifies any binary function by swapping the
+order of its arguments:
+static Func<T2, T1, R> SwapArgs<T1, T2, R>(this Func<T1, T2, R> f)
+=> (t2, t1) => f(t1, t2);

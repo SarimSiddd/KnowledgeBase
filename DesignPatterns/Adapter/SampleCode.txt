@@ -1,0 +1,80 @@
+// Example program
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Animal {
+    
+  public:
+    void makeNoise() {
+        
+        cout << noise << endl;   
+    }
+  private:
+    string noise = "Animal Noise";
+    
+};
+
+class AnimalInterface {
+  
+  public:
+    virtual void execute()= 0;
+    
+};
+
+template <typename T>
+class AnimalAdapter  : public AnimalInterface {
+
+    private:
+        T* animalObject;
+        void (T:: *animalFunction)();
+        
+    public:
+        AnimalAdapter(T* AO, void (T:: *AF)()) {
+            
+            animalObject = AO;
+            animalFunction = AF;
+        }
+        
+    void execute () {
+        
+        (animalObject->*animalFunction)();
+    }
+
+};
+
+class Horse {
+    
+    public:
+     void HorseNoise (){
+      
+        cout << noise << endl;   
+     }
+      
+    private:
+     string noise = "NEEEEEEEEEIGGGHH!";
+};
+
+class Rabbit {
+    
+    public:
+     void RabbitNoise (){
+      
+        cout << noise << endl;   
+     }
+      
+    private:
+     string noise = "RabbitNoise!";
+    
+};
+
+int main()
+{
+  Horse * myHorse = new Horse ();
+  Rabbit * myRabbit = new Rabbit ();
+  
+  AnimalAdapter<Horse> A1 (myHorse, &Horse::HorseNoise);
+  A1.execute();
+  
+}

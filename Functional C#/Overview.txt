@@ -35,7 +35,34 @@ list.Sort(alphabetically);
 list // => [12, 15, 18, 21, 24, 27, 3, 30, 6, 9]
 
 
+The .NET framework includes a couple of delegate “families” that can represent pretty
+much any function type:
+ Func<R> represents a function that takes no arguments and returns a result of
+type R.
+ Func<T1, R> represents a function that takes an argument of type T1 and
+returns a result of type R.
+ Func<T1, T2, R> represents a function that takes a T1 and a T2 and returns an R.
+
+There’s a similar delegate family to represent actions—functions that have no
+return value, such as void methods:
+ Action represents an action with no input arguments.
+ Action<T1> represents an action with an input argument of type T1.
+ Action<T1, T2> and so on represent an action with several input arguments.
+
 
  Lambda expressions
+
+LAMBDA EXPRESSIONS
+Lambda expressions, called lambdas for short, are used to declare a function inline. For
+example, sorting a list of numbers alphabetically can be done with a lambda like so.
+var list = Enumerable.Range(1, 10).Select(i => i * 3).ToList();
+list // => [3, 6, 9, 12, 15, 18, 21, 24, 27, 30]
+list.Sort((l, r) => l.ToString().CompareTo(r.ToString()));
+list // => [12, 15, 18, 21, 24, 27, 3, 30, 6, 9]
+
  Dictionaries
+
+
+
+
 

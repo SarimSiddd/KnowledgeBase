@@ -1,3 +1,71 @@
 Rule: Handlers for derived exception classes should be listed before those for base classes.
 
 Derived Class exceptions can be caught by a catch block of the base class.
+
+The c++ standard library provides an exception base class that can be derived and allows us to override the what and ~exception virtual functions in our derived class. This allows us to return a custom error message string and the destructor allows us to free any memory allocated on the heap with the operator new function.
+
+class derivedException : public exception{
+  
+  virtual const char * what () const throw () {
+        
+        return "My derived exception";    
+  }
+  
+} DE;
+
+int main()
+{   
+    //derivedException DE;
+    
+    try {
+        
+        throw DE;
+    }
+    
+    catch (exception &e){
+        
+       cout << e.what() << endl;
+    }
+}
+
+An exception is uncaught if there is no associated exception handler to catch it. When this happens a call to terminate() is done automatically and any subsequent calls to termination functions that would normally be done during normal program execution does not happen, this includes calls to allocated objects destructor's functions.
+
+This is especially problematic when you consider RAII (Resource acquisition is initialization). If a destructor throws an exception during stack unwinding the whole program will exit. When an exception occurs, program execution moves to that exception's exception handler and all automatic variables between the throw and catch are destroyed, this process is called stack unwinding.
+
+
+#include <iostream>
+
+using namespace std;
+
+class throwexception {
+public:
+    throwexception(); //Constructor
+
+    ~throwexception();  //Destructor
+};
+
+throwexception::throwexception(void) {
+    cout << "throwexception object constructed" << endl;
+    //Constructor
+}
+
+throwexception::~throwexception(void) {
+    //Destructor
+    cout << "throwexception destructor called." << endl;
+    throw 9;
+}
+
+int main() {
+    try {
+        throwexception texc;
+        cout << "Throwing exception will cause termination of program." << endl;
+        throw 7;
+    }
+    catch (...) {
+        //Catch exception
+        cout << "Main Exception caught" << endl;
+    }
+} 
+
+"Main exception caught" is never printed
+
