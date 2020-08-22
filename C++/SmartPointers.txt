@@ -1,0 +1,17 @@
+Smartpointers manage object life time management
+
+shared_ptr
+-reference counting
+-automatically destructs objects when they go out of scope
+
+
+weak_ptr
+-allows for null_ptr check
+doesn't bump reference count 
+
+unique_ptr
+-non_copyable (use std::move)
+
+
+
+

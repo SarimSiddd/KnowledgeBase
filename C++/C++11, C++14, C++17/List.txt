@@ -1,0 +1,20 @@
+List
+
+-LinkedList
+-saves copying when new items are added
+
+Pros:
+-less copying
+
+cons:
+-more expensive to traverse
+-can be devastating in sorted linked list
+
+
+Map is sorted, keys must be unqiue
+
+multimap allows collisions
+
+for unordered map we have std::unordered_map
+
+unordered map & unorderedmultimap have quicker adds

@@ -1,0 +1,16 @@
+pIMPL:
+
+pointer to implementation.
+
+For a class X,
+
+we seperate the implemenetation of X into pIMPLX.cpp and pIMPLX.h
+X.h has a forward declaration to pIMPL.
+where both of these classes have implementation of functions used in X.
+
+X has a unique pointer to pIMPL and calls its functions.
+We can include the header file of X and change implementation details in pIMPLX without requiring
+a recompile.
+
+can be moved but not copied.
+need to always create a destructor for the implementation class (X).

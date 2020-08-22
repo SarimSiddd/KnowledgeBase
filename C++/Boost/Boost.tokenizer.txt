@@ -1,0 +1,6 @@
+
+lexical_cast<int> ("ASDAS");
+
+Allows for safe conversion of strings to int and vice versa.
+more portable than atoi
+atoi returns 0 if converting 0 to string but also returns 0 when string is not convertible

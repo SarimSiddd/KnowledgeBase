@@ -1,0 +1,4 @@
+Union Find-
+
+-Used to solve the direct connectivity problem.
+-Given n nodes find out if 2 nodes are connected to each other.

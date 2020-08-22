@@ -1,0 +1,24 @@
+Containers
+
+
+-Have Type Safety
+-Already templated types like vector that work great with existing STL algorithms
+-Are easy to iterate
+-don't have to manage memory manually (they destroy themselves)
+-They know their size and manage themselves
+-Promote Expressivity
+
+
+for (int i : numbers) equivalent to foreach
+
+vector numbers {0, 1, 2};
+
+vector type is automatically detected from the initializer list. (C++17) feature
+
+-not as memory intensive as people think
+-memory locations for elements are contigious making random access faster
+-can use iterator
+
+use std::array else
+
+

@@ -1,0 +1,11 @@
+Boost.Optional
+
+How to store and return optional values?
+
+a) Use a pointer with nullptr indiciating missing value - doesn't communicate effectively to programmer, may be dereferenced
+b) Store a default value, such as empty string - not cost effective, imagine vector of size 100 each with different allocation for the default value
+c)std::pair <string, bool> where bool indiciates if the string is optional or not - requires extra handling 
+
+Boost.optional
+
+provides a construct that explicitly tells us that the value is optional

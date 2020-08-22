@@ -1,0 +1,51 @@
+Rvalue references:
+
+If we have a class Resource, a function can take resource in different ways
+
+a) Resource x -> copy by value; a copy is made
+b) Resource * px -> copy by pointer; have to dereference the pointer
+c) Resource &x -> by reference
+d) Resource && rrx -> an rvalue reference to some disappearing instance of resource
+
+what is Rvalue?
+
+1) something temporary, that disappears after usage
+2) perfect for stealing something
+
+Move constructor, move assignment operator
+
+Functions that take in a rvalue reference
+
+-steal elements from the reference they r passed
+
+-Should leave the passed reference in a valid state
+
+ Already implemeneted for STL classes like vector & string
+
+
+ move constructor is already used when our class deals with strings or vectors as member variables.
+ But we can still define our own:
+
+ Resource (Resource && r); <- Move constructor
+
+ Resource :: Resource (Resource &&r): name (std::move(r.name))
+
+
+ move Assignment operator:
+
+ Resource & operator = (Resource &&r);
+
+ Resource& Resource::operator= (Resource &&r){
+
+ 		if (this != &r){
+
+ 			name = std::move(r.name);  <- std::move is just a cast that forces the compiler to call the r-value reference constructor on object r
+ 			r.name.clear();
+ 		}
+ 		return *this;
+
+ }
+
+ std::move
+ -Casts a regular reference to an r-value reference so the right overload is used
+ -Move a unique_ptr into and out of a collection

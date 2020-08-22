@@ -1,0 +1,10 @@
+main (int argc, char * argv[]){
+	
+}
+
+manages arguments provided to the program.
+
+a) Arguments can be optional or required
+b) Arguments can have longer or shorter form
+c) Arguments must be self-documenting
+d) Arguments can be external (config file or enviornmnet vars)

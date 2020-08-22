@@ -1,0 +1,49 @@
+#include <QCoreApplication>
+#include <boost/optional.hpp>
+#include <string>
+#include <iostream>
+
+using namespace  std;
+using namespace boost;
+
+class AnimalType {
+
+public:
+    AnimalType(string Name): Name(Name){}
+    string Name;
+};
+
+class Animal {
+
+public:
+
+    Animal(string Name, string Type) : Name(Name), Type(Type){}
+
+    string Name, Type;
+    optional<string> Description;
+    optional<AnimalType> animalType;
+
+};
+
+
+
+int main(int argc, char *argv[])
+{
+    Animal SomeAnimal ("Rabbit", "Herbivore");
+    SomeAnimal.Description = "I am Some Animal";
+    if (SomeAnimal.Description){
+        cout << SomeAnimal.Description.is_initialized() << endl;
+    }
+
+    SomeAnimal.animalType = AnimalType("Rabbit");
+    //cout << SomeAnimal.animalType << endl; returns a static assertion error
+    //can use SomeAnimal.animalType->is_initialized() for the same effect
+    if (SomeAnimal.animalType){
+       cout << SomeAnimal.animalType->Name << endl;
+    }
+
+    //cout << SomeAnimal.Description.
+    QCoreApplication a(argc, argv);
+
+    return a.exec();
+}

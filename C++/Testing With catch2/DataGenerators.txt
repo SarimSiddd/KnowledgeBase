@@ -1,0 +1,7 @@
+Run same test with different values
+
+TEST_CASE("BASIC GENERATORS"){
+
+auto n = GENERATE(1,2,3); //Runs for each value of n
+
+}

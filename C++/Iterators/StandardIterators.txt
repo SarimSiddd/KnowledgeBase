@@ -1,0 +1,22 @@
+We will look at the use of the iterators in order of their inheritance, so the input/output iterator is first since that is the base class. There are two input iterators defined in the STL they are the istreambuf_iterator and the istream_iterator.
+
+std::istreambuf_iterator<char> isbuf(std::cin.rdbuf());
+This is created to read the characters a user types into the terminal that's what the cin.rdbuf() function call does. And to create an istream_iterator we would write.
+
+std::istream_iterator<int> is(std::cin);
+
+To show the use of a forward iterator we will use a forward_list container which was introduced to the STL in c++11. This is a singly linked list that only provides traversal in the forward direction and no random access.
+
+//forward iterator
+forward_list<int> fwdlist;
+forward_list<int>::iterator fwdlistiter;
+fwdlist.push_front(3);
+fwdlist.push_front(2);
+fwdlist.push_front(1);
+
+cout << "Forward iterator traversal of forward_list." << endl;
+for (fwdlistiter = fwdlist.begin(); fwdlistiter != fwdlist.end(); fwdlistiter++) {
+	cout << (*fwdlistiter) << endl;
+}
+
+If you use the STL containers and apply algorithms to them either STL algorithms or user defined you will find the algorithm nearly always uses an iterator, it is this generic iterator traversal that allows the algorithms to be applied to any type and hence the implementation of generic code.

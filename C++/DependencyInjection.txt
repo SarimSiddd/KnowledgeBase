@@ -1,0 +1,60 @@
+Dependency Injection:
+
+Simply:
+
+A way to reduce coupling
+
+How do we do it in C++?
+- C++ Constructors
+
+WIRING:
+-SEPERATES BUSINESS LOGIC FROM CREATION LOGIC
+-No raw new/make_unique/etc.. except in the wiring [where we create instances of these classes]
+
+
+
+//Responsibility: To Speak;
+class speaker { 
+
+	static constexpr auto name = "Kris"; //tightly coupled
+
+	public: 
+		auto talk();	
+
+};
+
+//Responsibility: 
+class cppnow_talk{
+
+	speaker speaker_(); //Tightly coupled
+	attendees attendee_(); //Tightly coupled
+
+	public:
+      auto run();
+};
+
+
+
+//Decoupled speaker
+class speaker{
+	
+	std::string name_();
+
+	public:
+	//Depenedency Injection
+	explicit speaker (std::string_view name) : name_ (name){
+
+	}
+
+	auto talk();
+};
+
+
+//Strong types for strong interfaces
+using first_name = named <string_view, "first name"> //named type
+using last_name  = named <string_view, "last name"> //named type
+
+speaker (first_name, last_name);
+
+speaker (first_name("Kris"), last_name("Julian"));
+

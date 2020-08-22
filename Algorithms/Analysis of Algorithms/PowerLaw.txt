@@ -1,0 +1,13 @@
+Most computer alogrithms follow the power law:
+
+T(n) = an^b
+
+where T(n) is the running time for input size n
+
+where b is a exponent that tells us about the time taken for an input size
+
+
+From running the experiment multiple times and timing it. We can find b as the log
+of the ratio between two running times.
+
+If we know b we can then solve for a after choosing a particular observation of input size n	

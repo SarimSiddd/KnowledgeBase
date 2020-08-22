@@ -1,0 +1,17 @@
+SECTIONS PROVIDE FORKING INSIDE A TEST CASE.
+
+EACH SECTION is run as a seperate test. This means both sections share the same initialization
+
+TEST_CASE ("This is a test case"){
+	
+	//initialization
+
+	SECTION ("Test case 1"){
+		//Test Code
+	}
+
+	SECTION ("Test case 2"){
+
+		//Test code
+	}
+}

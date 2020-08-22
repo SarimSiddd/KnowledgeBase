@@ -1,0 +1,7 @@
+Download boost prebuilt binaries or source files.
+
+If source files then run boostrap.bat and then .\h2 with required flags.
+
+This will build the binaries for the default compiler that is found
+
+but if both VS Compiler & MingW compiler are installed, we need to add mingW to path, to build for gcc

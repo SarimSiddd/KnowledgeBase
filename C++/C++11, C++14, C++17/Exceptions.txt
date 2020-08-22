@@ -1,0 +1,31 @@
+no finally in c++. Finally runs clean up code regardless if an exception occurred or not.
+In C++ we implement this logic in the destructor which gets called regardless.
+
+Unwinding the stack:
+
+When an exception is thrown
+
+If in a try everything local to the try goes out of scope
+
+- Destructor go off
+- Control goes to catch
+
+If not , everything local to the function goes out of scope
+
+- control returns to the calling scope
+
+If you get all the way out without catching the error
+
+- The user gets a dialog
+
+Noexcept:
+
+a function that throws noexcept will be expected not to throw an expection.
+If this function throws an exception the program just ends.
+noexcept allows expressivity & has a performance boost
+
+we can also use noexcept(false) to specify that a function will throw an exception
+
+
+copy move constructor & operator= move constructor should always use noexcept
+else a copy might be made

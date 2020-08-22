@@ -1,0 +1,21 @@
+Smartpointers manage object life time management
+
+shared_ptr
+-reference counting
+-automatically destructs objects when they go out of scope
+-use when you want to share the pointer. when the last object that refers to the shared
+pointer goes out of scope, the pointer deletes itself
+-make_shared improves performance (faster than a normal pointer and passing that around)
+
+weak_ptr
+-allows for null_ptr check
+doesn't bump reference count 
+
+unique_ptr
+-less overhead than shared_ptr
+-non_copyable (use std::move)
+
+
+
+
+

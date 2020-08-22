@@ -1,0 +1,5 @@
+Forward Declaration in header files:
+
+Forward Declaring a class in a header file allows us to include the implementation (header file) just where it is needed (class file), this reduces the number of recompiles (due to the header file not depending on the implementation of X) PIMPL
+
+class X;

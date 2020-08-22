@@ -1,0 +1,28 @@
+Use nullptr
+
+nullptr is both typesafe and expressive
+New in C++11
+
+NULL evaluates to 0 for the compiler
+
+so for 2 function calls:
+
+main () {
+	
+	func1(NULL); //Returns zero
+	func1(nullptr); //Returns -99
+}
+
+
+
+func1 (int x){
+	return x;
+}
+
+func1 (Resource * x){
+	
+	return -99;
+}
+
+enums,
+const

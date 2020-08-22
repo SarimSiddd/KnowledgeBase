@@ -1,0 +1,23 @@
+Observer Pattern a.k.a events
+
+- A class can publish an event
+- Other classes can receive this notificaiton
+- When the name is actually changed, all subscribers get notified (multicast)
+
+Slots can have priority
+- Passed as parameter to connect
+
+Scoped_connection
+
+- Connects signal and slot until it goes out of scope
+
+Disconnect specific slot
+
+LifeTime Tracking
+
+- Keep the connection alive only while the source is alive
+- Explicitly create slot_type and use track()
+
+slot_type is derived from signal_type argument
+
+

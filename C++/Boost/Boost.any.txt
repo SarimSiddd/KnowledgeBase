@@ -1,0 +1,6 @@
+boost::any
+
+Can contain values of any type
+values are stored as they are
+Can be used in collections
+API for getting/checking the value of a particular type

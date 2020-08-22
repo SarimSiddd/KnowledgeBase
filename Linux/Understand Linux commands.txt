@@ -1,0 +1,23 @@
+Understand Linux commands
+
+
+ls [arg] ...
+
+- arg is an optional argument
+- ... means we can supply multiples of argument arg
+
+ls [arg1 | arg2 | arg3]
+
+- | means we can only supply one of the three arguments
+
+ls --all
+
+- "--" means to interpret the command as a whole word
+
+ls -all
+
+- "-all" means the arguments are interepreted seperately and not as a whole word
+
+manpages
+
+- Can access manual pages by typing man

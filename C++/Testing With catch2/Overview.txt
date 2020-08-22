@@ -1,0 +1,51 @@
+Run specific 
+thisTest
+"this Test"
+
+Run Group of Tests
+*Customer
+Customer*
+
+Run all tests except
+Exclude:otherTest
+-otherTest
+
+
+TEST_CASE("This is a test!")
+{
+	//Arrange
+	std::vector<int> v = { 1,2,3,4 };
+
+	//Act
+	v[0] = 1 + 5;
+	//Assert
+	REQUIRE(v[0] == 6);
+}
+
+Running from the command line :
+
+./Project1.exe --list-test-names-only
+This is a test!
+
+
+Tags:
+Describe a test with a tag
+
+Test_CASE("Test1", "[A]"){...}
+Test_CASE("Test2", "[A]"){...}
+
+MyTests.exe "[A]" only tests with tag A
+MyTests.exe ~[A] tests not part of tag A
+MyTests.exe [A][B] tests with both tags A and B
+MyTests.exe [A],[B] tests with either A or B
+
+
+Special Tags
+[!hide] or [.] Skip/Ignore test
+[!mayfile]
+[!throws]
+
+Can also create tag alias:
+
+a combination of tag commands
+

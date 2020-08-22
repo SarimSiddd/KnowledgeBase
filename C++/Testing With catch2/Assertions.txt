@@ -1,0 +1,16 @@
+When to use multiple assertions:
+
+1) multiple checks for single concept
+
+2) Checking related logic
+
+3) Always be pragmatic
+
+
+CHECK (2 +2 ==5 ) // Continue test -> Test Fail
+
+REQUIRE (2+2==5) // Continue test -> test fail
+
+REQUIRE_THROW // PAsses the test if an exception occures
+
+

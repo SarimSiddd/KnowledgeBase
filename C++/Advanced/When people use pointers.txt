@@ -1,0 +1,34 @@
+
+1) Member variable, tied to the lifetime of the class
+
+-Composition in UML
+e.g. every order has a list of items
+	 every account has  a list of transactions on the account
+
+Resolution:
+
+-Old school: destructor of the class deletes the object
+-Modern C++: make it a solid member of the class
+a) When containing object is copied, solid members will be copied (able to use their destructor)
+
+- If you dont know how many there will be, use a standard collection
+
+- if its optional or really large, use a unique_ptr
+
+a) Collections can clean up their contents when the collection goes away
+
+
+2) A way to observe/access something without impact on its lifetime
+
+- a pointer back to your own container (a subwindow inside a window)
+
+3) Shared access to an object on the free store
+
+- no single owner
+- not the most common situation
+
+
+STEPS:
+i) CREATE A SOLID OBJECT IF ITS INEXPENSIVE TO CONSTRUCT IT 
+ii) IF COPYING IS not required/is required but the resource is unique, use unique_ptr
+iii) Else use shared_ptr

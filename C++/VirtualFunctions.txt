@@ -48,3 +48,29 @@ as the base function
 Derived* instead of Base*
 virtual Derived* GetThis() { return this; }
 };
+
+
+
+IMPORTANT
+
+
+when neither the base nor derived class function is called virtual then the calling function depends on the reference pointer when creating the object.
+
+e.g:
+
+base * b = new derived ();
+base.func(); -> base version of func is called
+
+derived * d = new derived();
+derived.func(); -> derived version of func is called
+
+
+when b goes out of scope, only b's destructor will be called. that is why we need to mark b's destructor as virtual.
+
+when d goes out of scope, first d's destructor is called first then b's destructor.
+
+similarly we should mark our destructor as virtual on the base class.
+
+General rule of thumb:
+
+If a single function is virtual in the base class then also make the destructor virtual.

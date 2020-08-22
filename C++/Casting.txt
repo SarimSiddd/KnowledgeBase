@@ -5,3 +5,5 @@ Const Cast is used to add or remove the const modifier to a variable this allows
 Dynamic cast does a run time type check when performing the cast unlike the const cast. This means it is safer to use when you know less about the types involved. For instance, if you try to use a dynamic cast to convert a Base class to a derived class it will most likely return zero if the base class is not a complete instance of the derived class which would be pointless.
 
 Reinterpret cast will convert pointers between types and integers. Since reinterpret cast does not check the pointer type or the type pointed to it is possible to cast between unrelated and incompatible types and thus any dereference of the cast is likely to fail, thus reinterpret cast is not safe.
+
+https://stackoverflow.com/questions/332030/when-should-static-cast-dynamic-cast-const-cast-and-reinterpret-cast-be-used?rq=1

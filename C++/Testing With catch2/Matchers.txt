@@ -1,0 +1,18 @@
+Matchers:
+
+
+Help us in checking assertions:
+
+REQUIRE_THAT(vec1, Contains (v2));
+
+REQUIRE_THAT(vec, VectorContains('a'));
+
+
+Macros that add more information to test run
+
+INFO,
+WARN,
+FAIL,
+CAPTURE,
+UNSCOPED_INFO
+

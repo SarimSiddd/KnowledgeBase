@@ -1,0 +1,26 @@
+Work with file system regardless of OS
+
+-Determine if file or dir exists
+-Measure file size and get properties
+-Navigate heirarchy directly
+
+
+Path represented with a path class
+
+-Can get text with string()
+-Can extract the name with filename()
+-parent_path() moves up the hierarchy
+-root_path() gets us to the very top
+-path objects are decomposable
+	for (auto& child : path)
+
+Determine existence & type of path
+exists()
+isdirectory()
+is_regular_file()
+
+file_size()
+
+directory_iterator
+
+std::tr2?

@@ -1,0 +1,93 @@
+Lambdas:
+
+Hand an operation or function (code)
+to some other operation or function
+
+1) For generic work
+2) For a functional style
+3) For concurrency
+4) For Readability 
+-Eliminate tiny functions
+
+
+auto isOdd = [](int candidate) {return candidate % 2 !=0 ;};
+
+-mandatory to use auto here
+
+bool is3Odd = isOdd(3);
+
+vector nums = {1,2,3,4,-1};
+
+int odds = std::count_if(begin(nums), end(nums), isOdd);
+
+where isOdd is the predicate function that gets executed on every element of vector nums.
+
+
+[](){} //valid lambda
+
+Capture clause [] -> Variables put here are accessible to the lambda from the outside scope.
+() -> Parameters passed to the lambda function
+{} -> Definition of the lambda function, Body
+
+
+
+What is a lambda?
+
+Compiler generates an anonymous function object(instance). [a class is created by the compiler]
+
+Override operator () where the arguments passed to this operator are the parameters given to the lambda
+
+Member variables, controlled by capture clause, const by default
+
+
+Lambda captures:
+
+[x,y] = capture x and y by value
+
+- Copies are made 
+- Lambda can be used when x and y have gone out of scope
+
+[&x,&y] - capture x and y reference
+
+- no copies are made
+- dangling reference are a problem
+
+[x = a+1, y =std::move(b)] - alias or move capture
+
+
+[=] - copy everything by value from the calling scope
+
+- Actually its everything used in the body of the lambda
+
+[&] - copy everything by reference 
+
+- Again only what's used
+
+Mutable
+
+- allows you to change values captured by reference
+
+{
+auto pResource = make_unique<Resource>(", "); //smart pointer that cleans itself up, can't be shared/copied
+
+for_each (begin(nums), end(nums), [=, &message, p=std::move(pResource)](int n){ //using std::move lets us use the  pResource pointer in the lambda body; the pointer outside of this scope is out of scope
+	
+	if (n >= x && n<=y)
+		message+= p->GetName() + std::tostring(n);
+}); //pResource is destroyed here [all member variables of the lambda are destroyed]
+
+ //pResource not out of scope here and still referable but points to nothing
+}
+
+
+
+Lambda return:
+
+
+Lambda may return a value
+
+Only a return statement in the lambda means that the return type is inferred by the compiler
+
+Compiler can sometimes not infer (int & float comparision) we must specify return type in that case
+
+[](int n) -> double {...} where double is the return type

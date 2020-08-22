@@ -1,0 +1,9 @@
+Goals:
+
+-Establish difficuly of a problem
+-Develop "Optimal" algorithms
+
+Approach
+
+-Suppress details in analysis: analyze to within a constant factor
+-Eliminate variability in input model by focusing on the worst case.

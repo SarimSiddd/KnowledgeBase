@@ -1,0 +1,14 @@
+STL structure
+
+Collections
+-list
+-map
+etc.
+
+Algorithms - Contain generic functions that act on those collections such as find, max etc.
+to avoid duplication of those functions across the above collections
+
+Algorithms act through iterators and gives them flexibility
+e.g.
+
+you can search from beginning or end of a collection by just using iterator::start() or iterator::end()

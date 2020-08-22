@@ -1,0 +1,29 @@
+Test case naming:
+
+-Dont be generic
+-Dont use date 
+-or other generic items
+
+
+Rules:
+
+-Express a specific requirement/behavior
+e.g.
+When adding two numbers, return the sum
+Should Include:
+i)The starting state
+ii)Given input
+iii)Expected Result
+iv) unless irrelevant
+
+e.g.
+If Age > 18 IsAdult returns true
+
+When called with xyz then return true
+
+Should throw exception when invalid user
+
+Given authenticated When invalid number used
+then transaction will fail
+
+Called with empty list --> return nullptr
