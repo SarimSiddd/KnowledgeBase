@@ -1,0 +1,38 @@
+Constexpr can be used in two contexts:
+
+Constexpr values:
+
+Definition of an object
+Declaration of static data
+member of literal type
+
+Constexpr function:
+
+Functions
+Constructors
+
+
+Constexpr functions can both be called at runtime and compile time
+
+
+constexpr double half_of (double x){
+
+	return x/2;
+}
+
+constexpr double half = half_of (1.0);
+
+
+
+char c;
+std::cin>>c;
+const double run = half_of (c);
+
+
+C++11:
+constexpr can only have one return statement
+no body in ctor
+
+C++14:
+less restrictions
+body in ctor

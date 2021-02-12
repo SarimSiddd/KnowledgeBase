@@ -1,0 +1,12 @@
+If two alternative functions could be called, but neither is better than the other, the call is deemed
+ambiguous and the compiler gives an error. For example:
+ptg11539604
+Section 1.4 Functions 5
+void print(int,double);
+void print(double ,int);
+void user2()
+{
+print(0,0); // error : ambiguous
+}
+This is known as function overloading and is one of the essential parts of generic programming
+(§5.4)
