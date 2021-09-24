@@ -1,0 +1,29 @@
+requires std::integral<T>
+
+requires std::floating_point<T>
+
+
+bool is_power_of_2 (std::integral auto i)
+{
+	//Integral impl.
+}
+
+template <std::floating_point T>
+bool is_power_of_2 (T x)
+{
+	//floating point impl.
+}
+
+//Useful for library usage
+
+template <typename T>
+concept airthmetic = std::integral<T> || std::floating_point<T>
+
+template <typename T>
+concept my_number = airthmetic<T> && sizeof(T) <= 8
+
+
+auto f (my_number auto x)
+{
+	
+}

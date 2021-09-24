@@ -1,0 +1,32 @@
+
+Allows for functions to suspend execution insde of the same scope 
+
+
+generator f() 
+{
+	int i =0;
+	//i exists inside this scope
+	//and retains its value on each function call
+	while (true)
+		co_yield i++; //co-await for calling another coroutine from a coroutine
+
+}
+
+int main ()
+{
+	cout << f() << endl; //1
+	cout << f() << endl; //2
+	cout << f() << endl; //3 
+
+	//A type pf coroutine:
+	auto g = [i = 0]() mutable{
+		return i++;
+	};
+
+	cout << g() << endl(); //1
+	cout << g() << endl(); //2
+}
+
+
+Lazy way of doing things
+avoids callback hell when using multithreads

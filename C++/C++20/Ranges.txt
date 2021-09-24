@@ -1,0 +1,38 @@
+std::ranges::sort (users, sort_by_age);
+
+//users is a vector array
+
+instead of
+
+std::sort (users.begin(), users.end(), sort_by_age);
+
+sort_by_age = [] (auto &lhs, auto &rhs) {
+		
+		return lhs.age < rhs.age;
+}
+
+//OR:
+std::ranges::sort(users, std::less{}, &User::age); //sorts by lhs.age < rhs.age
+
+
+//No need to write loops anymore, chained ranges:
+
+bool underage (const User &user) 
+{
+	return user.age <18;
+}
+
+auto result = users
+		| std::views::filter(std::not_fn(underage))
+		| std::views::transform([](const auto& user) { return user.age; });
+
+		std::ranges::copy (result, std::ostream_iterator<int>(std::cout, "\n")); //lazy calls on filter & transform in order and in sequence
+
+//can also be used as:
+
+for (auto& age : users 		| std::views::filter(std::not_fn(underage))
+		| std::views::transform([](const auto& user) { return user.age; }))
+		{
+			std::cout << age << std::endl;
+		}
+
