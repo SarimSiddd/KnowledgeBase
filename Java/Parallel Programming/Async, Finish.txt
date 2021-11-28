@@ -1,0 +1,23 @@
+Aysnc, Finish:
+
+For
+
+sum = s1 + s2 + s3 + s4
+
+s1+s2 can be executed on one core
+
+s3+s4 can be executed on another
+
+finish{
+async
+{
+ sum1 = s1+s2;
+ sum2 = s3+s4;
+
+}
+	sum = sum1+sum2
+}
+
+Async allows us to specifiy statements that can be executed in parallel
+
+Finish allows us to cover the async block and execute statements after async has finished

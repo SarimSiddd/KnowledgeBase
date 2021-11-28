@@ -1,0 +1,25 @@
+Fork-Join Framework:
+
+A concrete way of implementing async-await for divide and conquer algorithms
+
+https://www.coursera.org/learn/parallel-programming-in-java/supplement/wlDUr/1-2-lecture-summary
+
+In our Array Sum example, we created class ASum with fields A for the input array, 
+LO and HI for the subrange for which the sum is to be computed, 
+and SUM for the result for that subrange. For an instance of this user-defined 
+class (e.g., L in the lecture), we learned that the method call, L.fork(),
+creates a new task that executes L’s compute() method. This implements the
+functionality of the async construct that we learned earlier. The call to L.join() 
+then waits until the computation created by L.fork() has completed. Note that join() 
+is a lower-level primitive than finish because join() waits for a specific task, 
+whereas finish implicitly waits for all tasks created in its scope. To implement the finish construct 
+using join() operations, you have to be sure to call join() on every task 
+created in the finish scope.
+
+
+FJ tasks are executed in a ForkJoinPool, which is a pool of Java threads. 
+This pool supports the invokeAll() method that combines both the {\tt fork}fork 
+and {\tt join}join operations by executing a set of tasks in parallel, and waiting for their completion. 
+For example, {\tt ForkJoinTask.invokeAll(left, right)}ForkJoinTask.invokeAll(left,right) implicitly performs
+ {\tt fork()}fork() 
+operations on {\tt left}left and {\tt right}right, followed by {\tt join()}join() operations on both objects.
