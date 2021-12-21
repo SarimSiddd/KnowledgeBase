@@ -1,0 +1,16 @@
+JAVA Streams
+
+
+A more robust way to play with Collections and operate on them:
+
+Map:
+
+Applies a map function for e.g. split("") on an array of strings to get an array of chars instead
+
+Reduce:
+
+Used to apply the same operation on the entire collection. e.g. adding one to each element
+
+Collect:
+
+There are many collectors like Counting, Grouping etc. that we can pass as method references

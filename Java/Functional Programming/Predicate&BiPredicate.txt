@@ -1,0 +1,17 @@
+Predicate <T>:
+
+Returns a boolean and takes one argument.
+
+.test:
+
+Run the predicate on the given argument.
+
+
+.and, .or, .negate = self explantory.
+
+System.out.println(isPhoneNumberValid.and(p -> p.contains("3")).test("07000000003"));
+
+
+BiPredicate:
+
+Returns a boolean and takes two args.

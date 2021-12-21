@@ -1,0 +1,14 @@
+
+1) Entire database schema exists inside the program space
+
+2) Configuration is required to populate the database at startup
+
+3) No seperate database installation required
+
+4) Helps in unit tests for integration testing
+
+5) Quick prototyping
+
+6) Web UI present
+
+h2 & hsql

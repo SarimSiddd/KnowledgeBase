@@ -1,0 +1,32 @@
+Only method in the interface that needs to be implemented
+
+@FunctionalInterface - expresses intent to the compiler
+
+
+Lambda:
+
+A lambda implements a functional interface
+
+Each lamba expression can be implicitly assigned to a functional interface
+
+button.addActionListener((e) -> {
+	
+
+});
+
+Note: if the body has only one statement then the compiler can add the return statement by itself
+
+Note: if only e is an arguemnt to the interface function, we can omit the brackets:
+
+menu.addItem("Find", e -> true);
+
+https://www.coursera.org/learn/object-oriented-hierarchies-java/supplement/MEbsH/functional-interfaces-and-lambdas
+
+
+Method references:
+
+vechile.forEach(Vechile::stop);
+
+same as:
+
+vechile.forEach(V -> { vehicle.stop(); });

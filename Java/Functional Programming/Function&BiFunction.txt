@@ -1,0 +1,31 @@
+Function<T, V>:
+
+First type parameter is the output, the second is the input.
+
+E.g.:
+
+    static Function<Integer, Integer> IncrementBy1 = i -> ++i;
+    static Function<Integer, Integer> MultiplyBy10 = i -> i * 10;
+    static Function<Integer, Integer> IncrementBy1AndMultiplyBy10 = IncrementBy1.andThen(MultiplyBy10);
+    int result = IncrementBy1AndMultiplyBy10.apply(2);
+
+.apply:
+
+Applies the function to the argument
+
+.andThen:
+
+combines two functions one after the other, the result of the first one gets passed into the other.
+
+.compose:
+
+combines the result of two functions. For e.g.: Taking the first name of a person and making the first letter uppercase.
+
+BiFunction<T, V, X>:
+
+The first type parameter is the output. The second and third is the input.
+
+Example:
+
+    static BiFunction<Integer, Integer, Integer> IncrementBy1AndMultiply =
+            (num, multiplybywith) -> (++num) * multiplybywith;

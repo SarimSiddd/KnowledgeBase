@@ -1,0 +1,3 @@
+CommandLineRunner interface when coupled with the @Bean annotation returns a CommandLineRunner when a lambda is defined inside the body.
+
+Since CommandLineRunner is a functional interface.

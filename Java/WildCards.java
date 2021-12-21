@@ -31,6 +31,7 @@ SportsCar, MiniVan, SUV
 
 //Here ? super Car means someArray has to be a list
 //of elements that are a Car or one of its super classes
+//? super allows for adding or assigning not references
 	public void doSomething(ArrayList<? super Car> someArray)
 	{
 		for (Object object = someArray.get(i); i<someArray.size(); i++)

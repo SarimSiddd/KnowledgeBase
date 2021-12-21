@@ -1,0 +1,14 @@
+Rule of Thumb:
+
+Declare Collections as the most abstract type available.
+
+For example:
+
+Instead Of:
+
+LoopOverArray(ArrayList<Car> MyArrayList)
+
+we can rely on the most abstract interface which is Collection since List inherits from Collection
+and ArrayList is implementation of List
+
+LoopOverArray(Collection<Car> ArrayList)

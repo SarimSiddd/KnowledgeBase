@@ -1,0 +1,48 @@
+gcloud auth list
+
+lists the current user credentials
+
+*gcloud is commandline tool for google cloud
+
+
+gcloud config list project
+
+lists the project id
+
+Documentation:
+
+https://cloud.google.com/sdk/gcloud
+
+ln -s [path1] [path2] - creates a symbolic link between the two paths
+
+
+Run backend application:
+
+./mvnw -q spring-boot:run -Dserver.port=8081
+
+
+
+Sending a POST request to PORT 8081:
+
+[POST request]
+curl -XPOST -H "content-type: application/json" \
+  -d '{"name": "Ray", "message": "Hello"}' \
+  http://localhost:8081/guestbookMessages
+
+[GET request]
+curl http://localhost:8081/guestbookMessages
+
+
+Parsing JSON return text with CURL:
+
+curl -s http://localhost:8081/guestbookMessages \
+  | jq -r '._embedded.guestbookMessages[] | {name: .name, message: .message}'
+
+
+Run frontend application:
+
+./mvnw -q spring-boot:run
+
+
+
+mvnw was a bash script file that set all environment variables and had a PROJECT_HOME_DIR_VARIABLE to know where to run the application form. First folder with .mvn directory found is considered the project folder.

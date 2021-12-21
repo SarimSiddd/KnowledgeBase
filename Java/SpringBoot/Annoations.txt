@@ -1,0 +1,42 @@
+Annotations Overview:
+
+
+@Autowired:
+
+Tells the compiler to do dependency injection at the point the annotation is used.
+
+@Component, @Service:
+
+Both do the same thing but its more about semantics. If using @Autowired then use @Service to denote a spring bean.
+
+@RestController:
+
+Allows us to specify a controller class 
+
+@GetMapping(path="api/v1/students"):
+
+Allows us to specify a get mapping on a specific endpoint/path.
+
+
+@Configuration:
+
+Defines a configuration class in java spring jpa.
+
+@Bean:
+
+Defines a bean inside our application, the bean is run everytime a spring application is started.
+
+@Query:
+
+Allows us to specify the explicit to be performed on a method in the Repo class.
+
+
+@Transactional: (Use on top of method)
+
+Allows us to use setters to directly change values in the db table directly.
+
+
+
+Hibernate entity lifecycle
+
+How spring data jpa works

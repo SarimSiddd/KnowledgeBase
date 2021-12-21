@@ -1,0 +1,18 @@
+Imperative Approach:
+
+Defining every single implementation detail.
+
+Declerative Approach:
+
+        people.stream()
+                .filter(p -> FEMALE.equals(p.gender))
+                .forEach(System.out::println);
+
+
+
+
+What is static import?
+
+Default implementation in interfaces?
+
+How private modifier works in static classes?

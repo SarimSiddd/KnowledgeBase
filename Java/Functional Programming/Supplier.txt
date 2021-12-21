@@ -1,0 +1,12 @@
+Supplier <String>:
+
+
+Returns the type parameter specified.
+
+
+    static Supplier<String> returnHelloWorld = () ->
+            "Hello World";
+
+.get():
+
+used to retrieve the value from the supplier.

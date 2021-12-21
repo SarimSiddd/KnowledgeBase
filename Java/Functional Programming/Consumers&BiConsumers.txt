@@ -1,0 +1,23 @@
+Consumers:
+
+A void function that takes one argument and does not produces a result.
+
+.accept:
+
+ to execute the lambda.
+
+        Consumer<Customer> greetCustomer = customer ->
+                System.out.println("Hello " + customer.name + " Your phone number is: " + customer.phone);
+
+        greetCustomer.accept(new Customer("Sarim", "99999"));
+
+
+where Customer is a static class with name and phone number as member variables.
+
+BiConsumer:
+
+A void function that takes two argument.
+
+        BiConsumer<Customer, Boolean> greetCustomerWithCensor = (customer, showNumber) ->
+                System.out.println("Hello " + customer.name + " Your phone number is: " +
+                                (showNumber ? customer.phone : "*****"));
