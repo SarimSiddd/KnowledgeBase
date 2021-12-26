@@ -13,10 +13,38 @@ Both do the same thing but its more about semantics. If using @Autowired then us
 
 Allows us to specify a controller class 
 
+
+@RequestMapping(path="api/v1/students"):
+
+Allows us to specify all endpoints inside of a class
+
+
 @GetMapping(path="api/v1/students"):
 
 Allows us to specify a get mapping on a specific endpoint/path.
 
+@PathVariable:
+
+is to obtain some placeholder from the URI (Spring call it an URI Template)
+
+e.g.
+
+{
+
+@Path = "{studentId}"
+getStudent (@PathVariable("studentId") int StudentId)
+
+}
+
+@RequestParam:
+is to obtain a parameter from the URI as well 
+
+
+{
+Suppose the URI is /api/v1/student/getCourse?isEnrolled=false
+public getEnrolledCourses (@RequestParam(value = "isEnrolled", required = false) boolean isEnrolled)
+
+}
 
 @Configuration:
 
@@ -40,3 +68,5 @@ Allows us to use setters to directly change values in the db table directly.
 Hibernate entity lifecycle
 
 How spring data jpa works
+
+Testdriven development

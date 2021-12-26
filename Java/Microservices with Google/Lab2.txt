@@ -1,0 +1,109 @@
+Enable Cloud SQL Administration API:
+
+gcloud services enable sqladmin.googleapis.com
+
+
+Confirm that it is enabled:
+
+gcloud services list | grep sqladmin
+
+
+List cloud sql instances:
+
+gcloud sql instances list
+
+Provision new cloud sql instance:
+
+gcloud sql instances create guestbook --region=us-central1
+
+Create a messages database:
+
+gcloud sql databases create messages --instance guestbook
+
+
+By default, Cloud SQL is not accessible through public IP addresses. You can connect to Cloud SQL in the following ways:
+
+Use a local Cloud SQL proxy.
+Use gcloud to connect through a CLI client.
+From the Java application, use the MySQL JDBC driver with an SSL socket factory for secured connection.
+
+
+Use gcloud CLI to connect to the database:
+
+gcloud sql connect guestbook
+
+This command temporarily allowlists the IP address for the connection.
+
+
+Note: For security reasons, the default setting for Cloud SQL does not allow connections to the public IP unless an address is explicitly allowlisted. The gcloud sql connect command line automatically and temporarily allowlists your incoming connection. It takes a minute or two for the allowlisting process to complete before the MySQL administration client can connect.
+
+
+list the databases:
+
+
+show databases;
+
+switch to messages db:
+
+use messages;
+
+Create table:
+
+CREATE TABLE guestbook_message (
+  id BIGINT NOT NULL AUTO_INCREMENT,
+  name CHAR(128) NOT NULL,
+  message CHAR(255),
+  image_uri CHAR(255),
+  PRIMARY KEY (id)
+);
+
+--
+note:
+
+From a Java application, you can integrate with a Cloud SQL instance by using the standard method, where you use the JDBC driver. However, configuring the JDBC driver for use with Cloud SQL can be more complicated than connecting to a standard MySQL server because of the additional security that Google Cloud puts in place. Using the Spring Cloud GCP Cloud SQL starter simplifies this task.
+
+The Spring Cloud GCP project provides configurations that you can use to automatically configure your Spring Boot applications to consume Google Cloud services, including Cloud SQL.
+
+You update the guestbook service's pom.xml file to import the Spring Cloud GCP BOM and also the Spring Cloud GCP Cloud SQL starter. This process involves adding the milestone repository to use the latest Spring release candidates.
+
+--
+
+Add depedency to cloud sql in pom.xml:
+
+      <dependency>
+         <groupId>org.springframework.cloud</groupId>
+         <artifactId>spring-cloud-gcp-starter-sql-mysql</artifactId>
+      </dependency>
+
+
+
+  In this task, you create an application profile that contains the properties that are required by the Spring Boot Cloud SQL starter to connect to your Cloud SQL database.
+
+Configure a cloud profile
+When deploying the demo application into the cloud, you want to use the production-managed Cloud SQL instance.
+
+You create an application profile called cloud profile. The cloud profile leaves the Cloud SQL starter that is defined in the Spring configuration profile enabled. And it includes properties used by the Cloud SQL starter to provide the connection details for your Cloud SQL instance and database.
+
+
+find instance connection name:
+
+gcloud sql instances describe guestbook --format='value(connectionName)'
+
+
+add in application.properties:
+
+spring.cloud.gcp.sql.enabled=true
+spring.cloud.gcp.sql.database-name=messages
+spring.cloud.gcp.sql.instance-connection-name=YOUR_INSTANCE_CONNECTION_NAME
+
+
+You use the spring.datasource.* configuration properties to configure the JDBC connection pool, as you do with other Spring Boot applications.
+
+Add the following property to guestbook-service/src/main/resources/application-cloud.properties that should still be open in the Cloud Shell code editor to specify the connection pool size:
+
+spring.datasource.hikari.maximum-pool-size=5
+
+Run spring boot with cloud as active profile:
+
+./mvnw spring-boot:run \
+  -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=cloud"

@@ -1,0 +1,16 @@
+Combinator Design Pattern:
+
+
+Allows us to chain validations for a particular resource.
+
+Allows us to find exactly which validation failed for a particular resource.
+
+
+       result = isEmailValid()
+                .and(isPhoneNumberValid())
+                .and(isAdult())
+                .apply(customer);
+
+isEmailValid() returns a new CustomerRegistrationValidator with the overriden apply() method
+and takes CustomerRegistrationValidator returned from isEmailValid and CustomerRegistrationValidator from isPhoneNumberValid
+it first tries to apply this.apply from the first overriden and if successfuly tries to apply the second

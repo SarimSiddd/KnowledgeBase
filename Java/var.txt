@@ -1,0 +1,4 @@
+var date = LocalDate.now();
+
+
+var is used for auto type deduction

@@ -1,0 +1,14 @@
+Things to learn:
+
+
+1) How Spring boot actually works
+
+2) Spring Boot Data JPA
+
+3) Spring Boot with microservices
+
+4) How hibernate works
+
+5) How Spring boot configures profiles
+
+6) How Spring Boot beans work

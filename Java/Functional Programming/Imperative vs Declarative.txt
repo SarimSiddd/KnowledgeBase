@@ -16,3 +16,7 @@ What is static import?
 Default implementation in interfaces?
 
 How private modifier works in static classes?
+
+Static methods in interfaces?
+
+Why no auto type deduction in java?

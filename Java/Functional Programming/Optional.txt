@@ -1,0 +1,7 @@
+Optionals:
+
+       Optional.ofNullable("Sarim@gmail")
+                .ifPresentOrElse(e -> System.out.println("Sending email to " + e),
+                        () -> System.out.println("No default email specified"));
+
+Optional can either have a NULL or a valid value

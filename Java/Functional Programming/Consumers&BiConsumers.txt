@@ -21,3 +21,5 @@ A void function that takes two argument.
         BiConsumer<Customer, Boolean> greetCustomerWithCensor = (customer, showNumber) ->
                 System.out.println("Hello " + customer.name + " Your phone number is: " +
                                 (showNumber ? customer.phone : "*****"));
+
+Ctrl+Alt+v = extract to variable

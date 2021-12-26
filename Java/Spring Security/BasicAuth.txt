@@ -1,0 +1,40 @@
+Basic Auth:
+
+
+client -> server
+
+1. GetRequest -> (base64 user and pass in header is missing)
+
+2. 401 unauthroized <-
+
+3. GetRequest -> (base64 user and pass in header exists)
+
+4. 200 OK
+
+
+Note:
+
+Client has to send the user and pass everytime in the request
+
+This is normally good when implementing external APIs
+
+No way to logout
+
+
+
+@Configuration
+@EnableWebSecurity -> Enables spring websecurity
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests()
+                .antMatchers("/", "index", "/css/*", "/js/*") -> whitelists these URLs
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic(); -> Authenticate all requests with http Basic (base 64)
+    }
+}

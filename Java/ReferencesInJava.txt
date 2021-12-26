@@ -1,0 +1,11 @@
+
+All objects that are created are reference types.
+
+Person alex = new Person("Alex");
+Person newPerson = alex;
+
+alex.setName("Dimitri"); //newPerson.getName() will now also return Dimitri
+
+All objects are passed by refernce into methods
+
+All primitive types are passed by value into methods
