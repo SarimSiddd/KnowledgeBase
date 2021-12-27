@@ -1,0 +1,17 @@
+Checked Exceptions:
+
+Checked at compiled time
+
+//Need to be handled in try catch block or with the throws keyword
+
+e.g.:
+
+Reading from a file
+
+Unchecked Excpetions:
+
+Are not checked at compile time
+
+e.g.:
+
+dividing by 0

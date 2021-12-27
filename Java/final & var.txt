@@ -1,0 +1,12 @@
+var date = LocalDate.now();
+
+
+var is used for auto type deduction
+
+final keyword works like const in java
+
+final Point point = new Point(10, 10);
+point.x = 12; //this is valid;
+point.y = 12; //this is valid;
+
+var cannot be bound to null

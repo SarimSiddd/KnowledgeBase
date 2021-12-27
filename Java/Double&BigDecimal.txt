@@ -1,0 +1,15 @@
+Double and BigDecimal:
+
+
+
+double and Double has precision and can result in unexpected values
+
+
+double x = 0.03 - 0.0.1; returns 0.00099999 ??
+
+
+The alternative for this is BegDecimal;
+
+To compare two BigDecimals:
+
+use compareTo method

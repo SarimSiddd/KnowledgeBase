@@ -5,3 +5,6 @@ Optionals:
                         () -> System.out.println("No default email specified"));
 
 Optional can either have a NULL or a valid value
+
+
+Allows us to get a stream on a NULLABLE type and use map and all other stream api functionalities 

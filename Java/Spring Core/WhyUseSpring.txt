@@ -1,0 +1,48 @@
+Advantages of Spring:
+
+
+1) Application context and dependency injection:
+
+
+Spring manages application context for each of our classes and allows dependency injection
+
+(Depedency injection is a way to manage a shared instance of a class among multiple different classes)
+
+
+2) Data access:
+
+Spring makes working with JDBC easier and abstracts away all the low level detail of working with a database
+
+through Hibernate and the Java Persistence API
+
+3) Spring MVC:
+
+Spring MVC allows us to created structured applications in the MVC paradigm, ability to easily build web applications
+
+
+Spring Framework projects:
+
+Spring Framework Projects
+The Spring Framework is actually a collection of modular projects. "Spring Core", which we just looked at, is the cornerstone of the Spring Framework Projects. Each of these projects has a specialty in building enterprise class applications. Let's take a brief overview of the major Spring Projects.
+
+Major Spring Projects
+Spring MVC
+Spring MVC is designed for building web based applications. This is the workhorse of the web. It is the most common framework to build Java based web applications on.
+
+Spring Data
+Spring Data is a collection of smaller projects who's aim is to make persistence to a datastore agnostic. They're developing a common API layer allowing you to use the Repository pattern with traditional relational databases, NoSQL databases, and even map-reduce applications. Spring Data is all things data.
+
+Spring Security
+Need to secure your application? Spring Security is the tool you want to use.
+
+Spring Boot
+Spring Boot is a rapid application development framework, which allows you to quickly get running with Spring.
+
+Spring Batch
+Spring Batch is just as it sounds, Batch. Yes, companies still do batch processing.
+
+Spring Integration
+As enterprise class applications become more complex, more independent systems are involved. Spring Integration makes it easy to introduce a message based architecture into your application.
+
+Conclusion
+These are just the major Spring Framework projects. When doing Spring development in the enterprise, it is likely you will be using one or more of these projects.

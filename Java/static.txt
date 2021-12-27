@@ -1,0 +1,23 @@
+static int x;
+
+static
+{
+	x = 10;
+
+} //static code block used to define static variables;
+
+
+Nested classes that we declare static are called static nested classes.
+Nested classes that are non-static are called inner classes.
+
+
+The main difference between these two is that the inner classes have access to all members of the enclosing class (including private), whereas the static nested classes only have access to static members of the outer class.
+
+In fact, static nested classes behave exactly like any other top-level class but are enclosed in the only class that will access it, to provide better packaging convenience.
+
+
+static nested classes do not have access to any instance members of the enclosing outer class. It can only access them through an object's reference.
+
+static nested classes can access all static members of the enclosing class, including private ones.
+
+Java programming specification doesn't allow us to declare the top-level class as static. Only classes within the classes (nested classes) can be made as static.
