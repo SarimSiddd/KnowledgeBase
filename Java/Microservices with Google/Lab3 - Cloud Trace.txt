@@ -1,0 +1,73 @@
+Cloud Trace:
+
+Allows us to "trace" how a request propogates through our cloud application and gain near real-time performance insights.
+
+Allows us to see how latency affects our application
+
+Generates Latency reports
+
+Trace collection & analysis platform
+
+
+In a microservices architecture, you need distributed tracing to make complicated service calls more visible. For example, when service A calls B, and B calls C, which service has a problem? In Spring Cloud GCP, you can easily add distributed tracing by using Spring Cloud Sleuth. This typically requires you to run and operate your own Zipkin backend.
+
+
+1) Enable Cloud Trace API:
+
+gcloud services enable cloudtrace.googleapis.com
+
+2) Add the Spring Cloud GCP Trace starter in pom.xml
+
+        <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-gcp-starter-trace</artifactId>
+        </dependency>
+
+3) 
+
+a) Disable trace on default profile (application.properties):
+
+spring.cloud.gcp.trace.enabled=false
+
+b) Enable trace sampling for the cloud profile for the guestbook backend
+
+spring.cloud.gcp.trace.enabled=true
+spring.sleuth.sampler.probability=1.0
+spring.sleuth.scheduled.enabled=false
+
+
+4) In this task, you create a service account with permissions to propagate trace data to Cloud Trace.
+
+enter the following commands to create a service account specific to the guestbook application:
+
+a) gcloud iam service-accounts create guestbook
+
+Add the Editor role for your project to this service account:
+
+b) export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member serviceAccount:guestbook@${PROJECT_ID}.iam.gserviceaccount.com \
+  --role roles/editor
+
+  Generate the JSON key file to be used by the application to identify itself using the service account:
+
+c) gcloud iam service-accounts keys create \
+    ~/service-account.json \
+    --iam-account guestbook@${PROJECT_ID}.iam.gserviceaccount.com
+
+This command creates service account credentials that are stored in the $HOME/service-account.json file.
+
+
+5) Start the service with additional credentials.location
+
+./mvnw spring-boot:run \
+  -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=cloud \
+  -Dspring.cloud.gcp.credentials.location=file:///$HOME/service-account.json"
+
+
+ 6) Look at the trace
+
+
+ In the Navigation Menu navigate to Trace > Trace List in the Operations section.
+
+
