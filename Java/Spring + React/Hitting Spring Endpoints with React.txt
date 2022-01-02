@@ -1,0 +1,15 @@
+Install the unfetch dependecy:
+
+npm i --save unfetch
+
+Calling the GET endpoint:
+
+export const getAllStudents = () => fetch('/students');
+
+  getAllStudents().then(res => res.json().then(students => {
+    console.log(students);
+  }));
+
+  Add proxy in get package.json to avoid adding http://localhost:8080 as the prefix
+
+    "proxy": "http://localhost:8080",

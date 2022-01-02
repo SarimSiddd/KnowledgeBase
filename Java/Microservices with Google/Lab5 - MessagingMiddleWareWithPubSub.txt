@@ -1,0 +1,50 @@
+In this lab, you’ll use Spring Integration to create a message gateway interface that abstracts from the underlying messaging system, instead of using direct integration with Cloud Pub/Sub.
+
+Using this approach, you can swap messaging middleware that works with on-premises applications for messaging middleware that works with cloud-based applications. This approach also makes it easy to migrate between messaging middlewares.
+
+
+Spring Integration for Pub/Sub works for both inbound messages and outbound messages. Pub/Sub also supports Spring Cloud Stream to create reactive microservices.
+
+1) Add dependecy to pom.xml:
+
+
+       <dependency>
+            <groupId>org.springframework.integration</groupId>
+            <artifactId>spring-integration-core</artifactId>
+       </dependency>
+
+  2) Create OutBoundGateway.java and add the following code:
+
+  package com.example.frontend;
+
+import org.springframework.integration.annotation.MessagingGateway;
+
+@MessagingGateway(defaultRequestChannel = "messagesOutputChannel")
+public interface OutboundGateway {
+        void publishMessage(String message);
+}
+
+3) Change reference of PubSubTemplate to OutBoundGateway
+
+	@Autowired
+	private OutboundGateway outboundGateway;
+
+	outboundgateway.publish(message);
+
+4) In this task, you configure a service activator to bind messagesOutputChannel to use Pub/Sub.
+
+In the outbound gateway, you specified messagesOutputChannel as the default request channel. To define that channel to send the message to the Pub/Sub topic, you must create a new bean for that action in FrontendApplication.java.
+
+
+    @Bean
+    @ServiceActivator(inputChannel = "messagesOutputChannel")
+    public MessageHandler messageSender(PubSubTemplate pubsubTemplate) {
+        return new PubSubMessageHandler(pubsubTemplate, "messages");
+    }
+
+
+5) Post a message to the pubsub topic and check:
+
+
+
+gcloud pubsub subscriptions pull messages-subscription-1 --auto-ack

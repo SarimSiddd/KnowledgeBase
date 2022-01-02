@@ -12,3 +12,14 @@ Things to learn:
 5) How Spring boot configures profiles
 
 6) How Spring Boot beans work
+
+
+What is 0Auth
+
+Types of Auth?
+
+Basic Auth
+
+OpenAuth
+
+0Auth2

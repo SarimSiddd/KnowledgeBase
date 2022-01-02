@@ -1,0 +1,21 @@
+Taken from:
+
+https://reactjs.org/docs/introducing-jsx.html
+
+
+JSX:
+
+const element = <h1>Hello, world!</h1>;
+
+
+Can combine UI elements with Javascript. React embraces the fact that rendering logic is inherently coupled with other UI logic: how events are handled, how the state changes over time, and how the data is prepared for display.
+
+
+Embedding expressions in JSX:
+
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
+
+After compilation, JSX expressions become regular JavaScript function calls and evaluate to JavaScript objects.
+
+This means that you can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions.
