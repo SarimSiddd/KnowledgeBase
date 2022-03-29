@@ -1,0 +1,28 @@
+enum Color1 {green, blue, black};
+
+int green = 10; //Error: cannot redeclare green
+
+enum class Color2 {green, blue, black}; 
+
+Color2::green; //usage
+int green = 10; //Not a problem
+
+//int is not implictly converted to enum in case of enum class
+
+int fun (int c){
+	
+}
+
+int fun2(Color2 c){
+	
+}
+
+int main(){
+	
+	fun(10); //shouldn't really work
+	//enum class:
+	fun2(Color2::green); //No implicit conversion
+	fun2(10); //won't work
+}
+
+

@@ -1,0 +1,90 @@
+Traditionally, Java applications are monitored through JMX metrics, which provide metrics on such things as thread count and heap usage. In the cloud-native world where you monitor more than just the Java stack, you need to use more generic metrics formats, such as Prometheus.
+
+
+Prometheus is an optional monitoring tool often used with GKE. If you configure Kubernetes Engine Monitoring with Prometheus support, then services that expose metrics using the Prometheus data model also have their data exported from the cluster and made visible as external metrics in Monitoring.
+
+
+1) Navigation menu > Monitoring > GKE
+
+
+2) Add to pom.xml:
+
+        <dependency>
+             <groupId>org.springframework.boot</groupId>
+             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+             <groupId>io.micrometer</groupId>
+             <artifactId>micrometer-registry-prometheus</artifactId>
+             <scope>runtime</scope>
+        </dependency>
+
+3) Add to application.properties to expose metrics:
+
+
+management.server.port=9000
+management.endpoints.web.exposure.include=*
+
+4) Add exposed metrics port to deployment.yaml:
+
+        - name: metrics
+          containerPort: 9000
+
+
+5) Redeploy the manifest:
+
+mkdir -p ~/bin
+cd ~/bin
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+export PATH=$PATH:$HOME/bin
+cd ~/kustomize/base
+cp ~/service-account.json ~/kustomize/base
+kustomize build
+gcloud container clusters get-credentials guestbook-cluster --zone=us-central1-a
+kustomize edit set namespace default
+kustomize build | kubectl apply -f -
+
+6) Find pod name for one of the instances:
+
+kubectl get pods -l app=guestbook-frontend
+
+7) Port forward:
+
+kubectl get pods -l app=guestbook-frontend
+
+
+8) Install quickstart Prometheus operator:
+
+
+gcloud container clusters get-credentials guestbook-cluster --zone=us-central1-a
+kubectl apply -f https://raw.githubusercontent.com/coreos/prometheus-operator/v0.38.1/bundle.yaml
+
+
+9) Provision Promethus using the operator:
+
+cd ~/prometheus
+export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+# Make sure the project ID is set
+echo $PROJECT_ID
+cat prometheus.yaml | envsubst | kubectl apply -f -
+kubectl apply -f pod-monitors.yaml
+
+Note :The prometheus.yaml file has an additional Prometheus Sidecar that's designed to export the scraped Prometheus metrics to Cloud Operations.
+
+
+10) Validate Prometheus is running properly and scraping the data. Establish a port forward to Prometheus' port:
+
+pkill java
+kubectl port-forward svc/prometheus 9090:9090
+
+11) Click web preview and change port at beginning to 9090
+
+12) Go to status->targets
+
+Observe that there are 2 targets (2 pods) being scraped for metrics.
+
+
+
+More resources:
+
+https://d3c33hcgiwev3.cloudfront.net/pWhKEhHbSdGoShIR26nRRw_957d4e93796046658ee715ddf81abaa1_Additional-Resources.pdf?Expires=1643241600&Signature=jvFFWqZGsdI-v6hjzkrbmwSkOf3A0W1TfV6JLKrdUzvklWbbw9CIDEpDt4XTpA0FwsoRsAIJbvN10vcgc4igVMSwyu8uURZPWZfJXQC0t7OZuxxdbY9NpCKzne5sdsxo0fIZvoeELuyIzUTEsSlqG7ZgllaFiJmQ~TkNM4D5kTg_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A

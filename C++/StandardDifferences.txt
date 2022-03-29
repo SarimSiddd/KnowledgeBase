@@ -1,0 +1,33 @@
+C++11
+
+1) Variadic templates
+2) auto
+3) move semantics
+4) lambdas
+5) Smart pointers
+6) constexpr
+7) range based for loops
+
+
+C++14
+
+1) auto automatic return type deduction
+2) lambdas generic
+3) lambdas template type 
+4) make_unique
+5) Constexpr flexiblity
+
+C++17
+
+1) structured bindings
+
+Boost:
+
+boost.any
+boost.filesystem
+boost.optional
+boost.tokenizer
+boost.cmdoptions
+boost.signals
+boost.string
+boost.bi_map

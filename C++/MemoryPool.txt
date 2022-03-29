@@ -1,0 +1,26 @@
+A very simple memory pool:
+
+class someClass{
+  public:
+  
+  int x;
+  
+  
+};
+
+
+int main()
+{
+    char * memory = new char [10 * sizeof(someClass)];
+    someClass * obj = new (&memory[0]) someClass();
+    return 0;
+}
+
+
+Memory pool consists of:
+
+Chunks
+ 
+Blocks are made of chunks
+
+- often uses singlylinkedlist

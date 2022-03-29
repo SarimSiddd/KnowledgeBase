@@ -1,0 +1,63 @@
+Qt MOC: (Meta Object Compiler)
+
+Qt Build process:
+
+1) Preprocessor
+2) Qt MOC
+3) Compiler
+4) Linker
+5) Finished library
+
+
+
+Core: non-visual classes
+Widgets: older GUI runs on desktop
+QML: newer GUI runs anywhere
+
+QtObject:
+
+Allows us to use signals and slots
+every Qobject has signals and slots
+
+Slot:
+
+A receiver
+A slot is just a function, it can be called like a normal function
+
+Signal:
+
+A function type that MOC generates code for
+An emitter
+A signal is always public
+A signal does not have a definition
+
+Properties:
+
+1) Use signals and slots under the hood
+2) Primarly used for QML
+3) Allows us to bind fields through the UI to getters and setters in a class
+
+QObjectcast:
+
+1) QObjectCast works with QtObjects and reduces the complexity of casting
+
+
+Notes:
+
+1) Object copies are forbidden in Qt
+2) QObjects cannot be templated classes
+
+
+QtClasses:
+
+1) qint - uses typedefs to ensure that integers are the same size on all systems
+2) QDate, QTime, QDateTime
+3) QString
+4) QByteArray
+5) QVariant
+6) QStringList : QList
+7) QList
+8) QVector is an alias for QList (In Qt5 they used to be different)
+9) QMap
+10) qDeleteAll & memory clear via parent child relationships
+11) all of them can store only assignable data types. See https://doc.qt.io/qt-5/containers.html. You need either to change container (e.g. to std::vector) or change smart pointer to assignable (e.g., std::shared_ptr)

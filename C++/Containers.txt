@@ -2,3 +2,12 @@ Container classes generally come in two different varieties. Value containers ar
 that store copies of the objects that they are holding (and thus are responsible for creating and
 destroying those copies). Reference containers are aggregations that store pointers or references
 to other objects (and thus are not responsible for creation or destruction of those objects).
+
+
+THe probelm with vector:
+
+It uses an array internally. 
+
+1) It copies the old array to the new array after allocating it.
+
+2) It overallocates memory. Memory is doubled each time you exceed the capacity after 2 (check vector.capacity).

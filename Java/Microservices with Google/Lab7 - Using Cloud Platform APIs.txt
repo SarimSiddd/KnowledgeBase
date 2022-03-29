@@ -1,0 +1,67 @@
+In addition to the integration you have seen in previous labs using Spring Boot starters, Google Cloud offers many other APIs that you can use directly from your Java applications.
+
+Google Cloud has a set of ready-to-use, idiomatic Java client libraries called google-cloud-java. You can consume any of the client libraries for google-cloud-java even without a Spring Boot starter.
+
+Add a Google Cloud API Java library to an application
+
+Create a Google Cloud credential scope for Spring
+
+Create a Java bean that implements Vision API features
+
+Use Vision API to add image analysis to an application
+
+
+1) gcloud services enable vision.googleapis.com
+
+
+2) <dependency>
+  <groupId>org.springframework.cloud</groupId>
+  <artifactId>spring-cloud-gcp-starter-vision</artifactId>
+</dependency>
+
+
+3) Without customization, the Spring Cloud GCP starters request permission scopes to use APIs that the starters integrate with. Because you use a new API that is not integrated with the starter, you must specify the scope. An all-purpose scope can be used to request permission for all basic Google Cloud APIs.
+
+spring.cloud.gcp.credentials.scopes=https://www.googleapis.com/auth/cloud-platform
+
+
+4) @Autowired
+private CloudVisionTemplate visionTemplate;
+
+// After writing to GCS, analyze the image.
+AnnotateImageResponse response = visionTemplate
+.analyzeImage(resource, Type.LABEL_DETECTION);
+log.info(response.toString());
+
+5) In this task, you create a service account with the Editor role, and you create a JSON file containing the authentication keys for the service account.
+
+
+export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+gcloud iam service-accounts create guestbook
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+  --member serviceAccount:guestbook@${PROJECT_ID}.iam.gserviceaccount.com \
+  --role roles/editor
+
+
+Generate JSON key file:
+
+
+gcloud iam service-accounts keys create \
+    ~/service-account.json \
+    --iam-account guestbook@${PROJECT_ID}.iam.gserviceaccount.com
+
+start with service credentials:
+
+
+    ./mvnw spring-boot:run \
+  -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=cloud \
+  -Dspring.cloud.gcp.credentials.location=file:///$HOME/service-account.json"
+
+
+
+Note:
+
+The Google Cloud scope indicates that the application wants to use all of the Google Cloud APIs, However, the application can use the API only if the API is enabled, and if the application has permission to use it (through the roles bound to the service account, or machine credentials, used to run the application).
+
+In a production application, you should always specify the narrowest scopes that the application needs to use the APIs.

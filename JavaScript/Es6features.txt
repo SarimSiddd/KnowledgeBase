@@ -1,0 +1,9 @@
+Es6 features:
+
+arrow functions
+template strings
+ability to define a function property without using function() explicitly
+spread operator
+default parameters
+Array.from
+let (allows for block scope)

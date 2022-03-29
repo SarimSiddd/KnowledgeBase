@@ -1,0 +1,7 @@
+C++11:
+
+Lambdas
+
+C++14:
+
+More powerful Lambdas (variadic & generic lambdas)

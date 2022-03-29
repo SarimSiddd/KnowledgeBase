@@ -7,3 +7,9 @@ Dynamic cast does a run time type check when performing the cast unlike the cons
 Reinterpret cast will convert pointers between types and integers. Since reinterpret cast does not check the pointer type or the type pointed to it is possible to cast between unrelated and incompatible types and thus any dereference of the cast is likely to fail, thus reinterpret cast is not safe.
 
 https://stackoverflow.com/questions/332030/when-should-static-cast-dynamic-cast-const-cast-and-reinterpret-cast-be-used?rq=1
+
+
+C style cast allows dangerous casts, e.g. cast from char * to int * (doesn't check types).
+
+Const_cast checks types before casting //compile-time error
+

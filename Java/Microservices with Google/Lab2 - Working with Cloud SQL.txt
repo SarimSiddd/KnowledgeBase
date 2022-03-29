@@ -107,3 +107,6 @@ Run spring boot with cloud as active profile:
 
 ./mvnw spring-boot:run \
   -Dspring-boot.run.jvmArguments="-Dspring.profiles.active=cloud"
+
+
+  How does cloud sql work with the frontend and the backend?

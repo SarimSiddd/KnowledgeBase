@@ -1,0 +1,12 @@
+1) What is an application context?
+
+2) What is a bean?
+
+3) What is inversion of control?
+
+4) What are two methods to implement DI? (Setter injection & Constructor Injection)
+
+5) DI vs IOC? Difference.
+
+6) Dependency Injection without Spring?
+

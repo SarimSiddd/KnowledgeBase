@@ -1,0 +1,4 @@
+Traverse through a list of checkboxes belonging to the same parent:
+
+this->children
+child->inherits("QCheckbox");

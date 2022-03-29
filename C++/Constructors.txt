@@ -26,3 +26,22 @@ void Main(){
   Circle bar = 20.0;   // assignment init.
   Circle baz {30.0};   // uniform init.
   Circle qux = {40.0}; // POD-like
+
+  use cases:
+
+
+  1) For initialization of non-static const data members: 
+
+  2) For initialization of reference members: 
+
+  3) For initialization of member objects which do not have default constructor: 
+
+  4) For initialization of base class members : Like point 3, the parameterized constructor of the base class can only be called using Initializer List.
+  
+  5) For Performance reasons: 
+
+
+With the Initializer List, the following steps are followed by compiler: 
+1. Parameterised constructor of “Type” class is called to initialize: variable(a). The arguments in the initializer list are used to copy construct “variable” directly. 
+2. The destructor of “Type” is called for “a” since it goes out of scope.
+As we can see from this example if we use assignment inside constructor body there are three function calls: constructor + destructor + one addition assignment operator call. And if we use Initializer List there are only two function calls: copy constructor + destructor call. See this post for a running example on this point.

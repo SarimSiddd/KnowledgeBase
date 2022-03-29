@@ -1,0 +1,32 @@
+decltype checks the type of the expression:
+
+
+
+template <typename T1, typename T2>
+auto add(T1 a, T2 b) -> decltype(a+b){
+	return a +b;
+}
+
+int main(){
+	
+	add(1,1.1); 
+	add(1.1,1);
+}
+
+It allows us to declare the return type according to evaluation of the expression.
+
+explicit disallows implicit constructor calls:
+
+fun (Base obj){//do something}
+
+Base obj2 = 20; //implicit construction
+
+fun(20) //implicit construction
+
+extern:
+
+Disallows compiler to do name mangling. Useful when using legacy C code with C++ code. Otherwise we might have linker errors.
+
+Functor:
+
+A function like-object, achieved by overloading the () operator in a class.

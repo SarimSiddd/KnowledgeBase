@@ -1,0 +1,113 @@
+In this lab, you configure Cloud Logging, Cloud Debugger, and Cloud Monitoring. During the lab you use cloud services to inspect logs, and debug and monitor the performance of the demo application while it is running on App Engine.
+
+
+Viewing logs:
+
+1) Open a new browser tab and navigate to the Google Cloud console.
+
+2) Navigate to Operations > Logging > Logs Explorer.
+
+3) In the Log fields pane, select GAE Application.
+
+4) In the Log name section, select appengine.googleapis.com/request_log.
+
+5) The default App Engine application log is displayed. When you output a log message, it is grouped by the request. When the application first starts, the log messages are grouped under /_ah/start request.
+
+
+Configure Cloud Debugger:
+
+1) In the Console menu, navigate to Operations > Debugger.
+
+2) At the top, the running App Engine deployments are listed.
+
+3) In the drop-down list, select default - 1 (100%).
+
+4) Click Select Source dropdown on the left of the screen to expand it and select Deployed Files.
+
+You can provide source code to Cloud Debugger in several ways.
+
+5) Select Add source code in the Deployed Files drop-down list.
+
+A list of methods for providing source code is displayed. In this lab, you will add the source code to the Google Source Repositories service.
+
+6) Switch to Cloud Shell and enable the Google Cloud Source Repository API:
+
+gcloud services enable sourcerepo.googleapis.com
+
+7) Create a source repository for source capture:
+
+gcloud source repos create google-source-captures
+
+8) Clone the empty google-source-captures repository:
+
+gcloud source repos clone google-source-captures --project=$PROJECT_ID
+
+The repository has been created at ~/guestbook-frontend/google-source-captures.
+
+9) Copy the source files into the local repository directory:
+
+cd google-source-captures
+cp -rip ../src/* .
+
+10) Commit the source files to the Cloud Source Repository:
+
+git add .
+git commit -m "initial commit"
+git push -u origin master
+
+Use Cloud debugger to debug an application:
+
+1) Return to the Cloud Debugger console and click Select source for Cloud Source Repositories.
+
+2) Select the google-source-captures repository that you've created and select master branch in that repository.
+
+3) Click SELECT SOURCE.
+
+In the left menu under cloud repository:/, navigate to and open main/java/com/example/frontend/FrontendController.java.
+
+frontend_controller
+
+4) From here, you have a significant amount of control. For example, you can add a log message.
+
+
+On the right side of the window, click LOGPOINT.
+
+In the source, click the line number where you want to add a log message and click CREATE LOGPOINT, and then edit the message to print the text and variables that you want to see.
+
+
+5) Return to the Logs Viewer: Operations > Logging > Logs Explorer.
+
+Click on the Log name dropdown in the Query builder pane and select spring.log in the list of log files:
+
+Click ADD.
+
+Click Run query.
+
+
+6) Return to Cloud Debugger: Operations > Debugger.
+
+7) In the source view on the right side, click SNAPSHOT.
+
+Snapshot allows you to capture the stack in a moment in time. It is almost like stepping through a real debugger, but it does not stop the application for your users.
+
+8) In the source, click the line number where you want to capture information and then click CREATE SNAPSHOT.
+
+9) Switch to the demo application and post another guestbook message.
+
+As soon as a request flows through the line, the Call Stack is captured, and you can explore the internal state of the application at that point in time. You can add conditionals to both logpoints and snapshots, so that you view only certain requests based on variables that are in scope (for example, session ID).
+
+Enable monitoring:
+
+1) In the Google Cloud Platform Console, click on Navigation menu > Monitoring.
+
+2) Wait for your workspace to be provisioned.
+
+3) When the Monitoring dashboard opens, your workspace is ready.
+
+Navigate to Dashboards. Click App Engine and select your App Engine service under Projects.
+
+After a minute or two, an overview dashboard of your App Engine services appears. You might have to refresh the page.
+
+
+
+

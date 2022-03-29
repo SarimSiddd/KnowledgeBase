@@ -1,0 +1,10 @@
+Types of layouts:
+
+Absolute Layouts (Do not use) : No structure to the layout, it doesn't scale
+Horizontal Layouts
+Veritical Layouts
+Grid Layouts : Can add anything to the grid horizontally or verically (new row or column)
+Form Layouts : Unpredictable
+Multiple Layouts (nested)
+Container Layout (Group box)
+

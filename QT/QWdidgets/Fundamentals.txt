@@ -1,0 +1,51 @@
+QWidget is the base class of all user interface objects
+
+3 different ways of connecting widgets:
+
+1) Using the connect method
+2) Through the form editor (drag and drop)
+3) By defining the on_signal function in the class (selecting go to slot in the form editor)
+
+Important Widgets:
+
+1) Checkboxes
+2) PushButtons
+3) Radiobuttons & how they behave inside containers
+4) CommandLinkButton & Dialog Button box
+5) QComboBox
+6) QListWidget
+7) QFontComboBox
+8) QPlainTextEdit
+9) TimeEdit, DateEdit, DateTimeEdit
+
+QMetaEnum
+QTextStream
+QDataStream
+
+
+Qt automatically detects infinite loops in qteditor
+
+Resource files are saved inside of our binaries. We can read from these resources files while our application is running but we cannot write to them
+
+resources are immutable and stores inside the application
+
+difference between exec & show?
+
+with exec the user cannot go further until the dialog executing has been closed
+Passing data between dialogs using exec (waiting until the child dialog has finished execution)
+
+
+
+Model/View Programming:
+
+Instead of the controller, we have a delegate
+
+List model
+table model
+tree model - Parent child hierarchy
+
+Important models:
+
+QStringListModel
+QFileSystemModel
+QStandardItemModel - list, table, tree

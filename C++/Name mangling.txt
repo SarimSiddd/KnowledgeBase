@@ -1,0 +1,3 @@
+Name mangling does not happen in C but happens in C++.
+
+It's C++'s way of implementing dynamic polymorphism

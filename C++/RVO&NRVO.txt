@@ -1,0 +1,6 @@
+return value optimization
+
+named return value optimization
+
+
+RVO: Decreases unnecessary constructor calls based on the return of a function

@@ -1,0 +1,30 @@
+What is the size of void?
+
+- Sizeof void is 1 for gcc but for msvc it gives an error
+
+How are void and void * used?
+
+- void is used to denote a function that returns nothing and can be optionally used to denote no args
+
+- we can convert any data type pointer to void * except function pointer, const or volatile
+
+- void * cannot be dereferenced
+
+- generic functions in c library take void * as function pointers
+
+
+Using const in member functions & variables?
+
+- This can be changed by using mutable
+
+Public, privated, protected inheritance in C++
+
+Usage of Const_Cast, dynamic_cast etc.?
+
+Const_cast and dynamic_cast can be used for upcasting or downcasting. Dynamic_cast needs atleast one virtual function in the base class
+
+
+Whats the use of override keyword in C++?
+
+Enum vs Enum class?
+

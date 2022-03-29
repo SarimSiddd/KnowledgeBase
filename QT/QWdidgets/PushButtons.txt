@@ -1,0 +1,6 @@
+Important push button properties/Slots:
+
+1) Checkable
+2) isChecked
+3) AutoRepeat - fire off an event after every set interval
+4) Default - auto selected

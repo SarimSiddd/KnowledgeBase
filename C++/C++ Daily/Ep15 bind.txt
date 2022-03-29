@@ -1,0 +1,46 @@
+std::bind:
+
+Binds the arguments of the function to a unspecified function pointer:
+
+void print (int i , std::string s)
+{
+	cout << "I is: " i << "S is: " << s << endl;
+}
+
+
+auto f = std::bind(&print, std::placeholder_2, std::placeholder_1);
+
+
+f("Hello");
+f(1);
+
+Bind creates copies of the arguments passed in so we need to wrap in a reference pointer if required.
+
+allows us to specify new ways to take arguments (useful in adapters), can be quite costly to use.
+
+
+int x = 5
+const auto f2 = std::bind(std::ref(x), "hello");
+
+f2();
+x = 6;
+f2(); //f2 called with x =6;
+
+
+<_------------------------------ Avoiding std::bind ----------------------->
+
+Using a lambda instead to swap arguments:
+
+const auto f = [](auto&& arg1, auto && arg2)
+{
+	print (arg2, arg1);
+};
+
+
+also possible with lambda:
+
+const auto f = [](auto &&, auto && arg1)
+{
+	f(1, 1);
+}
+//also don't need to specify the exact version of print we want to call

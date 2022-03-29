@@ -1,0 +1,11 @@
+std::next:
+
+takes a iterator and returns the next iterator.
+
+std::next(std::begin(v))
+
+std::exchange:
+
+takes 2 values, replaces the source with the destination, helpful when dealing with large objects or frequent copies
+
+std::exchange(v1, v2);

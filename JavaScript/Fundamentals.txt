@@ -1,0 +1,99 @@
+- Primitive values (int, boolean, strings, undefined, null) get passed by value, functions & objects get passed by reference.
+
+- Arrays are also objects. Arrays just have array methods (array.push, array.length etc. etc.)
+
+var arr  = []; //will always be treated as an object unless we have this line
+
+arr.name = "Something";
+console.log(typeof arr === "object"); // returns true
+
+typeof arr === "array"  //returns false
+
+Accessing data in Arrays:
+
+arr[UndefinedVariable] = "SomeData" // Error Syntax
+
+- Use . with string literal, use [] with numbers
+- Bracket notation does not automatically coerce to string
+- Dot notation automatically coerces to string
+
+
+ES6 Destructuring:
+
+let [firstName, lastName] = ["Sarim", "Siddiqui"]; //anonymous object
+
+//Omit certain values:
+
+var [a, , b] = [1, 2, 3];
+
+//spread operator:
+
+var [a, ...b] = [1,2,3]; // a=1, b = [2, 3]
+
+//Swap variables without temp:
+var a = 1, b =2;
+[a, b] = [b, a];
+
+
+//Get values from a property:
+var {user: x} : {user: 5}; //x = 5;
+
+
+//Map vs foreach:
+
+map creates a new array, applies the callback on the objects (the callback needs to return something)
+
+foreach modifies the current array
+
+
+//Filter:
+filter will return a new array that might or might not be the same size as 
+that of the original array, filter takes a boolean callback (Predicate)
+
+
+//Spread Operator:
+Maps all remaining arguments to the last param in an array
+
+const createTuple = (a, b, c, ...d)=>{ // d = ["anyone", "no one"]
+
+    return [[a,c], [b,d]];
+}
+
+createTuple("It", "be", "could", "anyone", "no one");
+
+//Arguments keyword:
+const createTuple =  function(a, b, c, ...d){ 
+    console.log(arguments); //prints out all arguments passed in
+    return [[a,c], [b,d]];
+}
+
+* Arrow functions dont have access to arguments keyword
+* Even with input of more than stipulated size you can use args to get extra args
+
+//Default Parameters
+const func = function(a, b=2){
+	
+	console.log(arguments); // only prints out 1
+}
+
+func(1);
+
+//Functions are also objects and so can have properties
+
+
+//Let vs var: Let has block scope, var does not have block scope
+//Inner scope variables mask outer scope variables
+//A new scope is created everytime a function is called
+
+
+//Passing multiple arguments to a function:
+
+func (a,b,c, ...args){ //args = [4,5,6,7];
+	func(...args); //4,5,6,7 are passed to this function
+}
+
+func(1,2,3,4,5,6,7);
+
+//Currying is a process of using a function to gather arguments before passing them to another function.
+
+//Combining functionss

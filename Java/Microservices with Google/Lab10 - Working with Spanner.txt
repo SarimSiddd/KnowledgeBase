@@ -1,0 +1,89 @@
+Cloud SQL provides a managed database service for applications that require robust relational database services. But when higher performance and transactions are critical to your application, you can use Cloud Spanner to provide high-performance, relational database services. Spanner is an enterprise-grade, globally distributed, strongly consistent database service built for the cloud specifically to combine the benefits of relational database structure with non-relational horizontal scale. This combination delivers high-performance transactions and strong consistency across rows, regions, and continents with enterprise-grade security.
+
+
+1) gcloud services enable spanner.googleapis.com
+
+2) Create Spanner instance:
+
+gcloud spanner instances create guestbook --config=regional-us-central1 \
+  --nodes=1 --description="Guestbook messages"
+
+3) Create database:
+
+gcloud spanner databases create messages --instance=guestbook
+
+4) List databases on spanner:
+
+gcloud spanner databases list --instance=guestbook
+
+You create a table in the messages database by creating a file that contains a DDL statement and then running the command.
+
+5) cd ~/guestbook-service
+mkdir db
+
+Create spanner.ddl:
+
+CREATE TABLE guestbook_message (
+    id STRING(36) NOT NULL,
+    name STRING(255) NOT NULL,
+    image_uri STRING(255),
+    message STRING(255)
+) PRIMARY KEY (id)
+
+
+6) Run DDL:
+
+gcloud spanner databases ddl update messages \
+  --instance=guestbook --ddl-file=$HOME/guestbook-service/db/spanner.ddl
+
+
+7) Add spanner dependency to pom.xml:
+
+<dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-gcp-starter-data-spanner</artifactId>
+</dependency>
+
+
+There is no Spanner emulator, meaning both Dev and Prod will always need a real Spanner instance running.
+
+
+8) Edit application.properties:
+
+# Add Spanner configuration
+spring.cloud.gcp.spanner.instance-id=guestbook
+spring.cloud.gcp.spanner.database=messages
+
+You can use the @Table annotation to map a Java class to a Spanner table. And you can use the @Column annotation to map properties to table columns. You use the @Table annotation to map to the guestbook_message table that was created when you ran the DDL statement with gcloud.
+
+The id property is specified as the primary key. In the class constructor, the id property is auto-populated with a random UUID. The UUIDv4 format is recommended over a monotonically increasing ID. This format helps Spanner avoid creating hotspots when it automatically shards the data.
+
+9) Edit GuestBookMessage.java:
+
+package com.example.guestbook;
+import lombok.*;
+import org.springframework.cloud.gcp.data.spanner.core.mapping.*;
+import org.springframework.data.annotation.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+@Data
+@Table(name = "guestbook_message")
+@JsonIgnoreProperties(value={"id"}, allowSetters = false)
+public class GuestbookMessage {
+	@PrimaryKey
+	@Id
+	private String id;
+	private String name;
+	private String message;
+	@Column(name = "image_uri")
+	private String imageUri;
+	public GuestbookMessage() {
+		this.id = java.util.UUID.randomUUID().toString();
+	}
+}
+
+
+10) Use the gcloud spanner command with a SQL query to validate that messages exist:
+
+gcloud spanner databases execute-sql messages --instance=guestbook \
+    --sql="SELECT * FROM guestbook_message WHERE name = 'Ray'"
+

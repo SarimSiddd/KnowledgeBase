@@ -33,3 +33,34 @@ return (c1.m_nCents > c2.m_nCents) ? true: false;
 };
 
 Overloads the > Operator
+
+
+class Point{
+  
+  public:
+  
+  Point (int x, int y) : x(x), y(y){}
+  
+  int x;
+  int y;
+  
+  Point operator+(const Point& p2){
+      Point p (x + p2.x, y + p2.y);
+      return p;
+  }
+  
+  Point& operator++(){ //preIncrement
+      ++x;
+      ++y;
+      return *this;
+  }
+  
+    Point& operator++(int dummy){ //postIncrement
+      ++x;
+      ++y;
+      return *this;
+  }
+    
+};
+
+

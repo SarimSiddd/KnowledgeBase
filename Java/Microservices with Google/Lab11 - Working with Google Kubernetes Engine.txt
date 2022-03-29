@@ -1,0 +1,111 @@
+GKE is Google's managed, production-ready environment for deploying containerized applications. GKE enables rapid application development and iteration by making it easy to deploy, update, and manage your applications and services. GKE enables you to quickly get up and running with GKE by eliminating the need to install, manage, and operate your own GKE clusters.
+
+
+
+1) Create a Kubernetes API:
+
+
+gcloud services enable container.googleapis.com
+
+
+2) Create cluster:
+
+gcloud container clusters create guestbook-cluster \
+    --zone=us-central1-a \
+    --num-nodes=2 \
+    --machine-type=n1-standard-2 \
+    --enable-autorepair \
+    --enable-stackdriver-kubernetes
+
+3) Verify cluster created:
+
+kubectl version
+
+Contenarize Applications:
+
+In this task, you add the Jib plugin to the Maven pom.xml file for each of the applications and configure them to use the Google Container Registry (gcr.io) as your container registry. Jib is a Maven plugin that enables you to containerize your application by building Docker and OCI images. You use Maven to build each application as a container.
+
+1) Enable container registry API:
+
+gcloud services enable containerregistry.googleapis.com
+
+2) Add Plugin jib-maven plugin:
+
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>2.4.0</version>
+                <configuration>
+                    <to>
+                    <!-- Replace [PROJECT_ID]! -->
+                    <image>gcr.io/qwiklabs-gcp-03-e57b838b62e7/guestbook-frontend</image>
+                    </to>
+                </configuration>
+            </plugin>
+
+
+3) Build using jib plugin:
+
+./mvnw clean compile jib:build
+
+
+Set up a service account:
+
+
+1) In Cloud Shell, enter the following commands to create a service account specific to the guestbook application:
+
+gcloud iam service-accounts create guestbook
+
+
+2) Add Editor role to this service account:
+
+gcloud projects add-iam-policy-binding ${qwiklabs-gcp-03-e57b838b62e7} \
+  --member serviceAccount:guestbook@${qwiklabs-gcp-03-e57b838b62e7}.iam.gserviceaccount.com \
+  --role roles/editor
+
+
+3) Create json file:
+
+gcloud iam service-accounts keys create \
+    ~/service-account.json \
+    --iam-account guestbook@${PROJECT_ID}.iam.gserviceaccount.com
+
+4) Create secret:
+
+kubectl create secret generic guestbook-service-account \
+  --from-file=$HOME/service-account.json
+
+5) Verify that the service account is stored:
+
+kubectl create secret generic guestbook-service-account \
+  --from-file=$HOME/service-account.json
+
+6) Modify .yaml file:
+
+Replace the line image: saturnism/spring-gcp-guestbook-frontend:latest with the line image: gcr.io/[PROJECT_ID]/guestbook-frontend:latest below the line specifying the container name.
+
+
+7) Deploy GKE Deployments:
+
+kubectl apply -f ~/kubernetes/
+
+8) Check pods:
+
+ watch kubectl get pods
+
+9)
+
+Guestbook Frontend is configured to deploy an external Load Balancer. It'll generate an external IP address that does L4 Load Balancing to your backend. Check and wait until the external IP is populated.
+
+ kubectl get svc guestbook-frontend
+
+
+10) check services in cluster:
+kubectl get svc
+
+
+
+
+
+
+

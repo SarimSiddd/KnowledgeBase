@@ -1,0 +1,6 @@
+
+Arrow functions:
+
+- Inherent "this" from the parent scope(Dont need bind if we do this)
+- Don't have access to "args"
+

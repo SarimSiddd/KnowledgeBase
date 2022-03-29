@@ -1,0 +1,97 @@
+Google Cloud has a bucket-based object storage solution called Cloud Storage. Cloud Storage is designed to store a large number of files and a large volume of binary data, so that you don't need to manage your own file systems or file sharing services. Cloud Storage can be used directly by many other Google Cloud products. For example, you can store data files on Cloud Storage and process those data files in a managed Hadoop (Dataproc) cluster. You can also import structured data stored on Cloud Storage directly into BigQuery for ad hoc data analytics using standard SQL.
+
+
+1) Add cloud storage dependency to pom.xml:
+
+<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-gcp-starter-storage</artifactId>
+</dependency>
+
+
+2)     <!-- Add a file input -->
+    <span>File:</span>
+    <input type="file" name="file" accept=".jpg, image/jpeg"/>
+
+
+        <!-- Add a file input -->
+    <span>File:</span>
+    <input type="file" name="file" accept=".jpg, image/jpeg"/>
+
+    // The ApplicationContext is needed to create a new Resource.
+    @Autowired
+    private ApplicationContext context;
+    // Get the Project ID, as its Cloud Storage bucket name here
+    @Autowired
+    private GcpProjectIdProvider projectIdProvider;
+
+
+    You need to get Applicationcontext in order to create a new resource. The project ID is required in order to access Cloud Storage because this demo application uses the project ID as the Cloud Storage bucket name.
+
+
+    The uploaded files are stored in a Cloud Storage bucket that uses the lab project ID as its name. This bucket has been created automatically during the lab setup so you did not have to create it yourself but if you are replicating this lab in your own environment you will have to create the storage bucket for the application
+
+
+ public String post(
+       @RequestParam(name="file", required=false) MultipartFile file,
+         @RequestParam String name,
+         @RequestParam String message, Model model)
+       throws IOException {
+
+
+        public String post(
+       @RequestParam(name="file", required=false) MultipartFile file,
+         @RequestParam String name,
+         @RequestParam String message, Model model)
+       throws IOException {
+
+               String filename = null;
+        if (file != null && !file.isEmpty()
+            && file.getContentType().equals("image/jpeg")) {
+                // Bucket ID is our Project ID
+                String bucket = "gs://" +
+                      projectIdProvider.getProjectId();
+                // Generate a random file name
+                filename = UUID.randomUUID().toString() + ".jpg";
+                WritableResource resource = (WritableResource)
+                      context.getResource(bucket + "/" + filename);
+                // Write the file to Cloud Storage
+                try (OutputStream os = resource.getOutputStream()) {
+                     os.write(file.getBytes());
+                 }
+        }
+
+
+        // Store the generated file name in the database
+        payload.setImageUri(filename);    
+
+
+3) Run the application and post an image
+
+
+go to storage->browser
+
+4) Fetch images associated with a message
+
+
+
+  // ".+" is necessary to capture URI with filename extension
+  @GetMapping("/image/{filename:.+}")
+  public ResponseEntity<Resource> file(
+      @PathVariable String filename) {
+          String bucket = "gs://" +
+                            projectIdProvider.getProjectId();
+          // Use "gs://" URI to construct
+          // a Spring Resource object
+          Resource image = context.getResource(bucket +
+                           "/" + filename);
+          // Send it back to the client
+          HttpHeaders headers = new HttpHeaders();
+          headers.setContentType(MediaType.IMAGE_JPEG);
+          return new ResponseEntity<>(
+          image, headers, HttpStatus.OK);
+  }
+
+              <img th:src="'/image/' + ${message.imageUri}"
+                 alt="image" height="40px"
+                 th:unless="${#strings.isEmpty(message.imageUri)}"/>

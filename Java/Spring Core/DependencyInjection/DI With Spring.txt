@@ -1,0 +1,27 @@
+@Autowired: for the dependency that needs to be injected,  not required for the constructor
+
+If there exists two concerete impls. Spring does not know which one to inject, in this case use the qualifier annotation or mark a bean as the primary bean:
+
+@Qualifer("propertyInjectedController")
+@Autowired
+GreetingService MyGreeting; //Property autowired
+
+@Primary
+@Service
+BonjourGreetingService implements GreetingService
+
+
+@Service: for the service we're going to injecting, tells spring to manage this component through the application context
+
+<<<<<<<<<<<----------------------- PROFILES ------------------>>>>>>>>>
+
+@Profile
+Allows us to specify the profile associated with a particular service, we can then specify the profile we want to use in application.properties and Spring injects the relevant service for us
+
+E.g.:
+
+@Profile({"FR", "default"}) 	//setting multiple default profiles
+@Service
+FrenchGreetingService implements GreetingService
+
+If no profile is set then the default profile is used

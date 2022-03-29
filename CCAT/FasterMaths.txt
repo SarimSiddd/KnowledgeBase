@@ -1,0 +1,27 @@
+CCAT (Employement Test):
+
+
+Math questions:
+
+Distance = (Speed x Time)
+
+We’re asked to calculate how many hours it would take an aeroplane to travel 3000 miles if its speed is 400MPH. We were given the distance and the speed.
+
+Hours = 3000/400
+
+The quickest way to solve this division problem without a calculator is to first take off as many zeros as possible:
+
+3000/400=30/4
+
+
+
+Averages:
+
+
+In this question, we are told about a group of three numbers whose average is 17. One number is 12, the second number is 19, and the third number is unknown and we are asked to find it.
+
+12-17= -5
+
+19-17 = 2
+
+(-5+2) = -3

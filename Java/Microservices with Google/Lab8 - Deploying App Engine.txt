@@ -1,0 +1,64 @@
+App Engine allows automatic scaling up and down of our application
+
+In all of the labs so far, you tested the application by running the application in Cloud Shell. Many options are available to deploy your application on Google Cloud. For example, you can deploy the application to virtual machines that you configure yourself. Or you can containerize your application and deploy it into a managed Google Kubernetes Engine cluster. You can also run your favorite platform as a service on Google Cloud (for example, Cloud Foundry and OpenShift).
+
+App Engine is Google's fully managed serverless application platform. With App Engine, you can build and deploy applications on a fully managed platform and scale your applications without having to worry about managing the underlying infrastructure. App Engine includes capabilities such as automatic scaling-up and scaling-down of your application, and fully managed patching and management of your servers.
+
+In this lab, you deploy the application into App Engine. You need to convert the application from fat WARs into the thin-WAR deployments that App Engine can deploy.
+
+1) gcloud app create --region=us-central
+
+Note
+
+App Engine deployments are regional. That is, your application might be deployed to multiple zones within a region. Because the Cloud SQL instance is in us-central1, you should deploy the application to the us-central region for App Engine.
+
+
+2) <plugin>
+  <groupId>com.google.cloud.tools</groupId>
+  <artifactId>appengine-maven-plugin</artifactId>
+  <version>2.2.0</version>
+  <configuration>
+    <version>1</version>
+    <deploy.projectId>GCLOUD_CONFIG</deploy.projectId>
+    </configuration>
+</plugin>
+
+3) mkdir -p ~/guestbook-frontend/src/main/appengine
+
+
+4) ADD app.yaml with following:
+
+runtime: java11
+instance_class: B4_1G
+manual_scaling:
+  instances: 2
+env_variables:
+  SPRING_PROFILES_ACTIVE: cloud
+  # REPLACE PROJECT_ID with your project ID!
+  MESSAGES_ENDPOINT: https://guestbook-service-dot-qwiklabs-gcp-00-6d8c981a206d.appspot.com/guestbookMessages
+
+
+5) Run app on appEngine:
+
+mvn package appengine:deploy -DskipTests
+
+6) Find the frontend URL:
+
+gcloud app browse
+
+
+7) For manual scaling:
+
+runtime: java11
+service: guestbook-service
+instance_class: B4_1G
+manual_scaling:
+  instances: 2
+env_variables:
+  SPRING_PROFILES_ACTIVE: cloud
+
+
+  Note: this configuration uses manual scaling rather than automatic scaling. This is great if you want to have fine control over the number of application instances. However, in a production setting, you may want to use automatic scaling that can adapt dynamically to the load.
+
+
+  
