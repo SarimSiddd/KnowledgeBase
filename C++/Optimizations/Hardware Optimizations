@@ -1,0 +1,67 @@
+Taken from talk:  https://www.youtube.com/watch?v=BP6NxVxDQIs
+
+
+Google Benchmarks - useful library for measuring performance
+
+
+
+- Processors are very good at dealing with contiguous bytes of memory,
+this is why vectors and arrays are very good containers to begin with
+
+- in case of a sorted container, a sorted vector or boost::flat_set outperforms a std::set
+
+Our simple program memory model:
+
+Memory <-> Cache <-> CPU
+
+If a container does not fit wholly into the cache then cpu has to fetch again from main memory and our program can become slower.
+
+cacheline size 
+
+if array doesn't fit into L2 cache then we're going to have misses and then it goes to L3 cache
+																					
+
+Memory<-> L3 Cache (Slowest, biggest in size) <-> L2 Cache (Slower, big in size) <-> L1 Cache (Slow, small in size) <-Prefetcher-> CPU
+
+- Smaller the cache size, the faster it is (latency not throughput)
+
+- Bound by data access vs bound by computation (Time profiles can be decieving)
+
+- Prefetcher sits between L1 cache and the CPU and prefetches the data if we are using a regular stride in our data structure
+
+
+Cache associativity:
+
+How cache is laid with the containers from main memory (
+
+fully associative:
+
+Any address can be mapped anywhere to the cache (requires more circuitery, slower)
+
+direct mapped:
+
+Some sort algorithm like if the memory address ends with then map this to the 2nd spot in the cache (faster, suffers from cache misses)
+
+
+Most cpus have compromise (n-way set associative)
+
+- Memory layout for classes and structs (padding) - many compilers have the option to dump memory layout to see how the memory looks like
+
+- Branch predictor
+
+- False sharing
+
+- prevent false sharing by aligning data to the size of the cache line, forcing them to be on different cache lines
+
+struct aligned as (64) aligned_type
+
+Further reading:
+
+Temporal Cache Coherency
+
+Gallery of cache associativity
+
+SIMD
+
+Demormals
+

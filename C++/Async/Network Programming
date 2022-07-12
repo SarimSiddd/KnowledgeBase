@@ -1,0 +1,2 @@
+Even though Boost.Asio can process any kind of data asynchronously, it is mainly used for network programming. This is because Boost.Asio supported network functions long before additional I/O objects were added. Network functions are a perfect use for asynchronous operations because the transmission of data over a network may take a long time, which means acknowledgments and errors may not be available as fast as the functions that send or receive data can execute.
+

@@ -1,0 +1,10 @@
+Option 1:
+
+We can either create more than one threads on the same I/O context. This means that if there are two things that the I/O context needs to work on, it will start both async operations and can execute both their handlers concurrently. 
+
+
+Option 2:
+
+We can create two different I/O contexts and run them on two different threads, both handlers can execute their code concurrently.
+
+The approach which is preferred will depend on the task that we're trying to accomplish.

@@ -1,0 +1,98 @@
+https://www.youtube.com/watch?v=NH1Tta7purM&list=PLu1UbxKCegW1Iw53gweDKKOBWWMkHrvgj&index=5&t=34s
+
+- Need to be able to understand machine level instructions 
+- Need to be aware of what the machine instructions are doing
+
+(godbolt.org)
+
+hyperthreading vs single core
+
+hyperthreading may produce slow results since it shares the same cache
+
+A very good minimum time for a software based trading system is 2.5us (microseconds)
+
+Low latency programming techniques:
+
+1) Have smaller number of code branches (the branch predictor can better optimize out the code)
+Tip: Ensure error handling code is not inlined
+
+2) Template-based configuration
+
+- if you know everything at compile time then use templates instead of virtual functions
+
+- Virtual function calls can be expensive and we can often just use templates there instead
+
+3) Memory allocation
+
+- Memory allocation is slow
+
+- Use a pool of preallocated objects
+
+- Reuse objects instead of deallocating ( deleting objects is expensive)
+
+4) Exceptions in C++
+
+- Exceptions are expensive if they throw
+
+5) Prefer templates to branches
+
+- Use templates instead of branches on your hot code path
+
+6) Avoid multithreading for latency sensitive code
+
+- Keep shared data between threads to a minimum ( Multiple threads writing to the same cachline will get expensive)
+
+- Consider passing copies of data rather than sharing data
+
+- If you have to share data, consider not using synchronization
+
+
+7) Fast containers (unordered_map)
+
+
+8) using  ((always_inline)) & ((noinline)) attributes
+
+- In hot paths we generally don't want inlined code, in a scenario such as that its better to force no inlinining with the noinline attribute
+
+9) Keeping the cache hot
+
+- Run a very frequeny dummy path through your entire system, keeping both your data cache and instruction cache primed
+
+(this also trains the hardware branch predictor)
+
+10) Don't share L3 cache - disable all but 1 core (or lock the cache)
+
+
+Measuring low latency systems:
+
+Two common approaches:
+
+
+1) Profiling: examining what your code is doing (bottlenecks in particular)
+2) Benchmarking: timing the speed of your system
+
+
+gprof (profiler), callgrind, google benchmarks
+
+Most useful: measure end-to-end time in a production-like setup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

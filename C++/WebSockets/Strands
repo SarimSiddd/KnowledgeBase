@@ -1,0 +1,29 @@
+A strand is defined as a strictly sequential invocation of event handlers (i.e. no concurrent invocation). Use of strands allows execution of code in a multithreaded program without the need for explicit locking (e.g. using mutexes).
+
+Strands may be either implicit or explicit
+
+An executor embodies a set of rules about where, when and how to run a function object
+
+
+A strand provides an additional exception guarantee:
+
+- Completion handlers invoked through a given strand's executor will never run concurrently
+
+Single threaded io_context is an "implicit strand"
+
+- Completion handlers can never run concurrently
+
+
+
+Threading Models:
+
+single threaded, single IO Context
+
+multithreaded, single IO context
+
+multithreaded, IO Context per thread
+
+
+A stream may consists of different layers
+
+websocket_stream<ssl_stream<tcp_stream>> //A tcp stream that is a ssl stream that is a websocket stream

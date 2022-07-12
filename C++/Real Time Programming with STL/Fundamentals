@@ -1,0 +1,64 @@
+https://www.youtube.com/watch?v=6xdh85RlLJI&list=PLHTh1InhhwT6vjwMy3RG5Tnahw0G9qIx6&index=101
+
+We're looking for algorithms and containers that are realtime-safe i.e.:
+
+
+no locks
+
+no OS calls
+
+no allocations/deallocations
+
+no exceptions 
+
+no I/O
+
+no algorithms > O(1)
+
+realtime programming is more about latency than throughput/bandwidth
+
+we expect our work to be deterministic and have measurable performance each time (e.g. for a free trading application, the result should always be in <= 10 milliseconds) and never in any case greater than that
+
+generally care about the worst case time that is taken
+
+containers:
+
+std::array is real-time safe because it always uses the stack
+
+STL containers with custom allocators:
+
+constant time
+
+single threaded
+
+only use memory allocated upfront
+
+e.g. std::pmr::monotonic_buffer_resource, std::pmr::unsynchronized_pool_resource
+
+better:
+static_vector (uses stack instead of heap), std::pair, std::tuple, std::variant, lambdas can be real-time safe, 
+coroutines (frame is generally allocated on the heap, the optimizer can help here)
+
+only thing in thread synchronization is real-time safe:
+
+std::atomic:
+
+use on its own (for single values shared with real-time thread)
+
+lock-free queues
+->> not recommended to implement your own
+
+spinlocks
+
+lock-free: (we don't want locks because the thread might block on trying to get the lock)
+
+->> atomic doesnt mean lock-free, it means no data-race
+
+-- not all implementations of std::atmoic will be lock free (depends on size), it will depend on the cpu arch.
+
+
+
+
+
+
+

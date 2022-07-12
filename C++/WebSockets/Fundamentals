@@ -1,0 +1,44 @@
+https://www.youtube.com/watch?v=7FQwAjELMek&t=1s
+
+RFC6455
+
+Full duplex connection
+
+Both client and server can send messages
+
+Can send data via json, binary, text - anything that the two endpoints agree to
+
+Can be transported by proxies and firewalls
+
+
+Divides messages into frames which have a predefined length. A message can have 0 or more frames associated with it
+Control frames:
+
+Ping, pong, close - allow us to control meta attributes 
+
+
+Starts out as a regular http connection then the client sends a GET HTTP Upgrade message to make the communication web socket based
+
+Buffers: (Both are constBufferSequences)
+
+
+mutable_buffer 
+
+const_buffer
+
+
+A constBufferSequence is a non-owning range of read-only memory regions
+
+Mutable buffer sequence (writeable):
+
+mutable_buffer is also a mutable buffer sequence
+
+
+Dynamic Buffer:
+
+A resizeable buffer with a read area and a write area
+
+Useful with the expected input size in unknown
+
+Beast provides several dynamic buffer types
+

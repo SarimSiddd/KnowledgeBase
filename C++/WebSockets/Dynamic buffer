@@ -1,0 +1,37 @@
+Dynamic buffer
+
+X a;
+
+//Reads the bytes into the write area of the buffer a
+auto bytes_transferred = sock.read_some (a.prepare(128));
+
+//Moves the bytes from the write area to the read area
+a.commit (bytes_transferred);
+
+//Process data in the read area
+auto bytes_used = process (a.data()); //reads 40 bytes
+
+//Removes bytes from the read area
+a.consume(bytes_used); //gets rid of the bytes used
+
+Completion Handler:
+
+An invocable function object with the right signature
+
+requires MoveContructible
+
+option1:
+[](error_code, size_t){}
+
+option2:
+struct ()
+{
+	operator () (error_code, size_t)
+	{
+
+	}
+}
+
+option3:
+
+std::bind(&session::on_accept, this, _1, _2)

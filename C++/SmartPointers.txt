@@ -11,6 +11,17 @@ doesn't bump reference count
 
 unique_ptr
 -non_copyable (use std::move)
+-custom deleters we can use to write our own logic for when the object goes out of scope
+(for e.g. calling fclose on a file instead of fopen)
+
+Rules of thumb for smart pointers:
+
+- Pass by value
+- Return by value
+- Passing a pointer by reference is usually a code smell
+- Same goes for smart poitners
+
+No raw and no raw delete
 
 
 

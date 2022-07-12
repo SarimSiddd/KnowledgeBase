@@ -1,0 +1,34 @@
+Taken from:
+
+https://theboostcpplibraries.com/boost.asio-io-services-and-io-objects
+
+Sending and receiving data over a network is implemented as an asynchronous operation in Boost.Asio. Think of an asynchronous operation as a function that immediately returns, but without any result. The result is handed over later.
+
+In the first step, an asynchronous operation is started. In the second step, a program is notified when the asynchronous operation has ended. This separation between starting and ending makes it possible to access external resources without having to call blocking functions.
+
+I/O Services:
+
+I/O services abstract the operating system interfaces that process data asynchronously.
+
+I/O Objects:
+
+Initiate asynchoronous operations.
+
+
+As a user of Boost.Asio you normally don’t connect with I/O services directly. I/O services are managed by an I/O service object. An I/O service object is like a registry where I/O services are listed. Every I/O object knows its I/O service and gets access to its I/O service through the I/O service object.
+
+Boost.Asio defines boost::asio::io_service, a single class for an I/O service object. Every program based on Boost.Asio uses an object of type boost::asio::io_service. This can also be a global variable.
+
+Handler:
+
+A handler is a function or function object that is called when the asynchronous operation ends.
+
+
+A call to ioservice.run() is needed for the program to call OS specific functions. IOService is an I/O Service object that holds a registry of the I/O Services that the system supports.
+
+
+It might come as a surprise that asynchronous operations require a call to a blocking function. However, this is not a problem because the program has to be prevented from exiting. If run() wouldn’t block, main() would return, and the program would exit. If you don’t want to wait for run() to return, you only need to call run() in a new thread.
+
+A member function like async_wait() is called non-blocking. I/O objects usually also provide blocking member functions as alternatives. For example, you can call the blocking member function wait() on boost::asio::steady_timer. Because this member function is blocking, no handler is passed. wait() returns at a specific time or after a time period.
+
+The reason why the examples above exit after a while is that run() returns if there are no pending asynchronous operations. Once all alarm clocks have rung, no asynchronous operations exist that the program needs to wait for.

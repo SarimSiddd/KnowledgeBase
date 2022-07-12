@@ -1,0 +1,74 @@
+Taken from:
+
+https://www.youtube.com/watch?v=ZTqHjjm86Bw
+
+What is a co-routine?
+
+A coroutine is a generalization of a subroutine
+
+A subroutines can be 
+
+- invoked by its caller
+- can return control back to its caller
+
+A simple function is also a subroutine
+
+A coroutine has these properties but also:
+
+- can suspend execution and return control to its caller
+- can resume execution after being suspended
+
+A function can either be a subroutine or a coroutine
+
+
+Coroutine:
+
+Invoke:
+
+f()
+
+Return:
+
+co_return
+
+suspend:
+
+co_await
+
+resume:
+
+coroutine_handle<>::resume()
+
+Whether a function is a coroutine is an implementation detail
+
+
+A function is a co-routine if it contains:
+
+a co_return statement
+a co_await statement
+a co_yield expression
+or a range based for loop that uses co_await
+
+
+To await on something, it has provide 3 things:
+
+struct awaitable_concept{
+	
+
+	bool await_ready();
+	void await_suspend(coroutine_handle<>);
+	auto await_resume();
+
+}
+
+The simplest awaitable: suspend_always
+suspend_never
+
+
+coroutine_handle
+
+further reading:
+
+resumable_thing impl.
+
+stackless (state is stored on the heap) vs stackfull coroutines
