@@ -1,0 +1,288 @@
+-	To get really good at C++, understand lambdas deeply
+-	 Learn how to write own version of std::function
+
+
+Lambdas:
+
+In Cpp98:
+
+- There was no formal support for lambda expressions
+- had to use function pointers or functors
+- Limitation with functors was that they could not be written locally (in the same scope in which they were called)
+- To counteract this, people started using std::bind() and STL functions like std::is_less, std::is_equal etc.
+
+In Cpp11:
+
+- Formal support for lambda expressions (the [] specify the constructor of the lambda functor created by the compiler - for local state objects, the () specify the () operator for that functor)
+
+
+[]{}  //Valid, () does not need to be specified if there are no arguments
+[](int x) mutable {} //Mutable usage means that the call operator generated inside the functor by the compiler is non-const
+[](int a) -> double {return 2.0 * a; } //Trailing return type specifed 
+
+Type of lambda:
+
+The type of every lambda defined inside our program is different, thats why we need to use auto (or decltype):
+
+const auto Lam = [](int x) noexcept { return x * 2; };
+
+We can also store lambdas in std::function objects. It is a heavy object and takes up much more space
+
+This is why it is preferred to use auto over std::function declarations to store lambdas.
+
+Default constructor & assignment operator for lambdas are deleted by default. But we can still copy lambdas, when lambdas are copied, their internal state is also copied.
+
+--- In C++20, a stateless lambda is default constructrible and assignable.
+
+By default lambdas only work on arguments defined in their () operator:
+
+auto lam = [](int x){};
+auto lam = [](double x){};
+
+//Won't compile, i.e. it's not possible to overload lambdas unless we write our own functors.
+
+Note:
+
+One important thing to notice is that when you apply mutable , then you cannot mark your resulting closure object with const as it prevents you from invoking the lambda!
+(since you can't call a non-const member function from a const object)
+
+When global variable is captured by value, no copy is made (since the global variable does not have automatic storage duration). The captured value used inside the lambda always points to the global object.
+
+The same applies to variables of static type
+
+When parsing a class, the compiler first parses the declarations (functions signatures, variables definitions, nested classes, etc), then parse the inline definitions, method default parameters, and data member initializers.
+
+Can't use auto to declare a non static member lambda (for this we would need std::function<>() - which is basically type erasure)
+
+This in the context of member lambdas:
+
+If we want to change a member variable inside of a lambda, we can either get the *this pointer by using = or specify it explicitly by using this:
+
+struct eg{
+		
+	std::string str; 
+	
+	void func(){
+			
+			auto func2 = [this](){ //This copies the pointer this to the internal lambda structure, any change to this will be reflected to the original struct 
+			
+				str = "Hello";
+			
+			};
+	}
+};
+
+// If we use *this instead of this in the capture clause, the internal lambda structure creates a copy of a const this reference, so we create a copy of the variables
+
+
+If you have an object that is moveable only (for example unique_ptr ), then you cannot move it to lambda as a captured variable. Capturing by value does not work; you can only capture by reference.
+
+std:: unique_ptr< int > p(new int {10 });
+auto foo = [p]() {}; // does not compile....
+auto foo_ref = [& p]() { }; // compiles, but the ownership is not passed
+
+Constness is preserved if we capture a const variable in our lambda, then we can't make any changes to it (even if we mark lambda as mutable)
+
+
+The compiler can deduce return type automatically but sometimes we might need to specify the return type ourselves with trailing return type:
+
+We can fix the problem by explicitly setting the return type to std::string :
+auto testSpeedString = [](int speed) -> std:: string {  //If we don't specify std::string here, the compiler tries to return a const char * and we get a error on line str+= driver since there is no += operator on const char
+if (speed > 100 )
+return "you're a super fast" ;
+return "you're a regular" ;
+};
+auto str = testSpeedString(100 );
+str += " driver" ; // works fine
+
+Casting to a function pointer can reduce lambda instantiations, like in the below example, one call_function is created once instead of two:
+note: stateless lambdas can be converted to function pointers
+
+template < typename F>
+void call_function(F f) {
+f(10 );
+}
+int main() {
+call_function(static_cast < int (* )(int )> ([](int x){
+return x + 2 ; }));
+call_function(static_cast < int (* )(int )> ([](int x){
+return x * 2 ; }));
+}
+
+Immediately call the lambda after creating it by using the () operator:
+
+const auto val = []() {
+/* several lines of code... */
+}(); // c
+
+This can be helpful to create constant value from a otherwise difficult to compact code:
+
+void ValidateHTML (const std:: string& ) { }
+std:: string BuildAHref(const std:: string& link, const std:: string& text) {
+const std:: string html = [& link, & text] {			//html would be multi line if else, if we didn't use lambda here
+const auto & inText = text.empty() ? link : text;
+return "<a href= \" " + link + " \" >" + inText + "</a>" ;
+}(); // call!
+ValidateHTML(html);
+return html;
+}
+
+We can also inherit from lambdas .
+
+Note: One of the properties of stateless lambdas is that they can be converted and stored as function pointers, for non-stateless lambdas, we would need to use the heavier std::function
+
+C++14 added two significant enhancements to lambda expressions:
+Captures with an initialiser i.e. const auto foo = [z = x + y]() { std:: cout << z << '\n' ; }; //Z is initialized at the time of definition not when the lambda is invoked
+Generic lambdas //i.e : const auto foo = [](auto x, int y) { std:: cout << x << ", " y << ' '\n' ; }; We can also do this for variadic number of args
+Plus, the Standard also updated some rules, for example:
+Default parameters for lambdas - i.e. [](int x = 10){};
+Return type as auto - This means when returning a lambda from a function we can use auto instead of std::function which is a heavier object (32 bytes vs 4)
+
+Capturing a member variable by copy:
+
+struct Baz {
+auto foo() const {
+return [s= s] { std:: cout << s << std:: endl; };
+}
+std:: string s;
+};
+
+using const auto & as function argument can help us to avoid unncessary temporary copies e.g from const std::string to std::string
+
+Note: Prefer lambdas to std::bind
+
+
+We can use lambdas to make calls to function overloads based on types:
+
+
+    std::for_each(std::begin(v), std::end(v), [](auto x){
+        foo(x);
+    });
+	
+We can also create recursive lambdas with function pointers, auto & std::function
+
+C++17 added two significant enhancements to lambda expressions:
+constexpr lambdas
+Capture of *this
+
+A pointer to a noexcept function can be converted to a pointer to a regular
+function (this also works for a pointer to a member function and also for
+lambdas). But it’s not possible the other way around (from a regular function
+pointer into a function pointer that is marked with noexcept ).
+One of the reasons for adding the feature is a chance to optimise the code
+better. If the compiler has a guarantee that a function won’t throw, then it can
+potentially generate faster code
+
+If the body of a lambda is does not violate any consexpr rules, then it is implicitly marked as constexpr by the compiler
+
+C++17 introduces std::invoke which makes it more clear when we are using IIFE (Immediately invoked function expression)
+
+We can also create lamdas that inherit from n number of different classes or lambdas in c++17
+
+Aggregate initialization
+
+In C++20:
+
+1) Lambda syntax update:
+can use consteval after (), 
+can put requires declaration after return type
+
+2) Can capture a structured binding through a lambda:
+
+auto [x, y] = std::tuple{std::string{"Hello"}, 42};
+[&x, &y](){ return x.length() + y};
+
+While constexpr from C++11 allows function execution at the compilation
+phase, it’s also possible to run those functions at runtime. It appears that in
+some cases, it might be best to limit the functionality only to compile-time.
+That’s why in C++20, we have a new keyword that creates functions which
+conform to the rules of a constexpr function but can be only evaluated at
+compile-time. Such functions are also called “immediate functions ”.
+
+int main () {
+const int x = 10 ;
+auto lam = [](int x) consteval { return x + x; };
+return lam(x);
+}
+
+
+Above, you can see that we applied consteval after the argument list of the
+lambda. This is very similar to the application of constexpr . The critical
+difference is that if you remove const from x , then the constexpr lambda
+can work (at runtime), while the immediate lambda won’t compile.
+
+In C++20 we can write:
+auto foo = []< typename T> (std:: vector< T> const & vec) {
+std:: cout<< std:: size(vec) << '\n' ;
+std:: cout<< vec.capacity() << '\n' ;
+};
+The above lambda resolves to a templated call operator:
+< typename T>
+void operator ()(std:: vector< T> const & s) { ... }
+
+Concepts are a revolutionary approach for writing templates! They allow you
+to put constraints on template parameters which improve the readability of
+code, might speed up compilation time and give better error messages.
+One simple example:
+A custom concept declaration
+// define a concept:
+template < class T >
+concept SignedIntegral = std:: is_integral_v< T> && std:: is_signed_v< T> ;
+// use:
+template < SignedIntegral T>
+void signedIntsOnly(T val) { }
+
+Thanks to the terse concept syntax you can also write templates without the
+template<typename..> part.
+With unconstrained auto :
+void myTemplateFunc (auto param) { }
+Or with constrained auto :
+void signedIntsOnly (SignedIntegral auto val) { }
+void floatsOnly (std:: floating_point auto fp) { }
+
+Implementation of IRenderable concept/interface:
+
+#include <concepts>
+#include <iostream>
+template < typename T>
+concept IRenderable = requires(T v) {
+{v.render()} -> std:: same_as< void > ;
+{v.getVertCount()} -> std:: convertible_to< size_t > ;
+};
+struct Circle {
+void render() { std:: cout << "drawing circle \n " ; }
+size_t getVertCount() const { return 10 ; };
+};
+struct Square {
+void render() { std:: cout << "drawing square \n " ; }
+size_t getVertCount() const { return 4 ; };
+};
+int main () {
+const auto RenderCaller = [](IRenderable auto & obj) {
+obj.render();
+};
+Circle c;
+RenderCaller(c);
+Square s ;
+RenderCaller(s);
+}
+
+
+in C++20 you can store stateless lambdas and even copy them.
+
+std:: map< int , int , decltype ([](int x, int y) { return x > y; })> map;
+As you can see, it’s now possible to specify the lambda inside the declaration
+of map container. It can be used as a comparator functor. Such “unevaluated
+contexts” are especially handy for advanced template metaprogramming. For
+example, in the proposal of the feature, the authors mention sorting of tuple
+objects at compile time using a predicate which is a lambda.
+
+
+What standard algorithms are constexpr ? All of the algorithms from the <algorithm> ,
+<utility> and <numeric> headers are now marked with constexpr except of functions
+shuffle , sample , stable_sort , stable_partition , inplace_merge and functions or
+overloads that accepts the Execution Policy argument. R
+
+Reference:
+
+http://www.staroceans.org/e-book/cpp-lambda-story.pdf
