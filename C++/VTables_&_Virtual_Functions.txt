@@ -1,0 +1,1 @@
+All objects that are denoted by classes that have virtual functions have a pointer to the vtable of the class, this vtable contains function defitions of 

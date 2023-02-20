@@ -1,0 +1,20 @@
+Has a initial capacity (number of elements) it can store depending on the system
+On windows (15 characters), after the 15 characters are filled, the string needs to be re allocated more space
+
+- This can be a problem when lets say reading from a text file.
+Reverse():
+- In cases like these, reserve function can help us to preemtively reserve the approx. space
+required
+
+helper functions: (s.find ("substr) etc..)
+find
+rfind
+find_first_of
+find_first_not_of
+find_last_of
+replace
+erase
+insert
+std::to_string
+starts_with
+ends_with

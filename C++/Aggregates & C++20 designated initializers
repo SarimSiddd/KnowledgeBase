@@ -1,0 +1,21 @@
+An aggregate is just a struct containing some data members which does not have any:
+
+1) user defined constructors
+2) Virtual methods
+3) static data members
+
+
+Aggregate objects are default initialized:
+
+struct A
+{
+    int a;
+    int b {5}; //default initializer
+    int c {3}; //default initializer
+};
+
+A aobj {2}; //b & c are default initialized, if no default value was provided, they would be initialized to 0
+
+Designated initializers:
+
+A aobj {.a{2}, .c{4}};

@@ -1,0 +1,6 @@
+Runtime polymorphism can also be acheived through std::variant and std::visit.
+
+- Allows us to bypass the virtual table overhead
+- Need to know all of the types beforehand
+- Allows us to do polymorphism on unrelated types (duck typing)
+- No coupling because of inheritance

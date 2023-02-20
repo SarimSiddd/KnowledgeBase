@@ -53,3 +53,22 @@ void Storage<double>::Print()
 {
 std::cout << std::scientific << m_tValue << std::endl;
 }
+
+Unconstrained function templates can result in:
+
+- For each function call, the compiler uses 
+   - Overload resolution rules 
+   - Argument dependant lookup (ADL)
+- Creates an overload set
+- Chooses best match from overload set
+- For unconstrained function templates, compiler must instantiate the best match first to determine
+whether arguments meet the templates requirements
+
+
+Templates vs concepts:
+
+1) Type traits are performed after the template is instantiated
+2) Concepts are checked before instantiation
+3) Concepts create fewer & more accurate error messages
+
+Concepts use type traits under the hood

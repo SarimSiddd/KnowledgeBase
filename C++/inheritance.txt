@@ -35,3 +35,10 @@ Modes of Inheritance
 Public mode: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
 Protected mode: If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
 Private mode: If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class. 
+
+Multiple INheritance:
+
+Diamond problem can be solved by virtual inheritance
+class D2 : virtual public Base{}
+
+Only one copy of the most sbase object is allowed to be passed down

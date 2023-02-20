@@ -1,3 +1,10 @@
+- Concepts specify requirements explicitly in code
+- Compiler can determine that a type is not compatible with a template before instantiating it
+	- Fewer more precise error messages
+	- Potential compile-time performance improvements
+- Overload function templates with same signature
+
+
 requires std::integral<T>
 
 requires std::floating_point<T>
@@ -27,3 +34,104 @@ auto f (my_number auto x)
 {
 	
 }
+
+//Creating concepts using type traits:
+
+template <typename T>
+concept Numeric = std::integeral<T> || std::floating_point<T>
+
+requires clause function template's signature:
+
+template<typename T>
+T multiply (T first, T second ) requires Numeric<T>{
+
+}
+
+Required:
+- Member function defined in a template class does not have the template header
+- Use trailing requires clause
+
+For a single concept-constrained type parameter, we can do:
+
+template<Numeric T>
+T multiply (T first, T second ) {}
+
+- arguments must have the same type
+
+// abbreviated function template with constrained auto
+auto multiple (Numeric auto first, Numeric auto second){
+}
+
+// Can you spot the difference?
+In the second one we can call the function with 2 different data types
+
+
+Concept-based overloading:
+
+We can overload based on type requirements:
+
+- std::distance
+- std::advance
+
+Creating own concepts:
+
+Simple requirements:
+
+- simply checks if the expression is valid
+- can contain operator expressions
+std::range concept:
+
+
+template <class T>
+concept range = 
+requires (T & t){
+	std::ranges::begin(t);
+	std::ranges::end(t);
+};
+
+Type requirements:
+
+- determines wether specified type is valid
+
+template <typename T>
+concept HasValueType = requires {
+	typename T::value_type;
+};
+
+T satisfies HasValueType only if T::value_type is valid type
+
+Compound requirement:
+
+- expression also having requirements on its result
+
+e.g. : <iterator>
+
+requires (I i)
+{
+	{i ++ } -> 	same_as<I>;
+}
+
+- must also be weakly_incrementable
+{++i } -> same_as <I&>;
+
+Nested requirement
+Ad-hoc constraint:
+
+-Useful if you need to use the constraint only once
+
+template<typename T>
+	requires requires (const T& t)
+	{
+		std::ranges::begin(t);
+		std::ranges::end(t);
+	}
+void printRange(const T& range)
+{
+	for (const auto& item : range)
+	{
+		std::cout << item << std::endl;
+	}
+}
+
+
+

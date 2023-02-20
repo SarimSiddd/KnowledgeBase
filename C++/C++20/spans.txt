@@ -1,0 +1,24 @@
+Spans are windows into existing arrays,
+They don't own the underlying data 
+
+span contains both the location of the first item and the number of elements in the array
+- They are just a pointer and a count under the hood, and should be passed by value
+- Can point to any contigious container (vector, array, etc.)
+- iterable
+- can also be used to modify data in the original source
+-.front() & .back() are available, first, last, subspan
+
+Example to display span data for 2D vector :
+
+void displaySpan2D (const std::span<const std::vector<int>> Span)
+{
+    for (int i =0; const auto& vector1 : Span)
+    {
+        for (int j =0; const auto& item : vector1)
+        {
+            std::cout << "Item at " << "vec[" << i << "] [" << j << "] is " << item << std::endl;
+            j++;
+        }
+        i++;
+    }
+}

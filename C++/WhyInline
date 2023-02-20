@@ -1,0 +1,3 @@
+Avoids multiple definition errors for that variable
+
+A header only library will be using inline variables

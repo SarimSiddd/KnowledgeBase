@@ -1,0 +1,5 @@
+String_views can be used as a substitute for strings and are readonly:
+
+1) They just contain a pointer to an existing string and a count
+2) Modifying an existing string view does not change the original string and does not result in the creation of new string view, it just changes the string view pointer & size hence it could be beneficial to use string view where string modifications are prevalent
+3) Has iterators so is iterable and can be used to in STL algorithms that expect iterable objects

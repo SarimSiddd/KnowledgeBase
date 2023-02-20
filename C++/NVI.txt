@@ -1,0 +1,23 @@
+Non-Virtual Interface Idiom
+
+Guidelines for working with virtual classes/interfaces by Herb Stutter
+
+It goes as follows:
+
+1) Prefer to make interfaces non-virtual (methods in an interface should be non-virtual - hide details)
+2) Prefer to make virtual functions private (hiding virtual details under the hood):
+
+- A derived class can override its baseclass's private virtual functions (v. important)
+- By making virtual function private, it serves one purpose
+    - Enables derived classes to override the function
+- In the base class, a non-virtual function invokes the private virtual function internally
+as an implementation detail
+
+
+
+3) Only if the derived classes need to invoke the base class implementation of a virtual function, make
+the virtual function protected
+4) A base class destructor should be either public & virtual or protected & non-virtual
+
+
+

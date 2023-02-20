@@ -1,0 +1,14 @@
+Concepts - typetraits made easy
+Coroutines
+Ranges - Makes functional programming more convenient
+to_array function to convert pointer based arrays to std::arrays
+spans - safer way to pass built-in arrays to functions
+- iterable, so you can use them with range based for
+- also can use them with standard library container processing algorithms
+
+Built-in arrays vs C++ Arrays:
+
+Size information is lost in C style arrays
+== operators cant be used
+cannot be assigned to one another
+dont provide automatic bounds checking

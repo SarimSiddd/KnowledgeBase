@@ -36,3 +36,8 @@ for (auto& age : users 		| std::views::filter(std::not_fn(underage))
 			std::cout << age << std::endl;
 		}
 
+Ranges features:
+
+std::views::iota,
+std::views::filter,
+std::views::transform
