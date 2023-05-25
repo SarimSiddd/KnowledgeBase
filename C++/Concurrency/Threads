@@ -1,0 +1,37 @@
+Whenever we create a thread using std::thread by passing values by references or by value. The constructor generates a copy of the L-value variable (If any) passed in.
+
+E.g.:
+
+//Following example might not run in certain compilers and generate errors instead
+
+int doWork(int &x)
+{
+    x = 10;
+}
+
+int main()
+{
+    int x = 1;
+    int& y = x;
+    std::thread t(doWork, y); //Error here
+    //If runs then x is still 10 here
+}
+
+To counteract this problem we can use std::ref:
+
+std::thread t (doWork, std::ref(y));
+
+But we must be careful as this means we are sharing mutable between threads
+
+
+What happens when we don't join a thread explicitly:
+
+The program crashes. What other options did we have:
+
+1) The spawned worker thread is detached and keeps running in the background
+2) The main thread waits for the worker thread to complete, this can cause the main thread to be blocked
+
+
+What happens if the main thread terminates while a detached thread is still running?
+
+Such threads are cleaned up with extreme prejudice and don't have a chance to clean up their resources

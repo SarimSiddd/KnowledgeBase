@@ -1,0 +1,6 @@
+Variables may use any of the following ownership patterns in a concurrent environment:
+
+- Exclusive - only in use by one thread
+- Unique    - only in use by a single thread at a time but ownership can be transferred
+- Immutable - the variable is not modifiable by any thread, freely available for reading
+- Monitor   - freely modifiable by any thread buy with an internal mutex protecting its data

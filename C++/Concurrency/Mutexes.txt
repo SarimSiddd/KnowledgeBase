@@ -1,0 +1,7 @@
+Mutexes allow only a single thread to access a shared resource at a single time.
+
+Resources need to locked regardless if it is a read or a write
+
+Prefer using lockguard whereever possible - constructor locks the scope, destructor unlocks the scope
+
+Prefer Message passing over mutexes when possible

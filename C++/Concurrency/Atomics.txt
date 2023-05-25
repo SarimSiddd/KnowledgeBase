@@ -1,0 +1,11 @@
+Atomic variable is a memory location that you may use without the need for a lock.
+
+Accessing an atomic variable simultaneously does not constitute a data race
+
+Atomic variables ensure sequential ordering
+
+Atomics are used in lock free algorithms
+
+Turns off compiler optimizations, special assembly instructions(fences) are executed
+
+- weak atomics should be avoided (not sequentially consistent)  

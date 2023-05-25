@@ -1,0 +1,31 @@
+A better choice than mutex for message passing is to use condition variables.
+
+
+This allows us to do two things:
+
+1) Polling
+
+2) Signal from the producer that the item is ready to be consumed
+
+For this we can use the wait command on the condition variable + a boolean variable.
+Before the wait command we can lock the mutex, the wait command will not keep the mutex locked.
+Another thread can then access the boolean variable and modify it while the original thread is waiting,
+One thing we need to be careful about is spurious wake ups from read (i.e. the system can ask the waiting thread to wake up for no apparent reason)
+Due to this we need to check our condition after waking up, to be sure we are in the right state 
+
+
+boolean Empty
+
+lock(mutex);
+while (Empty)
+    wait(mutex);
+unlock(mutex);
+
+We can also add this condtition as a lambda inside the wait instead of it being seperate 
+
+
+Things to look out for :
+
+A producer consumer queue has a fixed queue which can block senders from sending more messages until the queue is more free 
+Actor model - common concurreny scheme, each object has a thread associated with it so it can act independently. To communicate with each actor one must use the actors'
+message queue

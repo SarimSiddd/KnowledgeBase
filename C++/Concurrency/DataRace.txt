@@ -1,0 +1,42 @@
+More than one thread accessing the same memory location
+
+- sharing
+
+Simultaneously (with no synchronization)
+
+at least one of them writing
+
+- mutation
+
+Things to watch out for when sharing data between threads:
+
+1) If we are using a custom datastructure then what is the copy policy for the data strucuture
+2) Are we doing a shallow copy or a deep copy 
+3) Most std library containers have value semantics and can be passed by value. for e.g. a vector of strings is fine but a vector of character strings will be unsafe
+4) Copying by value might involve overhead is there a way to avoid it? - Answer is move semantics [If the original thread is guaranteed to not access it again]
+5) We can't just look at the interface, we need to look at the implementation of our datastructures if we want to avoid dataraces (This makes concurrent programming in C++
+hard to compose and hard to reason about)
+6) If we are careful and use immutability and move semantics with concurrent programming it makes it much easy (as long as we don't have unknown aliases).
+
+
+int main()
+{
+    int * pCount = new int (10);
+    std::unique_ptr<int> uniqPtr(pCount);
+
+    //Thread creation
+    std::future<void> fu = std::async([](std::unique_ptr<int> uniq_ptr){
+
+        (*uniq_ptr)++; //Mutation
+
+    }, std::move(uniqPtr));
+
+    std::cout << *pCount << std::endl; //DataRace (Output is 10 or 11?) - answer undefined
+    return 0;
+}
+
+
+- Are const reference data structure safe to pass?
+
+1) No because it is possible the call modifies the const variable after passing it as const to another thread
+2) It is possible for the datastructure to be defined as const and have non const data members which may result in mutation

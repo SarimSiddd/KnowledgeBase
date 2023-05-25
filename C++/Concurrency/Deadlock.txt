@@ -1,0 +1,6 @@
+If a thread takes more than one lock, it is possible another thread will try to take the same locks in the reverse order resulting in a deadlock
+
+
+To avoid this we can use the lock function from the standard library which can take more than one lock and lock the mutexes Simultaneously.
+
+

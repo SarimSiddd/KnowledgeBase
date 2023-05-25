@@ -1,0 +1,13 @@
+1- We can have concurrency even on a single core machine, the system will just pre-emptively schedule threads on the processor 
+
+Latency:
+
+1- Time taken for a system to respond to respond after it receives the initial request
+
+Concurrency is used to cut down latency.
+
+Throughput:
+
+1- Number of items that can processed per second is called throughput
+
+Parellilism is used to increase throughput

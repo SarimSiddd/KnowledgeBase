@@ -1,0 +1,3 @@
+How does async work internally?
+
+1- It just creates a promise, calls our function in a new thread that we passed and returns the future 

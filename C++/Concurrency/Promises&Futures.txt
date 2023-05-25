@@ -1,0 +1,30 @@
+How do you pass data back from a worker thread to the parent thread?
+
+1- It requires a synchronization protocol.
+
+The sending end of the channel is called a promise
+The receiving end of the channel is called a future
+
+- Promises are move-only objects, they cannot be copied
+- fut.get() blocks the worker thread until the value is ready   
+
+
+void doStuff(std::promise<std::string> && pr)
+{
+    pr.set_value("Message from thread!");
+}
+
+int main()
+{
+    std::promise<std::string> pr;
+    std::future<std::string> fut = pr.get_future();
+
+    std::thread t(doStuff, std::move(pr));
+    std::string str = fut.get();
+
+    std::cout << str << std::endl;
+
+    t.join();
+
+    return 0;
+}
