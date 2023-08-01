@@ -1,0 +1,37 @@
+Maps.txt
+
+To add to a list:
+
+LPUSH (head)
+RPUSH (tail)
+
+
+The order of insertion matters
+
+To get from a list:
+
+LPOP 
+RPOP
+
+
+Read more than one elements:
+
+LPOP 3
+
+- popping also modifies the list
+
+For no modification use:
+
+LRANGE
+
+- you can specify the whole list in LRANGE by using negative numbers:
+
+LRANGE 0 -1
+
+Insert into middle of list:
+
+LINSERT [LISTNAME] [BEFORE|AFTER] [Value] [Value]
+
+
+
+- Lists can be used to create LIFO queues or FIFO queues

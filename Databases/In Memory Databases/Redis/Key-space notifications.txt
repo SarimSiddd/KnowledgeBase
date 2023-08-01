@@ -1,0 +1,18 @@
+Key-space notifications.txt
+
+
+- Can be used to subscribe to "Events"?
+- For e.g. in case a session expires, a service is notified
+
+Producer is Redis in case of these notifications not any other service
+
+subscribe to key-space notfication:
+
+redis-cli --csv  psubscribe '__key*__:expired'
+
+
+Set key to listen to:
+
+SET logged_in_user 21312312 EX 5
+
+- Now client will be notified when the key expires in 5 seconds

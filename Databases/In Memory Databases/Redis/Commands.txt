@@ -1,0 +1,26 @@
+Commands.txt
+
+1) Set [Key] [Value] (Atomic - either succeeds or fails
+2) Get [Key]
+3) INCR [Key] -increment value
+4) DECR [Key]
+5) INCRBY [KEY] [number]
+6) DECRBY [KEY] [number]
+- will only work if string can be converted to number
+7) GETRANGE [KEY] [BEGIN] [END]
+
+For hashmaps:
+
+1) HGET
+2) HSET
+To read more than one keys:
+3) HMGET
+4) HGETALL
+
+
+
+
+Functions:
+
+1) Strlen - get length of string
+2) Append [KEY] [STRING]

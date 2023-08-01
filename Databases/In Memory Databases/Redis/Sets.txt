@@ -1,0 +1,22 @@
+Sets.txt
+
+Add:
+
+SADD
+SMEMBERS [set name]
+
+Remove:
+
+SREM [set name ] [key]
+
+
+- Sets are not ordered
+
+
+Sorted sets:
+
+
+ZADD [KEY] [RANKING NUMBER] [VALUE]
+ZRANGE (Default is ascending order)
+ZREVRANGE (desc order)
+

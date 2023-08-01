@@ -1,0 +1,53 @@
+Message Buses.txt
+
+
+Streams:
+
+- Data is persisted inside the bus 
+- This is to prevent data loss if no consumers are available
+
+- Append only data type
+- Everything gets persisted
+- Multiple ways to query the data
+-Similar to log files
+
+
+Append data to stream:
+
+XADD <key> <ID> [<key> <value> ...]
+
+Reading from streams:
+
+XRANGE <key> <starting ID> <ending ID>
+
+We can use - + instead of actual timestamps to get all:
+
+XRANGE myevents + - COUNT 1
+
+Subscribe to a stream (we get data whenever stream is written to):
+
+XREAD [COUNT X] [BLOCK Y] STREAMS <key> <id>
+
+if Block is set to 0, it will die after msg is received
+
+
+PUB & SUB:
+
+- Data is published wether there are consumers or not
+- If there aren't the msg is lost
+
+Benefits:
+
+- Work for real-time data transport
+- Lightweight
+- Easy to use
+
+Drawbacks:
+
+- It doesn't keep history, so no recovery
+- Unstable consumers mean data loss
+
+
+PUBLISH [CHANNEL NAME] [MSG]
+
+SUBSCRIBE [CHANNEL NAME]

@@ -1,0 +1,19 @@
+To Learn about any redis command:
+
+Go to:
+
+Redis.io/commands
+
+A key-value, in-memory, noSQL Database
+
+Redis uses:
+
+Quick interactions
+Simple information
+
+
+- In memory data can be lost
+
+- Use Redis to store ephemeral data
+- Use a seperate db for long term storage
+- Use Redis as an auxillary system to improve performance

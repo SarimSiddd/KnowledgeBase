@@ -1,0 +1,13 @@
+Datastructures.txt
+
+Datastructures supported in Redis are:
+
+Strings (Maxsize : 500 MB for a single key)
+Lists
+Sets (Do not allow repeat values)
+Hashes
+Sorted sets
+Bitmaps
+HyperlogLogs
+Streams
+Geospatial indexes

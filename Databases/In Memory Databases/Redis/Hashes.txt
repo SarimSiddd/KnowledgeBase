@@ -1,0 +1,11 @@
+Hashes.txt
+
+The Key+ID+property can help build our hashes
+
+For e.g.:
+
+A cart can have more than one products, each product needs a unique id and name
+
+so we can do
+
+HSET cart:123 prod:1:name apples prod:1:amount 4
