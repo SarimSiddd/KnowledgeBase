@@ -11,3 +11,19 @@ It uses an array internally.
 1) It copies the old array to the new array after allocating it.
 
 2) It overallocates memory. Memory is doubled each time you exceed the capacity after 2 (check vector.capacity).
+
+
+Most container functions create copies of objects instead of the objects themselves
+
+so 
+
+for (const auto elem : v_1 ){
+	
+	v_2.push_back(elem); 
+}
+
+v_2.push_back(elem) results in a copy of the reference elem being created, we don't copy the actual reference itself
+
+To avoid this we can use move semantics and r-value references
+
+v_2.push_back(std::move(some_r_value_reference));

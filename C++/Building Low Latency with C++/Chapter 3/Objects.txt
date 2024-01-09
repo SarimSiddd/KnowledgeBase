@@ -1,0 +1,1 @@
+Constructors and destructors for developer-defined classes should be kept as light and efficient as possible

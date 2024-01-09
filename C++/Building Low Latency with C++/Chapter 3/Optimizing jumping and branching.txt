@@ -1,0 +1,30 @@
+Modern processors have pipelines where instructions are fetched and decoded in stages, and branch mispredictions can be costly, taking 10 or more clock cycles to resolve.
+
+Various forms of branching in C++ include if-else conditions, loops (for and while), and switch statements.
+
+Optimizing branching involves minimizing the complexity of if-else chains, simplifying loops, and structuring switch statements with ascending case labels for efficient implementation.
+
+Replacing branching with table lookups or function pointers can be a good optimization strategy in some cases.
+
+Loop unrolling can reduce branch mispredictions by duplicating loop bodies and avoiding checks that determine loop continuation.
+
+Compile-time branching using if constexpr moves branching overhead to compile time but requires conditions that can be be evaluated at compile time.
+
+Developers can provide branch prediction hints using attributes like [[likely]] and [[unlikely]], although modern processors are often good at learning likely branch outcomes.
+
+int a[5]; a[0] = 0;
+    for(int i = 1; i < 5; ++i)
+      a[i] = a[i-1] + 1;
+The compiler can unroll the loop into the following code shown here. Note that it is more than likely that for such a simple example, the compiler will use additional optimizations and reduce this loop even further. But for now, we limit ourselves to only present the impact of loop unrolling:
+
+
+    int a[5];
+    a[0] = 0;
+    a[1] = a[0] + 1; a[2] = a[1] + 1;
+    a[3] = a[2] + 1; a[4] = a[3] + 1;
+
+    For GNU C++, these are traditionally implemented as follows using __builtin_expect:
+
+
+#define LIKELY_CONDITION(x) __builtin_expect(!!(x), 1)
+#define UNLIKELY_CONDITION (x) __builtin_expect(!!(x), 0)

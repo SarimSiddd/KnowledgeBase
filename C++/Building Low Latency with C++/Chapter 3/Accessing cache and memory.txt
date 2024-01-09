@@ -1,0 +1,34 @@
+Aligning data:
+
+Aligned variables, placed at memory locations that are multiples of their size, are accessed most efficiently.
+Modern processors typically have a word size of 32 or 64 bits, and aligned variables allow the processor to read them in a single operation without extra work.
+Compilers automatically align variables and may add padding between struct or class member variables to maintain alignment.
+However, when adding member variables to structures with many objects, the extra padding can increase the struct's size and potentially reduce cache performance.
+To optimize, reorder struct members to minimize added padding while maintaining alignment.
+
+Accessing data:
+
+Cache-friendly data access involves accessing data sequentially or somewhat sequentially, which is more efficient than backward or random access.
+Cache performance can be significantly worse when accessing multi-dimensional arrays or objects in containers with non-contiguous storage.
+Accessing elements in an array is more efficient than accessing elements in linked lists, trees, or hash-map containers due to contiguous memory storage.
+Despite algorithmic complexity considerations, using an array can provide better performance, especially for small numbers of elements, largely due to cache performance and reduced algorithmic overhead.
+
+- Grouping variables that are accessed together greatly improves cache performance by reducing the number of cache misses
+
+Dynamic memory allocations:
+
+Dynamically allocated memory is useful when container sizes are not known at compile time, when containers need to grow or shrink during runtime, or when dealing with large objects to avoid excessive stack usage.
+However, dynamic memory allocation and deallocation can be slow and lead to heap fragmentation, causing performance issues.
+Dynamically allocated memory accessed through pointers can hinder compiler optimizations and introduce pointer aliasing.
+In low-latency applications, it's generally best to avoid dynamic memory allocation or use it sparingly and carefully to minimize performance impact.
+
+Multi-Threading:
+
+In low-latency applications using multi-threading, thread management and interactions between threads should be carefully designed to minimize performance impact.
+Starting and stopping threads is time-consuming, so using a thread pool of worker threads is preferable to launching new threads when needed.
+Context switching between threads is expensive, involving saving and loading thread states, memory operations, cache misses, and pipeline stalls.
+Synchronization using locks and mutexes introduces additional overhead and hinders some compiler optimizations, and contention for shared resources can lead to poor cache performance.
+To optimize, minimize shared data, allocate variables locally on thread stacks, and use synchronization sparingly while being mindful of the associated costs.
+
+
+

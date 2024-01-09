@@ -1,0 +1,9 @@
+The movl instruction moves a value into a register 
+
+The call instruction calls a function, passed in the edi register
+
+The testl instruction compares two registers and sets the zero flag if they’re equal
+
+je and jne check whether the zero flag is set and jump to the specified memory address if it is (je) or jump to the specified memory address if it is not (jne)
+
+The ret instruction returns from the function and the return value is in the eax register:

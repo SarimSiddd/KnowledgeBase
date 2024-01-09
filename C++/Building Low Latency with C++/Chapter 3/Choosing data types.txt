@@ -1,0 +1,1 @@
+C++ integer operations are typically super-fast as long as the size of the largest register is larger than the integer size. Integers smaller or larger than the register size are sometimes slightly slower than regular integers.

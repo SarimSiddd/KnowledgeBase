@@ -32,3 +32,8 @@ It might come as a surprise that asynchronous operations require a call to a blo
 A member function like async_wait() is called non-blocking. I/O objects usually also provide blocking member functions as alternatives. For example, you can call the blocking member function wait() on boost::asio::steady_timer. Because this member function is blocking, no handler is passed. wait() returns at a specific time or after a time period.
 
 The reason why the examples above exit after a while is that run() returns if there are no pending asynchronous operations. Once all alarm clocks have rung, no asynchronous operations exist that the program needs to wait for.
+
+
+Asynchronous operations are usually used to access resources outside of a process. Since these resources can be different devices, they can work independently and execute operations concurrently.
+
+

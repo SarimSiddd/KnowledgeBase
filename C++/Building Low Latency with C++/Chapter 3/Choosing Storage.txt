@@ -1,0 +1,14 @@
+Local variables in functions are stored on the stack and offer good cache performance due to frequent reuse.
+
+Register variables are the fastest form of storage and are used for frequently accessed local variables.
+
+Static and global variables should be avoided due to inefficient cache performance.
+
+The volatile keyword is used cautiously in multi-threaded cases to prevent certain optimizations.
+
+Dynamically allocated memory can be inefficient and suffer from poor cache performance.
+
+Small String Optimization (SSO) in C++ uses local storage for short strings to optimize memory usage.
+
+
+

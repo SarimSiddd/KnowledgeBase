@@ -1,0 +1,20 @@
+Boolean operations like && and || have short-circuiting behavior where the second operand is not evaluated if the first one satisfies the condition (e.g., for &&, if the first operand is false).
+
+Optimizing boolean operations involves ordering operands based on their likelihood to satisfy the condition to reduce the number of evaluations and improve branch prediction.
+
+Short-circuiting can't be used if the order of operand evaluation is important for the program's logic.
+
+Boolean variables are stored as 8 bits, meaning any non-zero value is treated as true, leading to operations with branches and comparisons.
+If variables can only be 0 or 1, operations like c = a && b; can be simplified to c = a & b; to avoid branching and related overhead.
+
+if(market_state == PreOpen ||
+   market_state == Opening ||
+   market_state == Trading) {
+  // do something...
+}
+It can be rewritten as follows:
+
+
+if(market_state & (PreOpen | Opening | Trading)) {
+  // do something...
+}

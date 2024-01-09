@@ -1,0 +1,2 @@
+Temporal locality
+Spatial locality

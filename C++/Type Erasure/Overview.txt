@@ -1,0 +1,11 @@
+What are we trying to solve?
+
+- Dependencies
+
+"Dependency is the key problem at all software levels" 
+
+What actually is type erasure?
+
+-
+
+What problem does type erasure solve?

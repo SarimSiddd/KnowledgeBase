@@ -21,8 +21,11 @@ Rules of thumb for smart pointers:
 - Passing a pointer by reference is usually a code smell
 - Same goes for smart poitners
 
-No raw and no raw delete
+No raw new and no raw delete
 
+std::enable_shared_from_this
+
+shared_from_this()
 
 
 

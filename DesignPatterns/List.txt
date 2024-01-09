@@ -1,0 +1,24 @@
+Creational:
+Singleton
+Factory Method
+Abstract Factory
+Builder
+
+
+Structural patterns:
+
+Adapter
+Composite
+Decorator
+Facade
+Proxy
+
+Behavioral:
+
+Observer
+Template Method
+Chain of responsbility
+Strategy
+State
+Mediator
+Command

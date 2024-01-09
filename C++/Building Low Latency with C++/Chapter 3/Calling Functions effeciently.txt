@@ -1,0 +1,78 @@
+Thinking before creating an excessive number of functions
+
+Grouping related functions together:
+
+Class member and non-class member functions typically get assigned memory addresses in the order in which they are created, so it is generally a good idea to group together performance-critical functions that call each other frequently or operate on the same datasets. This facilitates better code and data cache performance.
+
+Link Time Optimization (LTO) or Whole Program Optimization (WPO):
+
+Placing performance-critical functions in the same module where they are used is crucial for compiler optimizations, including inlining function calls.
+Using the "static" keyword or "inline" specification can make a function local to the translation unit it's used in, improving optimization opportunities.
+Enabling Whole Program Optimization (WPO) and Link-Time Optimization (LTO) parameters instruct the compiler to treat the entire code base as a single module, enabling optimizations across modules, which is especially beneficial for large code bases with multiple source files and modules.
+
+Inline, Macros and TMP Meta programming:
+
+Inlined functions, similar to macros, are expanded during compilation and link times, but they eliminate the overhead associated with function calls, solving many macro-related issues.
+Template metaprogramming can shift computation from runtime to compile time by using partial and full template specialization and recursive loop templates, but it can be challenging to work with and should be used when performance gains outweigh development complexities.
+
+
+
+Avoiding function pointers:
+
+Calling a function through a function pointer has more overhead than direct function calls because it hinders compiler optimizations and prediction of which function will be called.
+"std::function" and "std::bind" are powerful constructs in modern C++, but they should be used sparingly due to potential misuse and extra overhead compared to inlined functions.
+When "std::function" is necessary, consider using lambda expressions as they are typically faster to invoke and involve fewer clock cycles.
+Be cautious when using "std::function" and "std::bind" as they can involve virtual function calls and dynamic memory allocations, surprising some developers.
+
+
+Return simple types from functions:
+
+Functions that return primitive types are very efficient. Returning composite types is much more inefficient and can lead to a couple of copies being created in some cases, which is quite sub-optimal especially if these are large and/or have slow copy constructors and assignment operators. When the compiler can apply Return Value Optimization (RVO), it can eliminate the temporary copy created and just write the result to the caller’s object directly. The optimal way to return a composite type is to have the caller create an object of that type and pass it to the function using a reference or a pointer for the function to modify.
+
+Using bitfields
+
+Bitfields are just structs where the developer controls the number of bits assigned to each member. This makes the data as compact as possible and greatly improves cache performance for many objects. Bitfield members are also usually modified using bitmask operations, which are very efficient, as we have seen before. Accessing the members of bitfields is less efficient than accessing the members of a regular structure, so it is important to carefully assess whether using bitfields and improving the cache performance is worthwhile.
+
+
+Runtime polymorphism:
+
+Runtime polymorphism, implemented with virtual functions, is used when the function to be called is determined at runtime, but it introduces overhead compared to non-virtual function calls.
+Virtual functions can cause branch mispredictions because the compiler often can't predict which function implementation will be called at compile time.
+Compilers can't apply certain optimizations like inlining in the presence of virtual functions.
+Inheritance in C++ can introduce inefficiencies, especially with complex inheritance structures, as child classes inherit all data members from their parent class.
+Consider using composition instead of inheriting from multiple parent classes to avoid complications related to data member access and offsets.
+Turning off C++ RTTI (Run-Time Type Information) at the compiler level can improve efficiency in low-latency applications, and dynamic_cast should be avoided.
+
+
+
+Using compiler time polymorphism:
+
+Using compile-time polymorphism
+
+Let us discuss an alternative to using runtime polymorphism, which is to use templates to achieve compile-time polymorphism. Templates are similar to macros, meaning they are expanded before compilation, and because of this, not only is the runtime overhead eliminated but it also unlocks additional compiler optimization opportunities. Templates make the compiler machine code super-efficient but they come at the cost of additional source code complexity, as well as larger executable sizes.
+
+The Curiously Recurring Template Pattern (CRTP) facilitates compile-time polymorphism. Note that the syntax here is more complicated than using runtime polymorphism using virtual functions and the base class and derived class relationships are similar but slightly different using the CRTP. A simple example of converting runtime polymorphism into compile-time polymorphism is shown here. In both cases, the derived classes, SpecificRuntimeExample and SpecificCRTPExample, override the placeOrder() method. The code discussed in this sub-section is in the crtp.cpp file in the GitHub repo for this book under the Chapter3 directory.
+
+
+Using additional compile-time processing:
+
+Template metaprogramming is a technique in C++ where code generates more code, shifting computations from runtime to compile time for improved optimization and runtime performance.
+While powerful, it can lead to complex, hard-to-understand code, longer compilation times, and larger binary sizes.
+Template metaprogramming can be used for various purposes, but it should be employed judiciously due to its potential complexities and downsides.
+
+Handling exceptions:
+
+C++ exception handling is designed to handle unexpected errors at runtime by recovering or shutting down gracefully.
+In low-latency applications, the use of exception handling should be evaluated because it introduces some overhead, even when no exceptions are raised.
+Exception handling involves bookkeeping and stack unwinding, which can affect performance.
+To optimize low-latency applications, exceptions can be disabled at the function level using "throw()" or "noexcept" specifications or globally using compiler flags, reducing the need for exception-related bookkeeping and saving on overhead.
+Disabling exceptions makes error handling the developer's responsibility and may lead to program termination if exceptions occur in "noexcept" functions, so it should be done carefully during optimization stages.
+
+
+
+
+
+
+
+
+

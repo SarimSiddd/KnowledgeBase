@@ -1,0 +1,17 @@
+Double-precision calculations take about the same time as single-precision.
+
+For integers and floating values, additions are fast, multiplications are slightly more expensive than additions, and division is considerably more expensive than multiplication.
+
+Integer multiplications take about 5 clock cycles, floating-point multiplications take about 8.
+
+Integer additions usually take 1 clock cycle, while floating-point additions take around 2-5.
+
+Floating-point and integer divisions take about 20-80 clock cycles, depending on the processor and optimization.
+
+Compilers optimize expressions, rewriting divisions as multiplications by reciprocals, and using bit-shift operations for powers of 2.
+
+Mixing single- and double-precision operations or floating and integer values should be avoided as they may involve type conversions and added clock cycles.
+
+Converting between single and double precision or between integers and floating-point values consumes clock cycles in computations.
+
+

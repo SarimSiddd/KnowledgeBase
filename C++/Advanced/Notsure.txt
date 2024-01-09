@@ -1,0 +1,42 @@
+1. Add a new User
+
+
+
+std::list<IUser> userlist_;
+
+add user(IUser user)
+{
+	userlist_.add(new user);
+}
+
+2. Send a user a message
+
+SendMessage (IUser user, IMessage msg)
+{
+	userlist_.messages.push_back(msg);
+}
+
+3. Receiver all msgs for a user
+
+ReceiverAllMsgs()
+
+4. Quit
+
+
+
+User:
+
+std::list<IMessage> msgs;
+
+SendMessage(IUser user, IMessage msg);
+std::list<IMessage> ShowAllMessages();
+
+struct IMessage
+{
+	std::string Sender;
+}
+
+Store:
+
+std::list<IUser> users_;
+

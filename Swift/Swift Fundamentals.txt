@@ -1,0 +1,100 @@
+Swift Fundamentals
+
+Variables:
+
+var str = "String"; 
+
+var is a type inferred container that is mutable.
+
+let str = "String";
+
+let is a type inferred container that is immutable.
+
+var message : String = "String"; //Explicit type declaration.
+
+String injection/interpelotion:
+
+var age = 20;
+
+var newMessage:String = "My age is \(age)";
+
+Other types:
+
+Int,
+Double,
+Float,
+
+Conditional variables:
+
+Bool
+
+Arrays:
+
+var Numbers = [450, 500, 600, "String"] //Ok
+
+var Numbers:[Int] = [450, 500,600, "String"] //Not OK 
+
+var Numbers: Array<Double> = [450, 500, 600]
+
+var students = [String]() //Declared and initialized
+
+var students = [String] //Array must be initialized
+
+//Loops:
+
+
+//do while:
+var x = 0
+repeat{
+	x+=1
+} while (x < salaries.count)
+
+
+//for in loop:
+for i in 0..<salaries.count{
+	
+}
+
+//without index:
+for salary in salaries{
+	
+}
+
+
+Collection Types:
+
+1) Array - Linear list of ordered items
+2) Set - Unique values
+3) Dictionary - basically a hashmap
+
+
+Dictionary:
+
+var Dict = [Int : String]()
+
+Dict [1] = "SomeValue" // 1 is the key here
+
+Dict = [:] //clears the entire dictionary
+
+//Assign a nil value:
+
+Dict[2] = nil
+
+for (_, val) in Dict{
+    print(val);
+}
+
+
+for val in Dict.values{
+    print(val);
+}
+
+
+
+
+
+
+
+
+
+

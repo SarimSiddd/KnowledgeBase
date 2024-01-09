@@ -1,0 +1,9 @@
+Converting between signed and unsigned integers is usually free.
+
+Converting smaller integers into larger ones is quick and might be optimized for free, but going from larger to smaller has no extra cost.
+
+Converting between floating-point numbers is generally free, except in rare cases; converting signed or unsigned integers to floats or doubles takes a few clock cycles, with unsigned integers potentially taking longer.
+
+Converting from floating-point values to integers is expensive, potentially taking 50 to 100 clock cycles; developers might optimize this using special instructions or other techniques.
+
+Converting pointers from one type to another is free, but it's the developer's responsibility to ensure safety, and violating the strict aliasing rule can lead to inefficient register use, impacting performance.

@@ -1,0 +1,76 @@
+C++11 features:
+
+auto
+lambdas
+smart pointers
+constexpr
+ranged for loops
+variadic templates
+
+C++14 features:
+
+auto - return auto type deduction
+
+auto count_things()
+{
+	return 4;
+}
+
+Lambdas - generic
+
+std::count (begin(vec), end(vec), [](const auto i){ return i < 3});
+
+Lambdas - generalized capture expression
+
+void count_less_than_3 (int value)
+{
+std::count (begin(vec), end(vec), [value = 3](const auto i){ return i < 3});
+}
+
+std::make_unique
+
+Constexpr - much more flexible
+
+C++17 features:
+
+
+1. Guaranteed Copy/ Move Elision
+
+2. More constexpr support (for e.g. [] operator of array returning constexpr)
+
+3. Constexpr lambdas
+
+4. string_view
+
+5. Class template argument deduction
+
+6. fold expressions
+
+7. structured bindings
+
+8. if init statements
+
+
+C++20 features:
+
+1. Modules
+
+Replaces header files
+
+
+2. ranges
+
+3. coroutines
+
+4. concept
+
+5. 
+
+2. 
+
+
+
+
+Mutexes, multithreading, etc.
+
+Design patterns

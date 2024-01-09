@@ -8,7 +8,7 @@ class Entity {
 
 	Entity(const &InputName) 
 	: 
-	m_Name = InputName{
+	m_Name (InputName){
 
 	}
 
