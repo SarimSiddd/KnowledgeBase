@@ -17,3 +17,37 @@ CLASSA OBJA = CLASSA(PARAM A)
 CLASSA * OBJA = new OBJA(); <- CREATES A POINTER ON STACK FOR CLASSA ON HEAP
 
 HEAP OBJECTS LIVE OUTSIDE THE BLOCK IN WHICH THEY ARE CREATED AND NEED TO BE MANUALLY FREED
+
+Stack Allocation:
+
+Memory Location: When a variable is created on the stack, it is allocated a memory space from the stack, which is a region of memory used for function call frames.
+
+Automatic Storage Duration: Stack variables have automatic storage duration, meaning they are automatically allocated when their containing function is called and deallocated when the function exits.
+
+Fixed Size: Stack variables typically have a fixed size that is known at compile-time. The memory is allocated at the start of the function and released when the function exits.
+
+Faster Allocation and Deallocation: Stack memory allocation and deallocation are fast because they involve simple pointer manipulations. When a function is called, the stack pointer is adjusted to allocate space for local variables. When the function returns, the stack pointer is reset, effectively deallocating the space.
+
+Limited Lifetime: Stack variables exist only within the scope of the function or block where they are defined. They are automatically destroyed when the function exits, which makes them suitable for short-lived objects.
+
+No Need for Manual Memory Management: You don't need to explicitly allocate or deallocate stack variables; it's managed automatically by the compiler.
+
+Heap Allocation:
+
+Memory Location: When a variable is created on the heap, it is allocated memory from the heap, which is a larger, more flexible region of memory. The heap is used for dynamic memory allocation.
+
+Dynamic Storage Duration: Heap variables have dynamic storage duration, meaning they can exist beyond the scope of the function in which they are allocated. They remain in memory until explicitly deallocated.
+
+Variable Size: Heap variables can have a variable size, and their size may not be known until runtime.
+
+Slower Allocation and Deallocation: Allocating and deallocating memory on the heap is slower than on the stack because it involves more complex memory management. Allocating memory requires searching for a suitable free block, and deallocating memory may involve releasing a block for reuse.
+
+Extended Lifetime: Heap variables can persist even after the function or block where they were allocated has completed execution. This makes them suitable for long-lived objects.
+
+Manual Memory Management: You must explicitly allocate and deallocate memory for heap variables using functions like new and delete or malloc and free. Failing to deallocate heap memory can lead to memory leaks.
+
+Performance Considerations:
+
+Stack: Stack allocation is typically faster and more efficient due to its simple memory management. However, it's suitable for short-lived objects with a fixed size.
+
+Heap: Heap allocation is more flexible but slower and requires manual memory management. It's ideal for objects with dynamic lifetimes and sizes.
