@@ -1,0 +1,77 @@
+
+Focusing on polymorphism which has:
+
+Types: Open set
+
+Operations: Closed set
+
+The inverse is std::variant
+
+
+
+
+Static Polymorphism (templates):
+
+
+Overloading:
+
+- Determines which function to call at compile time based on function parameters
+- No runtime overhead
+
+
+Pros:
+
+- Low boilerplate
+- Easy adaptation of existing class
+- Value semantics
+- Low coupling
+- PPP (Polymorphism by definition depends on the usage)
+- Performance
+
+Cons:
+
+- Requires everything to be a template and live in header files
+- Can't store in runtime containers
+
+Dynamic Polymorphism (virtual functions):
+
+
+
+Pros:
+
+- Able to used in non-template functions
+- Able to be used in run-time containers
+
+
+Cons:
+
+- Low boilerplate, now need inheritance heirarchy
+- Have to inherit from base
+- performance
+- value semantics - now pointer semantics
+- Low coupling only if youre careful
+- PPP (Parent's polymorphic principles) -  Polymorphic types have to inherit from base
+
+
+A good middle ground:
+
+std::function
+
+- Low boilerpolate
+- Easy adaptation of existing class
+- Value semantics
+- Low coupling
+- PPP
+- Performance - kinda
+- Able to be used in non-template functions
+- Able to be stored in run-time containers
+
+
+
+
+
+
+
+
+
+

@@ -4,6 +4,29 @@ What are we trying to solve?
 
 "Dependency is the key problem at all software levels" 
 
+Solutions:
+
+Inheritance
+
+Drawbacks:
+
+
+Design patterns
+
+Drawbacks:
+
+- second indirection causes performance hit
+- small, manual allocations cause performance hit
+- performance hit due to many pointer
+- we need one strategy for every operation draw(), serialize()
+- need to manage lifetime explicitly
+- proliferation of inheritance hierachies
+- circles, squares still know about all operations
+
+
+Type erasure
+
+
 What actually is type erasure?
 
 -

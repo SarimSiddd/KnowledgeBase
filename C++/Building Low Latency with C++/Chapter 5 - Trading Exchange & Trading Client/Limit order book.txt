@@ -1,0 +1,8 @@
+Limit order book
+
+- When orders are modified to reduce the quantity, the priority or position of the order in the queue does not change
+
+- When orders are modified to increase the quantity or the price of the order is modified, it has the equivalent effect of canceling the order and sending the order with the new price and quantity values (i.e., a new priority will be assigned to it)
+
+- In cases where the passive orders are not fully matched because the aggressive order has a smaller quantity than the passive liquidity available on the other side, then the remaining liquidity on the passive orders stays in the book.
+

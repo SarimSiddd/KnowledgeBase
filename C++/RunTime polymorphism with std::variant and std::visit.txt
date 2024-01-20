@@ -4,3 +4,9 @@ Runtime polymorphism can also be acheived through std::variant and std::visit.
 - Need to know all of the types beforehand
 - Allows us to do polymorphism on unrelated types (duck typing)
 - No coupling because of inheritance
+
+
+Variant
+
+Types - closed set
+Operations - open set

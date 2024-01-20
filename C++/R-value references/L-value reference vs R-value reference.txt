@@ -1,0 +1,29 @@
+An lvalue reference is a reference that refers to an object that has a fixed memory location and can be used on the left-hand side of an assignment. They are declared using the & symbol. For example: int& x = y;
+
+
+
+An rvalue reference, on the other hand, is a reference that refers to an object that does not have a fixed memory location and cannot be used on the left-hand side of an assignment. They are declared using the && symbol. For example: int&& x = 5;
+Lvalue references are typically used to bind to existing objects, whereas rvalue references are used to bind to temporary objects, such as the result of an expression or a function call.
+
+
+Rvalue references are used to define move constructor and move assignment operator, which allows to move the resources from one object to another, instead of copying them. This can be more efficient in some cases, such as with large objects.
+
+
+C++11 introduced the concept of perfect forwarding, which allows to pass an rvalue reference as an argument to a function, and inside the function, the argument is still considered as an rvalue. This is useful in certain situations, such as when creating a function template that can accept both lvalues and rvalues as arguments.
+
+
+An lvalue references can be rebound to a different object, but an rvalue reference cannot. This is because an rvalue reference is typically associated with a temporary object and it cannot be used to extend the lifetime of the object.
+
+
+In summary, an rvalue reference and a regular reference are both types of references, but an rvalue reference is used to refer to temporary objects, whereas a regular reference is used to refer to objects with fixed memory locations. Rvalue references can be used for move semantics and perfect forwarding, it can not be rebound to a different object, unlike lvalue references which can
+
+An important feature of rvalue references is that they allow for the implementation of move semantics. Move semantics is a technique that allows for moving the resources of an object, rather than copying them. This can be more efficient for large objects, such as containers, and can prevent unnecessary memory allocation and deallocation.
+
+Rvalue references can also be used to implement move constructors and move assignment operators. These special constructors and operators allow for moving the resources of an object, rather than copying them, when an object is initialized or assigned. This can improve the performance of the program and prevent unnecessary memory allocation and deallocation.
+
+
+Rvalue references can be used to overload functions and operators for rvalue arguments. This allows for different behavior for rvalues than for lvalues and can improve the performance of the program. For example, a function that takes an rvalue reference as an argument can move the resources of the argument, rather than copying them, improving performance.
+
+Another important use case of rvalue references is in the context of smart pointers.
+
+ Smart pointers, such as unique_ptr, use rvalue references to implement move semantics, which allows for efficient transfer of ownership of the managed object. This can prevent the use of unnecessary memory and improve the performance of the program.

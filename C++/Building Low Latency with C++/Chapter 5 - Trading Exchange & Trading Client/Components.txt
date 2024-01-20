@@ -1,0 +1,27 @@
+Components of a trading ecosystem:
+
+These are the exchange components:
+
+- Matching Engine
+- Order gateway server and protocol decoder and ecoder
+- Market data encoder and publisher
+
+These are the client components:
+
+- order gateway encoder and decoder
+- market data consumer and decoder interested in this data
+- trading engine
+
+
+Orders that reach the exchange first are processed first in FIFO order.
+
+- Orders that do not match immediately rest in the book and are referred to as passive orders.
+- Orders that cross prices on passive orders are referred to as aggressive orders.
+
+The matching engine arranges all passive orders sent by all market participants into a datastructure called the order book.
+
+Limit orders are orders that can only execute at a price that is at, or better than, the price specified by the market participant.
+
+Pro Rata and some mix of FIFO and Pro Rata are used to match orders. Pro Rata is simply a matching algorithm where larger orders get larger fills from aggressive orders regardless of where they are in the FIFO queue.
+
+
