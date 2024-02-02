@@ -1,0 +1,20 @@
+
+
+When compiling:
+
+use -g to get debugging symbols
+
+- There are a few options like -ggdb or -g1, -g2, -g3
+- -g0 provides no debug information
+
+
+gdb ./prog to run gdb on the program executable
+
+
+- run  (start the program)
+- start  (by default breakpoints on the main function)
+- Ctrl+L (clears the screen)
+- next (goes to the next line)
+- can also use first letter of the command as a shortform (e.g. n for next)
+- n 4 (Jumps 4 lines of code)
+- 

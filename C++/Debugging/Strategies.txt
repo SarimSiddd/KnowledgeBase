@@ -1,0 +1,32 @@
+
+What is a bug:
+
+Can be :
+
+1) Logical
+2) Correctness
+3) performance
+4) Non-deterministic correctness and logic
+
+
+1. Scan and look:
+
+- just look at the code and try to spot the bug
+- can be combined with compiler flags to help us spot the problems
+
+
+2. printf debugging
+
+- see the actual values at runtime
+- just use print statements to look at the values
+
+
+3. Delta debugging
+
+- Can help us narrow down search space
+- Relies on good knowledge for a good delta
+
+4. printf debugging using macros
+
+
+5. Interactive debugger

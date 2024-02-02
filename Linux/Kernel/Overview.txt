@@ -1,0 +1,38 @@
+What is the Kernel?
+
+The linux kernel is a program that needs to be run (loaded into memory and executed).
+
+The program that loads the kernel into memory and transferring control to it is called a boot loader (e.g. GRUB).
+
+Kernel has command-line parameters which are the responsibility of GRUB.
+
+The Kernel is an API, it provides:
+
+System calls
+Virtual file system entries
+
+   - proc
+   - sys
+   - debugfs
+
+Device files 
+
+The Kernel is a Gatekeeper
+
+- Manages privileges
+- Executes supervisor instructions
+- Implements security policies
+- Control access to hardware and other resources
+
+The Kernel is modular
+
+- image is Small
+- sufficient to boot to user space
+- optional functionality is added after booting
+- allows for alternatives e.g. loading only drivers required for current hardware
+
+/boot directory contains linux images
+
+uname -r to find current linux image.
+
+if you delete the file then you wont be able to reboot. (it will work for now since its loaded into memory)

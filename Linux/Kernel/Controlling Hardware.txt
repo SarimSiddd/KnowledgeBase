@@ -1,0 +1,22 @@
+Software layers to and from hardware
+
+
+- Applications call functions in libraries. Some of those functions invoke the Kernel system calls.
+- Some of those system calls interact with hardware.
+
+Commands for HW Info:
+
+- lshw and lspci - list hardware & devices
+- lsusb and lsbk - list usb information
+- lscpu and lsdev
+
+* Not all distros have these commands
+
+Information about disks:
+
+- hdparm
+- Write to proc, dev or sys files
+- inb and outb
+- setpci
+
+Linux devices identify themselves in a standard way

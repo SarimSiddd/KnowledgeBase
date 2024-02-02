@@ -1,0 +1,31 @@
+- System calls are functions implemented by the kernel and meant to be called from user space 
+
+There about 300, we can see them at:
+
+/usr/src/[distro]/include/uapi/asm-generic/unistd.h
+
+There might be system calls that different from architecture like arm v x86
+
+They are called through ths standard library e.g. libc
+
+
+- Standard library uses architecture dependent means to invoke the system call mechanism
+- Suitably sized paramters are usually put in registers
+- The kernel is invoked, determines which system call and calls it
+
+System call return
+
+- Will return a negative value to the library if error
+- On error, the library sets "errno" to abs(return value), and return -1
+- When no error, library usually does not set errno and returns the value it obtained from the kernel
+
+!$ last word on the previous line
+
+man read -> shows READ(2) in the upper right corner where 2 is the section number, 
+
+1 is for commands
+2 is for systemcalls
+
+to get systemcall for kill, we use:
+
+man kill 2

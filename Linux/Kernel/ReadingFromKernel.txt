@@ -1,0 +1,4 @@
+- Printk() is the kernel's function for code to print messages. It is like C's printf()
+- It is sent to RAM buffer and the system console
+- Important enough ones are shown on the console
+- Logging daemon may send to file or elsewhere
