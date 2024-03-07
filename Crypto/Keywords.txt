@@ -1,0 +1,93 @@
+Proof of Work:
+
+- Adding new bitcoins requires computations which is what miners do, in return they get bitcoin, this is called proof of work
+
+Proof of work is an older method of doing things, many new coins have now adopted:
+
+Proof of Stake:
+
+- In PoS, validators are chosen to create new blocks and validate transactions based on the amount of cryptocurrency they hold and are willing to "stake" or lock up as collateral
+
+- Validators are selected  to confirm blocks of transactions. The larger their stake, the higher their chances of being chosen. More of a lottery.
+
+- Rewards: Unlike PoW, validators receive transaction fees as rewards.
+
+Crypto DeFi:
+
+- Umbrella term for financial services on public blockchain. With DeFi, you can do most of the things that banks support - earn interest, borrow, lend, buy insurance, trade derivatives, trade assets and more.
+
+Yield farming:
+
+Allows investors to earn yield by putting coins or tokens in a decentralized application or dApp. Examples of dApps include crypto wallets, DEXs, decentralized social media and more.
+
+Airdrops:
+
+A cryptocurrency airdrop is a marketing strategy that involves sending coins or tokens to wallet addresses. Small amounts of the new virtual currency are sent to the wallets of active members of the blockchain community for free or in return for a small service,
+The ultimate goal of a crypto airdrop is to promote awareness and circulation of a new token or coin.
+
+Soft staking:
+
+Lock crypto for a small amount and ability to liquidate whenever without adverse consequences.
+
+Alt coin:
+
+Any coin other than bitcoin.
+E.g.: Ethereum, XRP, Solana, Cardano
+ 
+Stable coin:
+
+Stablecoins are pegged to a stable asset like the USD, other fiat currencies or commodities like gold. This means the value of a stablecoin aims to mirror the value of its underlying asset.
+E.g: USDT(Tether), USDC(USD Coin)
+
+Exchange tokens:
+
+Coins issued by a exchange and are primarily used to provide benefits to users of the exchange.
+
+Like loyalty points.
+E.g: BNB, Chronos
+
+Meme coins:
+
+A memecoin is driven by internet memes.
+
+E.g.: Doge, pepe etc.
+
+Metaverse token:
+
+Metaverse tokens are digital currencies used within the metaverse.
+
+Custodial Wallet:
+
+A cryptocurrency exchange or online wallet platform (third party service provider) manages and controls the private keys on your behalf.
+
+Hot wallet:
+
+Hot wallets are connected to the internet and actively used for managing and transacting with cryptocurrencies. e.g.: Coinbase wallet, metamask
+
+Cold wallet:
+
+Physical wallet (most secure wallet)
+
+Exchange:
+
+Centralized Exchange:
+
+Centralized exchanges operate under a centralized authority that serves as a middleman.
+KYC is a regulatory and legal requirement here.
+
+Decentralized Exchange:
+
+Operates without a central authority and allow users to trade directly from their crypto wallets. These exchanges rely on smart contracts on the blockchain to facilitate peer-to-peer trading directly between users.
+
+e.g. : Uniswap, SushiSwap and PancakeSwap
+
+
+
+Websites:
+
+Coinbase
+CoinMarketcap
+AAve (DeFi)
+UniSwap (DeFi)
+Coinbase
+Blockchain.com

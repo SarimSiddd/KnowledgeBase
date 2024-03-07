@@ -2,6 +2,34 @@ Taken from:
 
 https://www.youtube.com/watch?v=ZTqHjjm86Bw
 
+Where to use co-routines:
+
+- We can replace some function pointers (callbacks) with co-routines
+- Parsers are much more readable with co-routines
+- A lot of state maintainence code is not required, as the co-routine does the bookkeeping
+
+What is a co-routine made of?
+
+- A wrapper type. Return type of the co-routine functions prototype.
+  Allows us to control the coroutine from the outside (resume, yield etc)
+- The compiler looks for a type with the exact name promise_type inside the return type of
+  the coroutine (wrapper type). This is the control from the inside.
+  This can be:
+  - type alias
+  - typedef
+  - or you can declare the type directly inside the coroutine wrapper type
+
+ - An awaitable type that comes into play once we use co_await
+ - We also often use another part, an iterator
+
+
+ - A coroutine is an finite state machine that can be controlled and customized by promise_type
+
+  
+
+
+
+
 What is a co-routine?
 
 A coroutine is a generalization of a subroutine

@@ -1,4 +1,11 @@
 
+Uses for co-routines:
+
+- Replacement for callbacks
+- Allows more structured async code
+
+
+
 Allows for functions to suspend execution insde of the same scope 
 
 
