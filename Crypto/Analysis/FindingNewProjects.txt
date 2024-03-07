@@ -1,0 +1,18 @@
+Finding new crypto projects to research:
+
+1) Use a crypto tracking website:
+
+CoinMarketCap and CoinGecko
+
+2) Monitoring the portfolio of top crypto venture capital firms
+- Google top VCs and what they're invested in
+
+3) Onchain analytic firms
+
+Some of the best places to tarck funds and crypto across the blockchain. Some good platforms that you can use to track big wallets and entities are Arkham network and Spotonchain.AI
+
+e.g: glassnode
+
+4) Checking total value locked vs marketcap
+
+Using sites like defi llama look for projects with a high TVL compared to the marketcap

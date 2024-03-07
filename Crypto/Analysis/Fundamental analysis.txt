@@ -2,4 +2,16 @@ Fundamental analysis:
 
 The method of evaluating an asset's intrinsic value by examining factors such as financial performance, industry conditions and economic indicators to assess its investment potential. Traders who rely on fundamental analysis are generally long-term investors
 
+How to perform fundamental analysis:
+
+- Read through the whitepaper to understand purpose and use-case
+- Follow project and leadership. Analyze team and track record
+- Research project's market position and competitors to see how it differentiates itself
+- Evaluate the strength and activity of the community supporting the project
+
+Tokenomics:
+
+refers to the economy of the cryptocurrency. token creation, management and overall economic model
+
+
 https://www.youtube.com/watch?v=IZWrAbFveSA&ab_channel=BrianJung
