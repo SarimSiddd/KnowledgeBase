@@ -1,0 +1,7 @@
+Enterprise:
+
+Describes the structure of the buisness
+Describes how things get dones (processes)
+- How things work within departments
+- How people communicate
+

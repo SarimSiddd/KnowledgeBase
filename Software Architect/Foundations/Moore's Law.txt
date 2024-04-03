@@ -1,0 +1,15 @@
+Moore's Law
+
+Every year, you probably expect to pay at least a little more for most products and services. The opposite has been the case in the computer and communications fields, especially with regard to the hardware supporting these technologies. Over the years, hardware costs have fallen rapidly.
+
+For decades, computer processing power approximately doubled inexpensively every couple of years. This remarkable trend often is called Moore’s law
+
+Moore’s law and related observations apply especially to
+
+the amount of memory that computers have for programs and data,
+
+the amount of secondary storage they have to hold programs and data, and
+
+their processor speeds—that is, the speeds at which computers execute programs to do their work.
+
+Key executives at computer-processor companies NVIDIA and Arm have indicated that Moore’s law no longer applies.25,26 Computer processing power continues to increase but now relies on new processor designs, such as multi-core processors.

@@ -1,0 +1,3 @@
+
+
+- Instead of passing pointers to arrays, pass span to array instead

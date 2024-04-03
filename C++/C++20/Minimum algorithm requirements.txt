@@ -1,0 +1,23 @@
+Minimum algorithm requirements and c++20 concepts
+
+Concepts Images The standard library’s algorithms specify minimum requirements that help you determine which containers, iterators and functions can be passed to each algorithm. The C++20 range-based algorithms in the std::ranges namespace specify their requirements with C++20 concepts. We briefly introduce C++20 concepts as needed for you to understand the requirements for working with these algorithms. We’ll discuss concepts in more depth in Chapter 15 as we build templates.
+
+
+various algorithms can receive a lambda, a function pointer or a function object as an argument. 
+
+ C++17 introduced new parallel overloads for 69 standard library algorithms in the header <algorithm>, enabling you to enhance program performance on multi-core architectures.
+
+
+ Some C++20 algorithms—including those in the <numeric> header and the parallel algorithms in the <algorithm> header—do not have std::ranges overloads
+
+ The C++ standard library separates containers from the algorithms that manipulate the containers. Most algorithms operate on container elements indirectly via iterators. This architecture makes it easier to write generic algorithms applicable various containers—a strength of the standard library algorithms.
+
+Container class templates and their corresponding iterator class templates typically reside in the same header. For example, the <vector> header contains the templates for class vector and its iterator class. A container internally creates objects of its iterator class and returns them via container member functions, such as begin, end, cbegin and cend.
+
+
+Iterator requirements
+
+For maximum reuse, each algorithm can operate on any container that meets the algorithm’s minimum iterator requirements.4 For example, an algorithm requiring forward iterators can operate on any container that provides at least forward iterators. All standard library algorithms can operate on vectors and arrays because they support contiguous iterators that provide every iterator operation
+
+C++20 Concepts
+One of the “big four” C++20 features is concepts—a technology for constraining the types used with templates. Stroustrup points out that “Concepts complete C++ templates as originally envisioned”6 decades ago. Each concept specifies a type’s requirements or a relationship between types.

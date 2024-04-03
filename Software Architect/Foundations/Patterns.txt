@@ -1,0 +1,112 @@
+MicroKernel:
+
+Independent services plugin to the microkernel on the fly
+
+Like the linux microkernel
+
+Strengths:
+
+- Isolation prevents big ball of mud dependencies
+- Plugins are small, debug and maintain
+
+Weakness:
+
+- APIs to the kernel are delicate
+- New APIs may require rewriting existing plugins 
+- Problems within the kernel can bring the whole system down
+- Plugins are indirectly coupled to each other through the Kernel
+
+
+Messaging-based architecture:
+
+- Ease problems associated with network communication
+- Forge into a single system, things that aren't designed to work together
+- Formalize communication path between microkernel
+
+
+Queue Model, Pub/Sub
+
+Strengths:
+
+- More maintainable than monolith
+- Solve dependency problems in microkernel systems
+
+Weaknesses:
+
+- Can become complex
+- Can be slow and time consuming
+
+
+Microservice requirements:
+
+- Small (few hundred lines of code)
+- Independently deployable (most important)
+- Fully autonomous
+- Hides implementation details
+- Distributed
+- Highly observable
+- Modeled around business concepts
+
+Strengths
+
+- Indepdent services
+- Changes do not affect the rest of the system
+- Changes can occur quickly 
+
+Weakness
+
+- Design and runtime complexity
+- Networks are slow compared to alternatives
+
+Reactive & choreographed services:
+
+- broadcast the intention like orderPlaced() from the calling code, each handling service handles this in its own specific way
+
+Strengths
+
+- Decoupling leads to easier maintainence
+- Add additional downstream clients as needed
+- Faster than declarative
+- Work in a monolith
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

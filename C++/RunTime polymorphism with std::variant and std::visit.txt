@@ -5,6 +5,20 @@ Runtime polymorphism can also be acheived through std::variant and std::visit.
 - Allows us to do polymorphism on unrelated types (duck typing)
 - No coupling because of inheritance
 
+if you have objects of unrelated classes, but you’d still like to process those objects polymorphically at runtime
+
+The caveat is that you must know in advance all the types your program needs to process via runtime polymorphism—known as a closed set of types.
+
+A std::variant object is often referred to as a type-safe union
+
+std::visit requires the return type of visitors to match
+
+A key difference between runtime polymorphism via class hierarchies and runtime polymorphism via std::variant is that a std::variant object cannot call member functions of the object it contains. Instead, you use the standard library function std::visit to invoke a function on the object stored in the std::variant
+
+ This ability to invoke common functionality on objects whose types are not related by a class hierarchy is often called duck typing:
+
+“If it walks like a duck and it quacks like a duck, then it must be a duck.”
+
 
 Variant
 

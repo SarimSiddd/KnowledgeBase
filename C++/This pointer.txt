@@ -1,0 +1,13 @@
+This pointer
+
+
+There’s only one copy of each class’s functionality, but there can be many objects of a class. So, how do member functions know which object’s data members to manipulate? Every object’s member functions access the object through a pointer called this (a C++ keyword), which is initialized with an implicit argument passed to each of the object’s non-static34 member functions.
+
+The this pointer’s type depends on the object’s type and whether the member function in which this is used is declared const:
+
+In a non-const member function of class Time, the this pointer is a Time*—a pointer to a Time object.
+
+In a const member function, this is a const Time*—a pointer to a Time constant.
+
+
+There is an exception to the rule that each object has its own copy of its class’s data members. In some cases, all objects of a class should share only one copy of a variable. A static data member is used for these and other reasons. Such a variable represents “classwide” information—that is, data shared by all objects of the class. You can use static data members to save storage when all objects of a class can share a single copy of the data.

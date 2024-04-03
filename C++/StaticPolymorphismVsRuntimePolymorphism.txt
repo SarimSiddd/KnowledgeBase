@@ -67,7 +67,25 @@ std::function
 - Able to be stored in run-time containers
 
 
+The runtime concept idiom49,50 was created by Sean Parent.51 The idiom separates a system’s runtime polymorphic-processing logic from the types it processes polymorphically. Those types do not need to be part of a class hierarchy, so they do not need to override a base-class’s virtual functions.
 
+Runtime Polymorphism with Type Erasure
+C++ type erasure53 is a template-based technique for implementing runtime polymorphism using duck typing. Templates enable you to remove specific types (that is, erase those types) from the code you write. Unlike using std::variant (Section 10.13), type erasure does not require you to know in advance the types you’ll process polymorphically. The runtime concept idiom uses type erasure under the hood.
+
+Double dispatch
+ (also called the visitor pattern74) is a runtime polymorphism technique that uses the runtime types of two objects to determine the correct member function to call. Double dispatch also can be implemented using std::variant and std::visit
+
+Compile-Time (Static) Polymorphism Techniques:
+
+SFINAE: Substitution Failure Is Not an Error
+
+C++20 Concepts
+
+
+Tag Dispatch
+
+
+is a template-based technique in which the compiler determines the version of an overloaded function to call based not only on template type parameters but also on properties of those types. Bjarne Stroustrup in his paper, “Concepts: The Future of Generic Programming,” refers to properties of types as “concepts” and calls the tag-dispatching technique concept overloading or concept-based overloading.71 He then discusses how C++20’s new concepts feature can be used in place of tag dispatch.
 
 
 

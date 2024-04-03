@@ -1,0 +1,19 @@
+Axes of volatility:
+
+Only two ways for things to change:
+
+- At the same customer over time
+- At the same time across customers
+
+Axes should be independent
+
+- Encapsulate from each other as well
+- If both axes are affected, it might indicate functional decomposition
+
+
+A good design should be resilient to changes in the user domain
+
+Avoid solutions masquerading as requirements
+
+Take requirements and try to identify areas of volatility
+

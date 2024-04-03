@@ -1,0 +1,4 @@
+As of C++20, aggregates now support designated initializers in which you can specify which data members to initialize by name. Using the preceding struct Record definition, we could initialize a Record object as follows:
+
+
+Record record{.first{"Sue"}, .last{"Green"}};

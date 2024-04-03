@@ -1,0 +1,5 @@
+- Functional decomposition means design adds no value
+- Consider performing anti-design effort
+- Think about building a house functionally
+
+

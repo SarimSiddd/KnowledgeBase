@@ -1,0 +1,47 @@
+Step 1:
+
+Write down the problem statement:
+
+1) Describe the end user's problem
+2) Describe the solution to the problem
+
+Step 2:
+
+Write down the user stories
+
+User Story
+
+Describes an end user going through a domain-level process to acheive some valuable outcome
+
+Step 3:
+
+Refine the user stories
+
+Vertical slicing:
+
+Narrowing user story by figuring out all the user decisions 
+
+Activity diagrams
+
+Narrowing user stories by removing alternate workflows
+
+Step 4:
+
+Create event stories
+
+Step 5:
+
+Actions are associated to the events
+
+
+Step 6:
+
+Specify agent that will do the work and the context they operate in
+
+
+
+
+
+
+
+

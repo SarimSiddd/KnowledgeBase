@@ -1,12 +1,24 @@
 Spans are windows into existing arrays,
 They don't own the underlying data 
 
+A span is a “view” into a container. It “sees” the container’s elements but does not have its own copy of those elements.
+
+
 span contains both the location of the first item and the number of elements in the array
 - They are just a pointer and a count under the hood, and should be passed by value
 - Can point to any contigious container (vector, array, etc.)
 - iterable
 - can also be used to modify data in the original source
 -.front() & .back() are available, first, last, subspan
+
+Creating subviews from spans:
+
+mySpan.first(3); //First 3
+mySpan.last(3); //Last 3
+mySpan.subspan(1,3); //Middle 3
+
+
+
 
 Example to display span data for 2D vector :
 

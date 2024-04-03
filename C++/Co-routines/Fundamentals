@@ -26,8 +26,21 @@ What is a co-routine made of?
  - A coroutine is an finite state machine that can be controlled and customized by promise_type
 
   
+A task:
 
+A coroutine that does a job without returning a value.
 
+A generator:
+
+A coroutine that does a job and returns a value (either by co_return or co_yield)
+
+For yeild_value, initial_suspend, final_suspend, as well as co_await/await_transform, we have two helper types in the STL:
+
+std::suspend_always: The method await_ready always returns false, indicating that an await expression always suspends as it waits for its value
+
+std::suspend_never: The method await_ready always returns true, indicating that an await expression never suspends.
+
+Try to pass data into coroutine by value, since it maintains it in coroutine frame, if you pass by reference make sure the data lives long enough
 
 
 What is a co-routine?
@@ -72,9 +85,9 @@ Whether a function is a coroutine is an implementation detail
 
 A function is a co-routine if it contains:
 
-a co_return statement
-a co_await statement
-a co_yield expression
+a co_return statement , Action: Output, State: Ended
+a co_await statement, Action: Input, State: Suspended
+a co_yield expression, Action: Output, State: Suspended
 or a range based for loop that uses co_await
 
 

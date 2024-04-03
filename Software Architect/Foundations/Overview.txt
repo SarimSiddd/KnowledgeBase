@@ -1,0 +1,104 @@
+
+
+- Release small things, get feedback, reiterate (be agile)
+This is called the Inspect and Adapt Loop
+
+- Experiment, fail and rebuild
+
+- Cost of building the wrong thing > Cost of rebuilding
+
+Main design responsbility: assures coherence across the system
+
+- Reviews work
+- Makes suggestions
+- Helps refine processes
+
+Conway's Law:
+
+Any organization that designs a system will inevitably produce a design whose structure is a copy of the organization's communication structure
+
+Side-loaded organizations with specific departments for specific responsibilities (like DBA, UI/UX, Backend) produce N-tier systems
+
+Wait time among N-tier organizations is bigger since developers need to wait for input from other deparments
+
+Story:
+
+A description of the user's work - a story touches every piece of the system
+
+The solution to this is to have cross-functional teams
+
+Agile incremental Designs:
+
+----------
+Customer
+----------
+Stories
+----------
+Technology
+----------
+
+- Approach is driven by the needs of the user, not by the technology
+
+Domain Driven Design:
+
+The structure of your code should map to the structure of the problem domain
+
+
+The bounded context:
+
+Models natural divisions in the business domain whose problem we're solving (e.g. warehouse context, payment context)
+
+The structure of the code directly maps the underlying problem	
+
+DDD systems are rarely n-tiered systems
+
+The bounded context focuses on building domain related services instead of services like db, backend, fe, we would divide services into:
+
+warehouse manager
+storefront 
+invoicing
+
+The modules reflect the business not the implementation technology
+
+
+Ubiquitous Language:
+
+Speak the language of your customers. The same word can mean different things under different contexts. This is okay
+
+Order item in the warehouse and storefront and can mean two different things, we don't try to come up with a generic definition of "order item" for all of these contexts since it will result in a bulky hard to manage class/object instead we focus on different order items corresponding to these different contexts
+
+we'll have store and warehouse groups, when changes come along they tend to belong to only a single bounded context
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

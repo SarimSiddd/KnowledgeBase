@@ -1,0 +1,22 @@
+only design technique that matters
+
+- Decompose based on volatility
+	- identify areas of potential change
+		- Can be functional but not domain functional
+	- Encapsulate in services
+	- Milestones based on integrations not features
+- Implement behavior as interaction between services or subsystems
+
+Encapsulate volatility into services
+
+
+Problems:
+
+- Volatility is often not self-evident
+	- Takes longer than functional
+	- Getting management support
+	- Fighting insanity
+- Dunning Kruger effect
+- Doctors of old
+
+
