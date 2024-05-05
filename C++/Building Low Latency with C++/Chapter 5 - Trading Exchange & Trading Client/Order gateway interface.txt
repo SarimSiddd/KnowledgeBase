@@ -1,0 +1,9 @@
+Order gateway interface
+
+
+Components:
+
+TCP Connection Server/Manager
+FIFO Sequencer
+Exchange messaging protocol encoder and decoder
+

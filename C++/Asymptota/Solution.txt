@@ -9,3 +9,7 @@ In steps:
 4) Should maintain a best price for each side (bid & ask)
 
 5) If the quantity was 0 that means there was a match against an aggressive order and we should remove the bid/ask at that price level
+
+6) How would we know when a price level is updated?
+
+I think we only get information about price levels - not individual trades being put in by the clients

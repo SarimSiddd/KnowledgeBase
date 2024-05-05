@@ -1,0 +1,23 @@
+
+
+Asynchronous execution started as the idea of the clock speeds not being in rhythm
+
+
+- Caller can work until it gets a response
+- Caller either 
+	- Checks if the response is ready (epoll - used in linux, nodejs)
+	- Receiver calls back when done (io_uring - windows, or newer in linux)
+	- Spins up a new thread and blocks (nodejs, for e.g. reading a file, we just spin up a thread and the cpu takes that thread out of execution but keeps the main thread executing)
+
+Example of an OS async call (NodeJS by default spins up 4 worker threads)
+
+- Program spins up a secondary thread
+- Secondary thread spins up a thread, OS blocks it
+- Main program still executing code
+- Thread finish reading and calls back main thread
+
+
+
+- Synchronicity is a client property
+- Most Modern client libraries are asynchronous
+- 

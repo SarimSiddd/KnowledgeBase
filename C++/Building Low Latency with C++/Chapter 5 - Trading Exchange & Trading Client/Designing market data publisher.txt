@@ -1,1 +1,28 @@
 Designing market data publisher
+
+
+
+Market data protocol encoder:
+
+
+The market data encoder consumes market data updates that reflect changes to the order book and converts them into the public market data messaging format with some additional information. This component also publishes the incremental market data updates to the UDP multicast stream configured for incremental streams. 
+
+
+ The encoded market data updates are also published to the snapshot synthesizer component.
+
+
+ The market data stream is generally very high volume in terms of network traffic and experiences large bursts in activity, especially during periods of high volatility in the market.
+
+ Since the TCP protocol adds extra bandwidth due to acknowledgments of message receipts and retransmissions of lost data, typically, UDP is the network protocol of choice for market data. Multicast streaming over UDP is also preferred since the market data can be disseminated on the multicast streams once and all interested subscribers can subscribe to that stream instead of having a one-to-one connection with each market data consumer over TCP.
+
+ Snapshot synthesizer:
+
+ The snapshot synthesizer consumes the encoded market date updates published by the market data protocol encoder, synthesizes the latest snapshot of the limit order book, and publishes the snapshot periodically to the snapshot multicast stream.
+
+ also adds the correct sequence information on the snapshot updates to facilitate synchronization at the client’s end before publishing it on the snapshot UDP multicast stream. 
+
+  What this means is that in the snapshot messages it sends out, it will provide the last sequence number from the incremental stream that was used to synthesize this snapshot message. This is important because the downstream market data consumer clients can use this sequence number of the last update in the incremental stream to perform successful synchronization/catch-up. 
+
+   packet drops are expected to be extremely rare on the client’s end and the snapshot synchronization process is slow on the client’s end, so trying to make this component super low latency is unnecessary.
+
+   

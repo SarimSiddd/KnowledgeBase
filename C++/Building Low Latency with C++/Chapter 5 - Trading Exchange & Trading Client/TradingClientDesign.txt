@@ -1,0 +1,24 @@
+Components:
+
+- market data consumer
+   - Subscribing to and consuming UDP multicast traffic
+   - Decoding and normalizing from exchange protocol
+   - Synchronizing on startup and packet drops
+
+
+Incremental market data streams
+
+The incremental market data stream assumes that the market participant already has the correct view of the limit order book maintained by the matching engine, and this stream only publishes incremental updates to the previous state of the order book. This means that this stream is much lower in bandwidth requirements since it publishes only incremental updates to the book.
+
+The mechanism to handle this failure is to clear or reset the order book that the participant maintains. Then it needs to subscribe to the snapshot stream, which contains data for the full state of the entire order book (instead of only incremental updates) to synchronize to the correct state of the book once again. The protocol here is to clear the book, start queuing up incremental updates received from the incremental stream and wait to build the full state of the order book, and then apply the incremental updates to that full order book to finish the synchronization.
+
+Snapshot market data streams
+
+this stream just contains a thorough list of Order Add messages corresponding to every single passive order that exists in the order book. The exchange usually throttles how often this list is updated and published, meaning it might only send out a stream of snapshot messages every couple of seconds or so. This is because, since this stream contains information about all the orders in the order book for every single trading instrument, it can become quite bandwidth-heavy.
+
+Order gateway client
+
+
+In addition to the reliability mechanisms implemented by the TCP networking protocol itself, there usually exists an application-level reliability mechanism implemented by the exchange and the participants. This application-level reliability mechanism usually consists of strictly incrementing sequence numbers on the messages sent from exchange to client and from client to exchange.
+
+Additionally, there can be heart-beating mechanisms in place, which are simply messages sent from exchange to client and client to exchange to check whether a connection is still active during periods of low activity.

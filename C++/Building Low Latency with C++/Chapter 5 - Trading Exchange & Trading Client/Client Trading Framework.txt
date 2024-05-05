@@ -1,0 +1,38 @@
+Client Trading Framework
+
+Components:
+
+- Building the order book
+
+
+Note that it is not strictly necessary that the client must build the entire order book, especially if the trading strategies do not require information that is that granular.
+
+A simple example of such a case would be strategies that only care about knowing the prices and/or quantity of the most aggressively priced orders – that is, the highest bid price and lowest offer price (known as Top Of Book (TOB) or Best Bid and Offer (BBO)). Another example would be strategies that only rely on trade prices to make decisions and do not require a view into the full order book.
+
+Iceberg orders are orders that have a larger hidden quantity than what is displayed in the public market data. Stop orders are orders that lie dormant and then become active when a specific price trades. Self-match prevention (SMP) is a constraint that prevents a client from trading against themselves, which some exchanges choose to enforce in the matching engine.
+
+- Building a feature engine
+
+
+The component inside the trading system that constructs and wires together a collection of such predictive signals is often referred to as a feature/signal/indicator engine.
+
+- Developing the execution logic
+
+The subcomponent in the trading infrastructure responsible for sending, modifying, and canceling orders – basically, managing a strategy’s orders at the exchange – is called the execution system
+
+- Understanding the risk management systems
+
+In practice, there are risk management systems in the client’s trading strategy framework, order gateway clients in the market participant’s system, and backend systems at the clearing broker’s end. 
+
+
+Risk based on order quantities:
+
+One measure that a lot of trading systems care about is the maximum possible quantity that the algorithm is allowed to send for a single order. 
+
+Risk based on firm positions:
+
+An obvious measure of risk is the position that a strategy has in a certain trading instrument. The size of the position directly dictates how much money is lost if the market prices change a certain amount. 
+
+
+
+
