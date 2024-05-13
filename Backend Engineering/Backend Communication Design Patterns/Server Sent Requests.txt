@@ -1,0 +1,21 @@
+What is Server Sent Events?
+
+- A response has a start and end
+- Client sends a request
+- Server sends logical events as part of response
+- Server never writes the end of the response
+- It's still a request but an unending response
+- Client parses streams data looking for an event
+- Works with request/response (HTTP)
+
+Pros
+
+- Real time
+- Compatible with Request/Response
+
+Cons
+
+- Client must be online 
+- Client might not be able to handle
+- Polling is preferred for light clients
+- HTTP/1.1 problem (6 connections)

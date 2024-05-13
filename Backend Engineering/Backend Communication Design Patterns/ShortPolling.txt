@@ -1,0 +1,17 @@
+
+
+- Client keeps checking back if the response is ready
+- Used for cases youtube video upload or doing a big operation over network
+
+
+Pros:
+
+- Client can be simple 
+- Good for long running requests
+- Client can disconnect (pending jobs can continue)
+
+Cons:
+
+- Too chatty
+- Network Bandwidth
+- Wasted backend resources (every poll means a check needs to be performed)

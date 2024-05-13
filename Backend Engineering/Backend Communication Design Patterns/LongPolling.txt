@@ -1,0 +1,23 @@
+LongPolling.txt
+
+- Used in Kafka
+
+- Request is taking long, I'll check with you later But talk to me only when it's ready
+
+What is Long Polling?
+
+- client sends a request
+- server responds immediately with a handle
+- server continues to process the request
+- client uses that handle to check for status
+- server does not reply until there is a response
+- we got a handle, we can disconnect and are less chatty
+
+Pros 
+
+- less chatty and backend friendly
+- client can still disconnect
+
+Cons
+
+- not real time
