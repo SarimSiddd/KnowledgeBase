@@ -1,0 +1,27 @@
+
+
+TCP is hitting its limit, it was meant for low bandwidth to beginwith
+
+- Data format 
+	- Text based (Json, plain text, XML)
+	- Binary (protobuf, RESP, h2 [http2], h3 [http3])
+- Transfer Mode
+	- Message based (HTTP, UDP)
+	- Stream (TCP, WebRTC)
+- Addressing System
+	- DNS name, IP, MAC
+- Directionality
+	- Bidirectional (TCP)
+	- Unidirectional (HTTP)
+	- Full/Half duplex
+- State
+	- Stateful (TCP, gRPC, apache thrift)
+	- Stateless (UDP, HTTP)
+- Routing
+	- Proxies, Gateways
+- Flow and congestion control
+	- TCP (Flow & Congestion)
+	- UDP (No Control) 
+- Error management
+	- error codes
+	- Retries and timeouts

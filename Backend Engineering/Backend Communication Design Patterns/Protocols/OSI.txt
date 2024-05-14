@@ -1,0 +1,14 @@
+OSI Model
+
+Open System Interconnection model
+
+
+
+
+Layer 7 - Application - HTTP/FTP/gPRC
+Layer 6 - Presentation - Encoding, Serialization
+Layer 5 - Session - Connection Establishment, TLS
+Layer 4 - Transport - UDP/TCP
+Layer 3 - Network - IP
+Layer 2 - Data Link - Frames, Mac Address Ethernet
+Layer 1 - Physical - Electric signals, fiber or radio waves
