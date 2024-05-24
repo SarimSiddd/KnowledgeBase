@@ -1,0 +1,21 @@
+ICMP
+
+Layer 3 protocol
+
+- Traceroute, ping
+
+internet control message protocol
+
+- only operates mac addresses, no ports
+
+
+- Designed for informational messages
+	- Host unreachable, port unreachable, fragmentation needed
+	- Packet expired (infinite loop in routers)
+- Uses IP directly
+- Doesn't require listeners or ports to be opened
+
+- Some firewalls block ICMP for security reasons 
+- Disabling ICMP can also cause real damage with connection establishment
+	- Fragmentation needed
+	- TCP blackhole

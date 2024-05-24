@@ -1,0 +1,21 @@
+- Router is responsible to route traffic from outside the network and it allows us to connect to computers outside the network.
+
+- To communicate inside the network, we just need the mac address of the machine we want to talk to
+
+- We need three things for network communication 
+ - Gateway ip
+ - ip address
+ - subnet mask
+
+255.255.255.0 is the 32-bit subnet mask where the last byte corresponds to the host.
+
+so for e.g.
+
+if 192.168.1.3 wants to talk to 192.168.2.2
+
+the subnet mask 255.255.255.0 is applied to both ip addresses to get the subnet
+
+if the subnet is different, we go to the default gateway
+
+and then to the router (with the mac address of the router)
+
