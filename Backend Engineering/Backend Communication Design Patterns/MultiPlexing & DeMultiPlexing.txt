@@ -1,0 +1,35 @@
+Multiplexing:
+
+- Multiple requests are transformed into a single request on the backend
+
+DeMultiplexing:
+
+- Single request is split into multiple requests
+
+
+MultiPlexing examples:
+
+
+In Http 1:
+
+- When multiple requests are made in the browser, the browser sends multiple requests to the server
+
+In Http 2:
+
+- When multiple requests are made, a single "pipeline" is used for these multiple requests
+
+In Backend:
+
+Multiple http 1.1 calls could be sent to a reverse proxy server which then forwards the requests to a single HTTP/2 server using a single channel
+
+ - More throughput
+ - High backend resources (CPU for h2 (only one connection in use))
+
+DeMultiplexing examples:
+
+- less throughput
+- less backend resources (CPU for h1)
+
+
+
+ 

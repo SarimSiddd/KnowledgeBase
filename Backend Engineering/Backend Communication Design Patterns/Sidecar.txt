@@ -1,0 +1,25 @@
+- Proxy communicates with the outside world instead of actual backend
+- Proxy has the rich library
+- Client has thin library (e.g. h1)
+
+Sidecar Examples
+
+- Service mesh proxies
+	- Linkerd , istio, Envoy
+- Sidecar proxy container
+- Must be Layer 7 proxy
+
+
+Pros:
+
+- Language agnostic (polygot)
+- Protocol upgrade
+- Security
+- Tracing and monitoring
+- Service discovery
+- Caching
+
+Cons:
+
+- Complexity
+- Latency

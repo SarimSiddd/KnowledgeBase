@@ -1,0 +1,16 @@
+Stateful vs Stateless protocol
+
+- The protocols can be designed to store state
+- TCP is stateful
+	- Sequences, Connection file descriptor
+- UDP is stateless
+ 	- DNS sends queryID in UDP to identify queries
+
+ - You can build a stateless protocol on top of a stateful one and viceversa
+
+ - HTTP on top of TCP
+ - IF TCP breaks, HTTP just creates another connection
+
+ - JWT (Json web token) is stateless
+
+ 

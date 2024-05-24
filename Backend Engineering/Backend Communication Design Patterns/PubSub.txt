@@ -1,0 +1,12 @@
+Pros:
+
+- Scales w/ multiple receivers
+- Great for microservices
+- Loose coupling
+- Works while clients not working
+
+Cons:
+
+- Message delivery issues (Two generals problem)
+- Complexity
+- Network saturation
