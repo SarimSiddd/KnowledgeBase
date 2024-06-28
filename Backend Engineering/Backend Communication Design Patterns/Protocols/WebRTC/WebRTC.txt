@@ -1,0 +1,58 @@
+
+
+- Find a peer-to-peer path to exchange video and audio in an effecient and low latency manner
+- Standardized API
+- Enables rich communications browser, mobile, IOT devices
+
+
+- NAT
+- STUN, TURN
+- ICE
+- SDP
+- Signaling the SDP
+
+
+Pros:
+
+- P2p is great! Low latency for high bandwidth content
+- Standardized API I dont have to build my own
+
+Cons
+
+- Maintaing STUN & TURN servers
+- Peer 2 Peer falls apart in case of multiple participants
+
+
+
+Private IP address of the router -> Gateway
+Public IP address of the router (The IP Address that the internet sees)
+
+
+The router maintains a NAT table which keeps information about the source IP address from where the request came, and the External IP it replaced it with to communicate with the "outside world"	
+
+
+NAT Translations method
+
+- One to One NAT (Full cone NAT)
+
+Packets to external IP:port always maps to internal IP:port without exceptions
+
+- Address restricted NAT
+
+Packets to external IP:port on the router always maps to internal IP:port as long as source address from packet matches the table (regardless of port)
+
+Allowed if we communicated with this host before
+
+- Port restricted NAT
+
+Packets to external IP:port on the router always maps to internal IP:port as long as source address and port from packet matches the table
+	
+allowed if we communicated with this host:port before
+
+- Symmetric NAT
+
+Packets to external IP:port on the router always maps to internal IP:port as long as source address and port from the packet matches the table
+
+Only allow if the full pair match
+
+

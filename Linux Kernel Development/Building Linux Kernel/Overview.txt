@@ -1,0 +1,37 @@
+Every Linux system, has three requirements:
+
+- A bootloader
+- An OS
+- A root filesystem
+
+It additionally has two optional components:
+
+If the processor family is ARM or PPC (32- or 64-bit), a Device Tree Blob (DTB) image file
+An initramfs (or initrd) image file
+
+
+"du -h ." - gives the size of the current directory in linux
+
+
+Cao Jin has a great diagram explaining KConfig and KBuild at a high level.
+
+
+Step 1 
+
+- Download and extract a specific Kernel from https://www.kernel.org
+OR
+- Clone Linus Trovalds or anyone else's source tree e.g. linux-next
+
+Step 2:
+
+Extract the kernel tarball
+
+
+Step 3:
+
+Configure the Linux Kernel
+
+
+- Using make localmodconfig on Linux Source Tree will result in the kernel modules loaded in memory to be used as the basis of generating a config. This means that we don't have to specify the architecture for the config (since it gets it from the current OS).
+
+Different configs can have different config options depending on the loadable modules (so one might see different options when running make menuconfig on x86 vs running it on arm64)

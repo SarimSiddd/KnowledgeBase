@@ -1,0 +1,34 @@
+
+Taking HTTP/2 to the next level
+
+
+Why gRPC was invented?
+
+- Client library: One library for popular language
+- Protocol: HTTP/2 (hidden implementation)
+- Message format: Protocol buffers
+
+gRPC modes
+
+- Unary RPC
+- Server streaming RPC
+- Client streaming RPC
+- Bidirectional streaming RPC
+
+
+Pros
+
+- Fast and compact
+- One client library
+- Progress feedback (upload)
+- Cancel Request (H2)
+- H2/protobuf
+
+Cons
+
+- Schema
+- Thick client
+- Proxies
+- Error handling
+- No native browser support
+- Timeouts (pub/sub)

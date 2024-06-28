@@ -1,0 +1,6 @@
+Traversal using relays around nat
+
+- in case of symmetric NAT we use TURN
+- It's just a server that relays packets
+- TURN default server port 3478, 5349 for TLS
+- Expensive to maintain and run

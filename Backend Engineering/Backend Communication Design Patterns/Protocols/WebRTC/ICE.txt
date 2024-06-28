@@ -1,0 +1,9 @@
+ICE.txt
+
+
+Interactive Connectivity Establishment
+
+ - ICE collects all available candidates (local IP Addresses, reflexive addresses - STUN ones and relayed ones - TURN)
+
+ - Called ice candidates
+ - All the collected addresses are then sent to the remote peer via SDP

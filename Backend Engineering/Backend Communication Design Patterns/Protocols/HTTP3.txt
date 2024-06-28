@@ -1,0 +1,21 @@
+HTTP over QUIC Multiplexed Streams
+
+
+- HTTP/3 uses QUIC
+- Like HTTP/2 QUIC has streams
+- But QUIC use UDP instead
+
+
+Pros and Cons:
+
+- QUIC has many other benefits
+- Merges connection setup (virtual connection concept) + TLS in one handshake
+- Has congestion control at stream level
+- Connection migration (Connection ID)
+
+Why not HTTP/2 over QUIC
+
+- Header compression algorithm
+- Take alot of CPU usage (parsing logic)
+- UDP could be blocked in enterprise systems
+- IP Fragementation is the enemy (if UDP datagrams exceed the MTU size, the datagrams are broken down into different segments which QUIC does not allow)

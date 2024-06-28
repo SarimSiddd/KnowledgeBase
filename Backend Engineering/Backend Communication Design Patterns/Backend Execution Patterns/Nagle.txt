@@ -1,0 +1,12 @@
+- In the telnet days sending a single byte in a segment is a waste
+- Combine small segments and send them in a single one
+- The client can wait for a full MSS before sending the segment
+- No wasted 40 bytes header ( IP + TCP ) for a few bytes of data
+
+
+Disabling Nagle's algorithm
+
+- most clients today disable NAgle's algortitm
+- I rather get performance than small bandwidth-
+- TCP_NODELAY
+- Curl disabled this in 2016 because it slowed down their TLS handshake

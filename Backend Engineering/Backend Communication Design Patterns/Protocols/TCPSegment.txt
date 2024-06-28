@@ -1,0 +1,15 @@
+TCP Segment
+
+- TCP segment header is 20 bytes and can go up to 60 bytes
+- TCP segment slides into an IP Packet as "data"
+- port are 16 bit (0 to 65535)
+- Sequencing, acknowledgement, flow control and more
+
+
+Maximum segment size
+
+- Segment size depends on the MTU of the network
+- Usually 512 bytes, can go upto 1460 bytes
+- Default MTU on the internet is 1500 bytes (results in MSS 1460)
+- Jumbo frames MTU goes to 9000 or more 
+- MSS can be larger in jumbo frames cases

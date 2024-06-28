@@ -1,0 +1,12 @@
+STUN
+
+
+Session traversal utilities for NAT
+
+- Tell me my public IP Address/port through NAT
+- Works for Full-cone, Port/Address restricted NAT
+- Doesnt work for symmetric NAT
+- STUN server port 3478 5349 for TLS
+- cheap to maintain
+
+

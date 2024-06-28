@@ -1,0 +1,10 @@
+Single listener but multiple worker threads
+
+e.g. Memcached
+
+
+One thread listens and accepts connections while other threads are the worker threads
+
+Problems:
+
+One worker thread might take too much cpu time

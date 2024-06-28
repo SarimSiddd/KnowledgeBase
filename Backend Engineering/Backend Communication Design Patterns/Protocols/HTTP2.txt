@@ -1,0 +1,18 @@
+
+
+Can send all requests at the same time on the same connection. Each connection has a streamID that uniquely identifies it
+
+Pros
+
+- Multiplexing over single connection
+- Compression (Headers & data)
+- Server push
+- Secure by default
+- Protocol Negotiation during TLS (ALPN)
+
+Cons
+
+- TCP head of line blocking (requests that are sent on the same connection are ordered by the server, if any of the requests drops packets - the server will request all of the requests to be resent)
+- Server push never picked up
+- High CPU usage
+

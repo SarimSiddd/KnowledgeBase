@@ -1,0 +1,26 @@
+Static Analyzers
+
+
+
+- LTTng - The Linux Trace Toolkit next generation
+
+use with Trace Compass GUI
+
+
+- Procmap ( See VAS information about a process)
+
+- SEALS (Simple Embedded ARM Linux System)
+
+- BPF - Effectively trace network packets
+
+ use with BCC and bftrace
+
+ - Linux Driver Verification Service
+
+Here are some useful links on the LDV website:
+• The Linux Verification Center home page: http://linuxtesting.org/
+• Linux Kernel Space Verification: http://linuxtesting.org/kernel
+• Online Linux Driver Verification Service page with verified rules: http://linuxtesting.org/
+ldv/online?action=rules
+• Problems in Linux Kernel page; lists over 400 issues found in existing drivers (mostly fixed as
+well): http://linuxtesting.org/results/ldv

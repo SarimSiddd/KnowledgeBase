@@ -1,0 +1,15 @@
+
+
+- Retrying a request should not result in a change in the state of the backend
+
+- Easy implementation send a requestId
+
+- If requestID has been processed return
+
+- Also known as idempotency token
+
+In HTTP
+
+- GET is idempotent
+- POST isn't, but we can make it
+- Browsers and proxies treat GET as idempotent
