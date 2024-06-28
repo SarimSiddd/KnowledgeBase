@@ -1,0 +1,30 @@
+The anatomy of the IP Packets
+
+There is no state in IP
+
+- The IP Packet has headers and data sections
+- IP Packet header is 20 bytes (can go up to 60 bytes if options are enabled)
+- Data section can go up to 65536 (avg is 1500 bytes)
+
+
+MTU - Maximum transmission unit
+
+If an IP packet cross the threshold of the MTU, then we need to send the same data in two different frames but in the same packet, this is called fragmentation. There is no guarantee that the frames will be in order and its dangerous to reassemble the packets.
+
+There is a flag in the IP packet which is set by the client which allows the receiver to just drop the packet if it doesn't fit into one frame.
+
+
+TTL - Time to live
+
+Without TTL its possible the packets are infintely routed, since there is no state being maintained in the IP packets. With TTL we minus 1 from the packet's time to live everytime it makes a hop
+
+if TTL is exceeded, an ICMP message is sent to the host
+
+spoofing - changing the source ip address to anything you wanted.
+
+Congestion - IP packets begin to drop, can be because the packets are too large, the buffers are being overflowed causing congestion. (ECN - Explicit congestion notification)
+
+
+
+
+
