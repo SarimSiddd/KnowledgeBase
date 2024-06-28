@@ -1,0 +1,26 @@
+
+
+HTTP 1.1;
+
+ - Persisted TCP connection
+ - Low latency & CPU Connection
+ - Streaming with chunked transfer
+ - Pipelinning (disabled by default)
+ - Proxying and multi-homed website
+
+
+ HTTP 2:
+
+ - SPDY
+ - Compression
+ - Multiplexing
+ - Server push (not supported anymore)
+ - Secure by default
+ - Protocol negotiation during TLS
+
+
+ HTTP over QUIC (HTTP/3)
+
+ - Replaces TCP with QUIC (UDP with congestion control)
+ - ALL HTTP/2 feature
+ - Without HOL

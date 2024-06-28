@@ -1,0 +1,14 @@
+Process vs Thread
+
+
+- A thread is a LWP (Light weight process) in Linux
+- Shares memory with parent process
+- Has a ID
+
+
+Multi-Processes
+
+- Processes can also share a pool of memory between them (e.g. Nginx & postgres)
+- Take advantage of multi-cores
+- More memory but isolated
+- Redis backup routine (COW)

@@ -1,0 +1,6 @@
+Multiple listeners on the same port
+
+- SO_REUSE_PORT can be used to share the port between multiple processes
+- The OS will start creating multiple accept queues for each process
+- OS acts as a load balancer here
+- Default in most proxies (Nginx etc.) - called socket sharding

@@ -1,0 +1,27 @@
+Send and receive buffers.
+
+Kernel creates 4 queues, SYN, ACCEPT, SEND, RECEIVE
+
+- Client sends data on a connection
+- Kernel puts data in receive queue
+- Kernel ACKs (may delay) and update window
+- App calls read to copy the data (Kernel space to User space)
+- Application library descrypts the raw bytes and parses them
+
+- zero copy - data is placed in shared address space between Kernel and Userspace and Kernel shares a pointer to this data
+
+- Read would be a blocking call but we can take advantage of things like epoll, io_uring, io_completion
+
+
+
+Send buffers
+
+- buffer from user space is copied to Kernel space
+- the buffer isn't sent immediately but waits to populate the buffer and send it (Nagle's algorithm - trade off between effeciency and latency)
+
+
+Problems with reading and sending
+
+- Backend doesn't read fast enough
+- Receive queue is full
+- Client slows down

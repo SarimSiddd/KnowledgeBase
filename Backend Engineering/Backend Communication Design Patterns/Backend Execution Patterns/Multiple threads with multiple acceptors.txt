@@ -1,0 +1,7 @@
+Multiple threads with multiple acceptors
+
+NGINX
+
+Each thread has access to the same socket objects
+
+Accept queue lock is utilized so there's no data race

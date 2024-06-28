@@ -1,0 +1,32 @@
+
+- Server listens on address::port
+- Client connects
+- Kernel does the handshake creating the connection
+- Backend process "accepts" the connection
+
+
+
+Connection Establishment
+
+- Kernel creates a socket and two queues SYN & ACCEPT (Live in the kernel)
+- Client adds a SYN
+- Kernel adds to SYN queue, replies with SYN/ACK
+- Client replies with ACK (after matching the SYN/ACK against its own SYN queue)
+- Kernel finds the ACK matching it with its own SYN queue
+- Kernel finishes the connection
+- Kernel removes SYN from SYN queue (no longer required)
+- Kernel adds full connection to the ACCEPT queue
+- Backend accepts a connection, removed from accept queue (we are in application layer here)
+- A file descriptor is created for the connection (uniquely identifies the connection)
+
+
+
+Nginx etc try to accept as fast as possible, to make sure ACCEPT queue dont get full
+
+
+problems with accepting connections
+
+- Backend doesnt accept fast enough
+- SYN flooding
+- small backlog (queue sizes)
+

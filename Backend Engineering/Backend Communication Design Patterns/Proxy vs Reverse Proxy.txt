@@ -1,0 +1,32 @@
+Proxy vs Reverse Proxy
+
+
+- Client -> Proxy -> Server
+
+
+Client knows the destination is the specified server but server does not have client information due to the client
+
+UseCases:
+
+- Caching
+- Anonymity
+- Logging
+- Block Sites
+- Microservices
+
+
+- Client -> Reverse Proxy -> Server 1, Server 2 ... etc.
+
+
+Server has client information but client has no information about the server doing the actual processing
+
+
+Usecases:
+
+
+- Caching (DNS)
+- Canary
+- Ingress
+- Load Balancing
+- Microservices
+

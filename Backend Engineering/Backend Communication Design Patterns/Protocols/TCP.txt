@@ -1,0 +1,33 @@
+
+Transmission control protocol
+
+- Layer 4 protocol
+- Ability to address processes in a host using ports
+- "Controls" the connection unlike UDP which is a firehose
+- Connection
+- Requires handshake
+- 20 bytes header segment (can go to 60)
+- Stateful
+
+
+Use cases
+
+- Reliable communication
+- Remote shell
+- Database connections
+- Web communications
+- Any bidirectional communication
+
+- Connection is a layer 5 (session)
+- Connection is an agreement between server and client
+- Must create a connection to send data
+- Connection is identified by 4 properties
+	- SourceIP-SourcePort
+	- DestinationIP-DestinationPort
+
+- Can't send data outside of a connection
+- Sometimes called socket or file descriptor
+- Requires a 3-way TCP handshake
+- Segments are sequenced and ordered
+- Segments are acknowledged
+- Lost segments are retransmitted

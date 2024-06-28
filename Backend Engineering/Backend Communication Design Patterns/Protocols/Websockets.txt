@@ -1,0 +1,17 @@
+Pros:
+
+- Full-duplex (no polling)
+- HTTP compatible
+- Firewall friendly
+
+Cons:
+
+- Proxying is tricky
+- L7 LB challenging (timeouts)
+- Stateful, difficult to scale horizontally
+
+Do we need to use Websockets:
+
+- Rule of thumb - do you absolutely need bidirectional communication?
+- Long polling
+- Server Sent Events
