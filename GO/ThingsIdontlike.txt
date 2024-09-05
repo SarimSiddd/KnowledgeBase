@@ -1,0 +1,6 @@
+
+
+1. Structs that we want to be exported as json need to have field names that start with a capital letter
+2. go::Embed using directives that are written as comments
+3. no operator overloading
+4. the _test and _benchmark bullshit
