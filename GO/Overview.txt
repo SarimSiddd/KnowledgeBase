@@ -1,0 +1,74 @@
+
+
+All go files belong to a "package"
+
+Imports are done using the keyword import
+
+Functions dont need to have return types in their definition e.g. func main
+
+Compiler can infer the type of a variable (e.g. var string = "str");
+
+We can also specify the type of the variable to avoid ambiguity (e.g. var x,y int = 5,4);
+
+Variables are default initialized depending on the type inferred by the compiler
+
+Constants are defined with the "const" keyword
+
+All blocks require the "{}" block operators and generate compiler errors without them	
+
+There is no ternary if in go
+
+
+In Go, an array is a numbered sequence of elements of a specific length. In typical Go code, slices are much more common; arrays are useful in some special scenarios.
+
+
+Pointers are also present in GO and references are passed as pointers in go.
+
+
+A Go string is a read-only slice of bytes. The language and the standard library treat strings specially - as containers of text encoded in UTF-8. In other languages, strings are made of “characters”. In Go, the concept of a character is called a rune - it’s an integer that represents a Unicode code point. This Go blog post is a good introduction to the topic.
+
+strings are equivalent to []byte
+
+Go supports interfaces and duck typing
+
+any is an alias for interface{}
+
+Generic programming is possible in GO
+
+errors.Is used for fmt.Error and errors.As used for custom errors
+
+Go supports goroutines (co-routines) and channels for communicating between go-routines to manage input/output from the goroutines
+
+By default sends and receives block until both the sender and receiver are ready. 
+
+By default channels are unbuffered
+
+When waiting for multiple goroutines to finish, you may prefer to use a WaitGroup.
+
+
+Go’s select lets you wait on multiple channel operations. Combining goroutines and channels with select is a powerful feature of Go.
+
+Reading from a closed channel succeeds immediately, returning the zero value of the underlying type. The optional second return value is true if the value received was delivered by a successful send operation to the channel, or false if it was a zero value generated because the channel is closed and empty.
+
+its possible to receive the remaining values from a channel even though it has been closed
+
+if a WaitGroup is explicitly passed into functions, it should be done by pointer
+
+The primary mechanism for managing state in Go is communication over channels. There are a few other options for managing state though like sync/atomic package
+
+For more complex syncing operations mutexes can also be used
+
+stateful goroutines are another way of managing concurrent programs
+
+defer is often used where e.g. ensure and finally would be used in other languages.
+
+A recover can stop a panic from aborting the program and let it continue with execution instead.
+
+Text templates can be used for producing structured text via a template (could be useful in logging?)
+
+Embed allows us to embed the go binary with any files or folders that we need
+
+test files need to have _test and benchmark files need to have _bench as postfixes, method names also need to be prepended with Test if they need to be tested
+
+A Context carries deadlines, cancellation signals, and other request-scoped values across API boundaries and goroutines.
+
