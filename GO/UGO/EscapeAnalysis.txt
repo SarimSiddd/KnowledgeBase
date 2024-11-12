@@ -1,0 +1,13 @@
+Stack is
+
+- Fast (memory is already there)
+- Self cleaning (Garabage collector doesnt get involved, memory is cleaned on the way down i.e. function scope ends, and memory is escaped as it goes up i.e. function calls another function before the scope ends)
+
+
+Escape Analysis means the value has to be constructed on the heap since allocating it on the stack would cause integrity issues
+
+
+When a value could be referenced after the function that constructs the value returns.
+When the compiler determines a value is too large to fit on the stack.
+When the compiler doesn’t know the size of a value at compile time.
+When a value is decoupled through the use of function or interface values.

@@ -1,0 +1,8 @@
+Garbage collector can take up to 25% of your cpu
+
+Smallest heap possible at a reasonable pace to minimize "stop the world latency" should be equal to or less than 100 microseconds
+
+Pacing algorithm, Live Heap
+
+GOGC - heap option
+

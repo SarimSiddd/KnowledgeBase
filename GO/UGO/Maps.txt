@@ -1,0 +1,5 @@
+
+
+- Range access over maps is randomized but we can use sort package to sort
+- Maps cant be used when they are zero valued even though slices can be
+- key has to be hashable 

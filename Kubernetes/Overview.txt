@@ -1,0 +1,115 @@
+- Developed by google, given to CNCF (Cloud native compute foundation)
+- Kubernetes means Pilot or Helmsman
+- Written in GO for planet-scale deployment
+- Used by Spotify
+- Can be on-prem, public cloud or hybrid
+
+
+PROs:
+- Auto scaling
+- Multiple replicas of the same application running
+- Highly available and resilient
+- no downtime upgrades
+
+
+Ways to deploy:
+
+Deployment
+- Replicas
+- No downtime upgrades
+
+DaemonSets
+- One pod per node
+- Background processes
+
+Job
+- Runs until completion
+- Deletes pod
+
+
+Alternatives to Kubernetes:
+
+- Openshift 
+
+
+Other CNCF Open source projects:
+
+- Helm
+- Prometheus
+- Linkerd
+
+MiniKube can be used to run Kubernetes locally, it creates a cluster for us
+
+In production scenarios we'll use the cloud providers provided tool to generate the cluster for us  
+
+
+POD -> Are the resource that run our application and microservices
+Services -> Act as loadbalances in the cluster and direct traffic to pods (public and static IP Address)(3 types- LoadBalance, NodePort and ClusterIP)
+Namespaces -> Organize services and microservices like development and production
+
+
+Can use busybox for troubeshooting
+
+Event log for a pod will show as empty if the pod has been running for a long time
+
+
+Control Plane:
+
+Cluster - instance of Kubernetes
+Each cluster has a control plane and atleast one worker node
+
+Control plane is air traffic control tower
+Worker nodes are like individual terminals
+
+Control plane consists of :
+
+- kube api server, exposes kubernetes api (REST) - kubectl and kubedm allow us to hit this endpoint
+- etcd, contains all state information maintained by kubernetes, can only be accessed with the kube api
+- sched, identifies newly created pods and assigns them worker nodes
+- cm, control manager, in charge of maintaing a good system state e.g. in case a node is misbehaving, it is responsible for replacing it
+- ccm, cloud control manager, allows to connect to a cloud provider
+
+
+Note: Some cloud providers hide control plane pods since they handle the maintenance for you  
+
+Worker Nodes:
+
+Each cluster has at least 3 worker nodes
+
+Each Node has the following components:
+
+Kubelet:
+
+- An agent that runs on every worker node
+- Makes sure that containers in a pod are running and healthy
+- Communicates directly with the api-server in the control plane
+
+Container runtime:
+
+-A kublet assigned to a new pod starts a container using Container Runtime Interface (CRI)
+
+- CRI enables the Kublet to create containers with the engines:
+ - Containerd
+ - CRI-O
+ - Kata Containers
+ - AWS Firecracker
+
+Note: IN AWS v1.24 Dockershim was removed as a supported container runtime but docker images can still be used
+
+Kube Proxy
+
+- Makes sure pods and services can communicate
+- Each Kube proxy communicates directly with the Kube-apiserver
+
+
+--- Ways to connect with a datasource
+
+- A database indepedent of your cluster
+- Kubernetes persistent Volumes - Allows pods to share state between them
+
+
+
+
+
+
+

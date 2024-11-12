@@ -1,0 +1,51 @@
+Historically cache lines have been 64 bytes
+
+How can we get the data in the L1/L2 cache lines before we need it?
+
+Predictable access patterns (Predictable stride)
+
+- Prefetchers love arrays
+- Most important datastructure in hardware
+- Slices are just arrays behind the scenes (most important in go)
+
+Reference types are datastructures in go that deal with pointers instead of values. The reference types in go are:
+
+
+1) functions
+2) slices
+3) maps
+4) channels
+5) interface values
+
+They are set to 'nil' when initialized to their zero value. We use "make" when to create reference types
+
+
+Another cache is the TLB
+
+There are two forms of the range based for loop, the value semantic form and the pointer semantic form:
+
+	// Using the pointer semantic form of the for range.
+	friends := [5]string{"Annie", "Betty", "Charley", "Doug", "Edward"}
+	fmt.Printf("Bfr[%s] : ", friends[1])
+
+	for i := range friends {
+		friends[1] = "Jack"
+
+		if i == 1 {
+			fmt.Printf("Aft[%s]\n", friends[1])
+		}
+	}
+
+	// Using the value semantic form of the for range.
+	friends = [5]string{"Annie", "Betty", "Charley", "Doug", "Edward"}
+	fmt.Printf("Bfr[%s] : ", friends[1])
+
+	for i, v := range friends {
+		friends[1] = "Jack"
+
+		if i == 1 {
+			fmt.Printf("v[%s]\n", v)
+		}
+	}
+
+

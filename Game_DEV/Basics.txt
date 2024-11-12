@@ -1,0 +1,20 @@
+
+- Compiler can only see translation units (c/c++ files)
+
+When building machine executable code from cpp files,
+
+The first thing that is run is the preprocessor
+
+One extremely powerful feature of all modern C++ preprocessors is the ability to define preprocessor macros via command-line options (and hence via build configurations)
+
+The preprocessor is reponsible for unpacking all the "#define ...", "#include ..." definitions, in case of #include directive, this results in the relevant definition being pasted directly in the source file
+
+The compiler then builds these translation units and generates relative memory addresses (where everything should be in relation to everything else when the program is actually run)
+
+local (compile-time) and global (link-time) optimizations allow for more optimized code
+
+The linker then searches for the actual function definitions that should exist "somewhere" inorder for the code to actually be executed
+
+The compiler can also be told whether or not to expand inline functions. When inline function expansion is turned off, every inline function appears only once in memory, at a distinct address. This makes the task of tracing through the code in the debugger much simpler, but obviously comes at the expense of the execution speed improvements normally achieved by inlining.
+
+Linker options also control things like stack size, the preferred base address of your program in memory, what type of machine the code will run on (for machine-specific optimizations), whether or not global (link-time) optimizations are enabled, and some other minutia with which we will not concern ourselves here.

@@ -1,0 +1,9 @@
+Global counters being accessed by multiple processors at the same time results in memory thrashing and cache coherency problem
+
+Data access patterns which are unique but fall on the same cache line will result in false sharing.
+
+
+
+
+
+https://learning.oreilly.com/videos/ultimate-go-programming/9780135261651/9780135261651-UGP2_01_09_01/

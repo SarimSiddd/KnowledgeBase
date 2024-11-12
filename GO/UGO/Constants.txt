@@ -1,0 +1,12 @@
+Only exist at compile time
+We have untyped and typed constants
+
+untyped constants are implicitly converted
+
+untyped constants have 256 bits of precision, but they only exist at compile time
+
+This is why enums are not allowed in go
+
+Interesting keywords:
+
+Kind promotion

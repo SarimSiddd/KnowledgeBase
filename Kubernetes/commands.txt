@@ -1,0 +1,27 @@
+kubectl cluster-info -> Get ip information about where the cluster is running
+kubectl get nodes -> Get information about the cluster, the kube version 
+kubectl get namespaces -> Get all namespaces
+kubectl get pods -A ->  List all pods in all namespaces
+kubectl get services -A -> List all services in all namespaces
+kubectl delete -f namespace.yml -> Delete namespaces from a namespace.yml file
+kubectl get <resource name> -n <namespace> -> Get all pods in the development namespace in deployment, Resouce name can be anything (pods, depolyments, services)
+kubectl get pods -n <namespace> -> Get all pods from the specified namespace -o wide (for more info)
+
+---- INTERNAL
+
+kubectl api-resources -> show all kubernetes resources
+kubectl get pods -n kube-system -> show all pods running in the kubernetes internal system
+
+---- DESTRUCTION
+
+kubectl delete -f 'filename' -- delete the file name
+
+
+
+--- TROUBLE SHOOTING ---
+
+kubectl describe pod <podname> -n <namespace> -> Describes the pod in detail
+kubectl exec -it busybox-574654f4cb-gxkqn -- /bin/sh -> Access the shell terminal for busybox and make a wget request to the pod that you want to troubleshoot
+kubectl logs <podname> -n <namespace> -> get application logs for the particular pod
+
+

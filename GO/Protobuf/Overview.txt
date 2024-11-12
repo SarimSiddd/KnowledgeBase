@@ -1,0 +1,29 @@
+Protobuf is a binary protocol developed by Google to be used with gRpc.
+
+It allows automatic creation of go schema files from protobuf files (using protoc)
+
+These files contain the schema definition of api calls between clients and the server
+
+.proto->.protoc->.go
+
+protocol buffers always use pointers because they contain a lock that cannot be copied
+
+Never copy protocol buffer struct 
+
+gRPC is a replacement protocol for http
+
+//go:generate mkdir -p pb
+//go:generate protoc --go_out=pb ./invo.proto
+
+Adding reflection means the client can dynamically access the grpc service without needing the protobuf definition
+
+Context#WithValue can be used to pass metadata, gRPC has its own status codes like HTTP
+
+gRPC supports
+
+- streaming
+- req/response (unary, bidrectional, server streaming, client streaming)
+
+middlewares are called interceptors in grpc
+
+grpc gateway can be used for a http client that communicates via json
