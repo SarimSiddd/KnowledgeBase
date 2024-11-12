@@ -1,0 +1,4 @@
+Frames are not dynamic, if compiler doesnt know the size of the type at compile time, the compiler will need to allocate it on the heap
+
+The maximum call stack in go is 2k, if this stack space is exceeded, GO will allocate a new stack that is 25% larger and all the frames from the previous stack is copied over
+

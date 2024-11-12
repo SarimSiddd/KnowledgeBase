@@ -1,0 +1,14 @@
+- OS schedulers are preemptive schedulers and don't have deterministic behavior
+- Context switches are very expensive(Save state, replace state)
+- Threads/paths of execution have a state that tells the scheduler if its available to be run or not (e.g. runnable, running, waiting etc)
+- One core can execute only a single path of execution
+- Multicore processors allow for multiple paths of execution to run in parallel, multiple cores also mean we need to consider the distance between each core
+
+
+- Run queues are there on the core level, and on the processor level. The threads are put into these run queues to be executed by the OS Core in the order that is decided by the scheduler
+
+
+- Understand the workload (CPU Bound vs I/O Bound)
+- Thread pools are generally what we used for this problem
+- Less is more in terms of threads
+- 

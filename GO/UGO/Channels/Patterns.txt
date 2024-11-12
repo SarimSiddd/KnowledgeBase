@@ -1,0 +1,28 @@
+Basics:
+
+1. waitForTask()
+
+2. waitForResult()
+
+3. waitForFinished() or waitGroups
+
+
+Pooling:
+
+- Have multiple GoRoutines waiting for some work from a 'queue', as soon as some work arrives - a goroutine is assigned to it
+
+Fan out pattern:
+
+- Not great for webservices
+- Create multiple GoRoutines from the main thread which work simultaneously on the buffer specified and write back the result
+
+Drop Pattern:
+
+- good for a DNS server
+- Allows us to specify a maximum capacity after which we start dropping requests
+- Help reduce backpressure
+
+Cancellation pattern:
+
+- Allows us to cancel a running go routine for any reason e.g. it takes too long
+- Important for timeout

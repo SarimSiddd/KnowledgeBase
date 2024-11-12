@@ -1,0 +1,29 @@
+24 byte data structure
+
+has three things
+
+- pointer to underlying datastructure e.g. array
+- length i.e. how many elements the structure has
+- capacity
+
+Capacity can be larger than length but not the other way around
+
+var data [] string -> initializes length and capacity to zero and pointer to nil
+data := []string{} -> pointer now points to an empty struct (an 8 byte global value defined by the compiler)
+
+This distinction is important for checking the result of functions i.e. the function returned nil vs the function returned no result
+
+
+Memory leaks:
+
+1) not closing the channel
+2) append doesnt return the same array it modifies
+3) Not calling close on other occasions
+
+
+Doubles until 1024, but then switches over to 25% growth
+
+
+- 3 index slices are great to avoid sideeffects when copying slices since they result in a copy being made
+- Invalid references can result in old pointers becoming invalid e.g. pointer pointing to a slice value after which append is called where length == capacity (slice is reallocated)
+- array[:] -> results in a slice, "arrays are slices waiting to happen"

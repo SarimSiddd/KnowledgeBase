@@ -1,0 +1,23 @@
+1. When Go Starts up a logical processor is assigned to it
+2. A thread of execution (M) from the processor is assigned from the logical processor (P)
+3. A thread of execution means the program will be executed on a core (C)
+
+GRQ (Global Run Queue)
+
+LRQ (Local Run Queue) - derives from the logical processor
+
+When a new goroutine is created, it is added to the LRQ
+
+Goroutines can also be put in the GRQ incase a P hasn't taken it yet
+
+Since GO runs on the user level, the GO scheduler is a cooperative scheduler (looks and feels like a preemptive scheduler)
+
+
+go
+GC
+syscalls
+Blocking
+
+
+
+Net Poller is responsible for handling waiting goroutines

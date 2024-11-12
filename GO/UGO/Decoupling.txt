@@ -1,0 +1,48 @@
+
+
+- Use value semantics for built in typed
+- Value semantics for reference types. Can use pointer semantics for arrays and slices for umarshalling or decoding
+- Struct types - prefer to be value but can be pointer. Not sure -> pointer then value
+- Cost of decoupling is allocation & indirection
+
+
+-- Emebdding
+
+Embedding allows inner types to be directly exposed through the outer type
+
+type admin struct {
+	
+    user,
+    name string
+}
+
+-- Export 
+
+if type is lowercase in the package, then type is not exported
+if its uppercase then it is exported
+
+
+
+Factory method should be right after the type and should define the semantics you want to use
+
+
+--- POLYMORPHISM
+
+- Go achieves polymorphism with ducktyping
+- Interface types consist of two pointers:
+- The first pointer points to an iTable which has the name of the concrete type and a pointer to the function
+- The second pointer points to an allocation of the conrete type 
+
+
+--- METHOD SETS
+
+- Method sets for value semantic methods work for both values and pointers
+- Method sets for poitner receiver methods work for only pointers 
+
+--- GUIDELINES
+
+- Declare types that represent something new or unique (e.g. Duration as int64 is time in nanoseconds)
+- Validate that a value of any type is created or used on its own
+- Embed types to reuse existing behaviors you need to satisfy
+- Question types that are an alias or abstraction for an existing type
+- Question types whose sole purpose is to share common state

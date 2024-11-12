@@ -1,0 +1,8 @@
+
+- Atmoics can only be 4 or 8 bytes of memory (useful for small counters etc.)
+- For anything bigger we will have to use mutexes
+- All synchronization is at the memory level
+- Race dectector (go build -race)
+
+
+https://github.com/ardanlabs/gotraining/tree/master/topics/go/concurrency/data_race

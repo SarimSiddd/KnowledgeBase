@@ -1,0 +1,8 @@
+--- -> means new document, a file can have multiple documents
+# -> comments
+a sequence:
+
+courses:
+	- L
+	- D
+

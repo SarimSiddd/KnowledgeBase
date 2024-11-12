@@ -1,0 +1,3 @@
+Very helpful diagrams here:
+
+https://github.com/ardanlabs/gotraining/blob/master/topics/go/concurrency/channels/README.md

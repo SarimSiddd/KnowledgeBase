@@ -1,0 +1,16 @@
+A literal struct (unnamed type in GO):
+
+	e1 := struct {
+		value1 int64
+		value2 string
+		value3 int64
+	}{
+		value1: 50,
+		value2: "Hello",
+		value3: 20,
+	}
+
+
+When dealing with unnamed types in GO, implicit conversion is allowed. (this is because functions are also unnamed types and we pass functions to functions)
+
+In all other cases explicit conversion is necessary
