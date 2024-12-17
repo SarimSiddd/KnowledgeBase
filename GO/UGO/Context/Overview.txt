@@ -1,0 +1,27 @@
+
+- allows cancellation and deadline on goroutines
+- any api that does I/O should take context as its first argument
+- never hide data in the context
+- careful when using value bag
+
+
+Background:
+
+- parent/background context
+- empty context
+- value semantics
+
+TODO:
+
+- when you dont know where the context will come from
+- to lay it in early
+
+
+context.WithTimeout:
+
+- Enforces a deadline time that the goroutine has to complete in
+- The goRoutine that creates the context needs to defer cancel
+
+Transport:
+
+- Pool of socket connections
