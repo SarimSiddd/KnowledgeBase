@@ -1,0 +1,22 @@
+- tests need to be '*_test.go' format
+- wont be compiled into the production binary
+- package name should be the same as the package we are testing if we want to test the unexported functionality
+- should be in the scheme of 'example1_test' if we want to test from the user perspective
+- Test functions should be in the format: 'TestDownload' otherwise they will not be exported (test tool will not find them)
+
+
+Table tests:
+- Myriad of tests with multiple inputs and outputs
+
+
+- Don't mock databases
+- Dont mock services with specific protocols (use a docker instead)
+
+doc.go for adding documentation
+
+
+coverage:
+
+go test -cover
+go test -coverprofile c.out <- creates a cover profile
+go tool cover -html c.out <- generate html profile from c.out
