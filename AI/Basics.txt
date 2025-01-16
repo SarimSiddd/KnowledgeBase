@@ -1,0 +1,20 @@
+RAG - Retrieval Augmented Generation
+
+- Allows for semantic search
+- Allows us to supply the model that will answer the question with context
+- Don't need to repeatedly give huge context to the model, only need to give the necessary context
+
+Transformer
+
+- Transforms text,audio,video etc. to a different space (e.g. text to 3D vector space)
+
+Agent
+
+- Agentic (Can interact with their environment)
+- Can use tools (function calls) to interact with the environment e.g. Asking an agent to open the browser can make the agent call a function that will allow it to open the browser
+- Can combine multiple agents together, passing data from one agent to another
+
+
+Chains
+
+Chains in LangChain are sequences of operations that combine different components (like retrieving documents, formatting prompts, calling LLMs) into a single workflow
