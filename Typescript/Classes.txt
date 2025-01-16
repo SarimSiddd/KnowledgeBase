@@ -1,0 +1,19 @@
+Constructor - special method used to initialize the class instance
+
+Methods - functions defined within the class to perform a task
+
+extends - keyword to create child classes
+
+There are two different ways to initalize classes:
+
+1) Using the constructor for the class
+
+
+2) Using the static property method
+
+let p = {
+	name : "xyz"
+}
+
+- Using the static property method means the constructor will not be called
+- Inheritance does not take place

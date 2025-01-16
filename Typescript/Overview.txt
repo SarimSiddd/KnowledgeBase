@@ -1,0 +1,106 @@
+let: declares a block-scoped variable, optinally initializing it to a value. let variable can be reassigned
+const: declares a block-scoped constant. Once assigned, const variables cannot be reassigned
+
+
+Defining a variable is done in TypeScript can be done either using a type or omitting it. If omitted, the interpreter will set the type according to the type of variable it was defined with.
+
+let stringOrNumber = "this is a string!";
+
+let name: string = "JJ";
+
+For example, to create a variable that can hold either null or a number, use the following notation:
+
+let numberOrNull: number | null;
+
+
+Basic Types
+
+
+Number: All numbers in TypeScript are floating-point values. These can be integers, decimals, etc.
+
+String
+
+Boolean
+
+Any
+
+arrays: For collections of values, denoted by Type[] or Array<Type>.
+
+
+Arrow functions
+
+
+Arrow functions in TypeScript differ from regular functions when used in objects - they do not manipulate the this value and use the same scope as the parent function. However - this trait should not conern you if you are not using objects in TypeScript.
+
+const add = (a: number, b: number): number => {
+    return a + b;
+}
+
+Arrow functions also support a shorter form - if the function is an expression and not a code block denoted using curly braces, it will return that expression as the output of the function.
+
+
+const add = (a: number, b: number): number => a + b;
+
+----
+
+Types and interfaces
+
+can create types using the 'type' keyword
+
+can create interfaces using the 'interface' keyword and have functions defined inside
+
+
+---
+
+Reference & Value types
+
+- Only objects are arrays use reference semantics,  primitive (array, strings, number) don't use references
+
+
+---
+
+Pointers and optionals
+
+
+Null or undefined properties And Optional properties
+
+Nullable type:
+
+let nullableString : string | null = null;
+
+Optional property:
+
+interface User {
+	
+	name:string;
+	age?:number; //optional property 
+}
+
+----
+
+Difference between let and var
+
+let - has block scope
+var - has function scope
+
+var is hoisted (moved to the top of the scope), let is not
+
+----
+
+Falsy values:
+
+false
+0
+NaN (the "not a number" value)
+"" (empty string)
+[] (empty array)
+null
+undefined
+
+All other values are truthy
+
+
+
+
+
+

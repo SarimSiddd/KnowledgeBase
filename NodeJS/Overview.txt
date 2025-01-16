@@ -1,0 +1,5 @@
+- Run Javascript outside the browser
+- Work with files
+- Create web servers
+- interact with databases
+- write reusable "packages"

@@ -1,0 +1,16 @@
+GO Project development steps:
+
+1) Created the repo.
+
+2) Ran go init [project name]
+
+3) Added directory structure
+
+4) Added config files 
+
+5) Setup postgres docker container
+
+sk-bjRrgaHv48_efpxkDP23ag open ai api key
+
+6) Create vector embeddings for text files using one of the providers (huggingface, openai etc)
+

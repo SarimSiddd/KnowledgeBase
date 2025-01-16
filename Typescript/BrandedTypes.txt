@@ -1,0 +1,34 @@
+TypeScript's type system allows any two types that seem to have the same structure to be assignable to each other. But what if we want to restrict a type to only allow certain values, even if other values happen to have the same structure? Say, marking a difference between sanitized and un-sanitized strings, or positive integers from all numbers?
+
+This need is solvable with a pattern called "branded types", sometimes also called "opaque types". Let's dive into why one might want to use branded types, how to declare and use them, and some alternatives to the pattern.
+
+We can cast an object to this branded type by using the 'as' keyword
+
+
+"Type predicates" are functions whose return type indicates whether a parameter is a particular type. Although they return a boolean value at runtime, the type system knows to apply type narrowing based on the returned value.
+
+----
+
+Assertion functions
+
+
+To make our code a little more readable, we can extract a utility function known as a "type assertion function". A type assertion function takes in a value, throws an error if the value doesn't match an expected type, and otherwise returns the value. When paired with a type predicate function, a type assertion function can inform TypeScript's type system that a value is an instance of a branded type.
+
+
+Tradeoff between readability and stricter types
+
+
+
+--- 
+
+Unions
+
+Cases where a value must be one of a set of known types are generally better represented by a union type. Union types are more precise for describing exactly what a value might be.
+
+----
+
+Enums
+
+----
+
+Template literal types
