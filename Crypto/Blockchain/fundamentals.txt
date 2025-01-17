@@ -1,0 +1,88 @@
+- Ledger is shared between the buyer and seller party
+
+Blockchain:
+
+- Single ledger
+- Shared
+- Permanent
+- Immutable
+- Copies of that single 
+- chronological
+
+Bitcoin:
+
+- asset of value
+- can be transferred without a authority
+- Disintermediated
+- Decentralized
+- Trustless
+- Eliminate the role of banks
+
+
+Bitgold had a lot of elements of bitcoin
+
+
+Double spend problem:
+
+- Double spend involves spending the same money more than once
+
+- We need to be able to uniquely send the digital asset of value
+
+Byzantine fault tolerance:
+
+- malicious actors have large incentives to "cheat" the system
+- a byzantine fault presents a challenge to the integrity of the system as bad actors may try to send inaccurate data or fail to pass on the data
+
+
+- A solution can be acheived by reaching Consensus, in which a majority of the participants agree on a course of action.
+- In blockchain there are multiple consensus algorithms at work
+
+Consensus algorithms:
+
+- Proof of work (e.g. Bitcoin): Miners perform very resource intensive computer hash calculations using information recorded in the blockchain, in a race against other miners
+	- protects against malicious actors
+	- malicious party must invest a large amount of time and resource producing the "proof of work" necessary to have any influence on the blockchain
+
+- Proof of stake: A validator needs to hold many coins to be able to create the next block
+
+Theres a node called Miners, anyone can be a miner
+
+- Role is to perform and confirm transactions
+- Secure the network
+- Solve cryptography challenges
+- Miners are paid in bitcoin
+
+
+Bitcoins wallets manage your keys, bitcoin address is hashed public key. bitcoin wallet will have a private key
+
+
+4 components of bitcoin:
+
+1) Bitcoin protocol is opensource, new crypto challenge is issued every 10 minutes - goes out to all of the miners
+2) All miners are competing to find the specific hash to create the new block
+3) A miner solves the challenge first
+4) Rest of the miner community verifies the validity of the new block mined
+5) The new block of transactions is added to the blockchain
+6) miner gets reward in bitcoin
+
+A block consists of:
+
+block
+nonce
+data
+hash
+
+
+Miners mine the nonce to find the correct cryptographic hash to make the block valid
+
+
+
+
+
+
+
+
+
+
+
+
