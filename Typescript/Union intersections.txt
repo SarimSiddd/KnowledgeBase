@@ -1,0 +1,94 @@
+In typescript we can have union types that can be of one or more types
+
+In typescript type information is erased at runtime so we can't directly reference the types of variables at runtime (type erasure)
+
+
+Index Types:
+
+We can specify the type of key that an interface expects even though we don't know the name of that key yet.
+
+interface shape {
+	
+	[index string] : string | number;
+
+}
+
+
+Dicriminated Unions:
+
+Since only structural type checking is present in typescript, to distinguish between two interfaces that are structurally similar but should be considered different, we need to set an explicit property 
+
+interface square {
+	
+	kind : "square"
+}
+
+interface circle {
+	
+	kind : "circle"
+}
+
+type shape : square | circle;
+
+
+function func (s : shape)
+{
+	if s.kind == "square"
+}
+
+Symbols:
+
+They are primitive values that serve as unique identifiers
+
+They are not serializable
+
+They're commonly used for:
+Private object properties
+Built-in JavaScript protocols (Symbol.iterator, etc.)
+Preventing property name collisions
+
+
+
+
+
+Mapped types allow you to create a new type by transforming properties of an existing type.
+
+
+Namespaces can be created with the namespace keyword followed by the name of the namespace:
+
+namespace Geometry {
+	
+	export function ...
+}
+
+extends and implements serve two different functions. Extends to extend a class and get all functionality from it and implements to force the class to implement all functions from the parent class
+
+Readonly type exists to make properties of a type readonly
+
+type ReadonlyPoint = Readonly <Point>;
+
+Tuple types:
+
+let x : [string, number]
+
+x = ["hello", 10]
+
+
+Type Guards:
+
+
+Type guards allow you to narrow down the type of an object within a certain scope. This can be done using typeof, instanceof, or even user-defined type guards.
+
+
+Decorators:
+
+
+Decorators provide a way to add annotations and modify classes and class members at design time. They are a special kind of declaration that can be attached to class declarations, methods, accessors, properties, or parameters.
+
+Utility functions:
+
+Utility functions like partial and required and can help create new types out of existing types
+
+
+We also have abstract classes in typescript
+

@@ -3,3 +3,43 @@
 - Create web servers
 - interact with databases
 - write reusable "packages"
+
+
+Event Demultiplexing:
+
+
+We are talking about the synchronous event demultiplexer (also known as the event notification interface). If you are unfamiliar with the term, in telecommunications, multiplexing refers to the method by which multiple signals are combined into one so that they can be easily transmitted over a medium with limited capacity.
+
+
+Demultiplexing refers to the opposite operation, whereby the signal is split again into its original components. Both terms are used in other areas (for example, video processing) to describe the general operation of combining different things into one and vice versa.
+
+
+Each event returned by the event demultiplexer is processed. At this point, the resource associated with each event is guaranteed to be ready to read and to not block during the operation. When all the
+events are processed, the flow will block again on the event demultiplexer until new events are again available to be processed. This is called the event loop.
+
+The tasks are spread over time, instead of being spread across multiple threads.
+
+
+The reactor pattern:
+
+The main idea behind the reactor pattern is to have a handler associated with each I/O operation. A handler in Node.js is represented by a callback (or cb for short) function.
+
+This is what happens in an application using the reactor pattern:
+
+1. The application generates a new I/O operation by submitting a request to the Event Demultiplexer. The application also specifies a handler, which will be invoked when the operation completes. Submitting a new request to the Event Demultiplexer is a non-blocking call and it immediately returns control to the application.
+2. When a set of I/O operations completes, the Event Demultiplexer pushes a set of corresponding events into the Event Queue.
+3. At this point, the Event Loop iterates over the items of the Event Queue.
+4. For each event, the associated handler is invoked.
+5. The handler, which is part of the application code, gives back control to the Event Loop when its execution completes (5a). While the handler executes, it can request new asynchronous operations (5b), causing new items to be added to the Event Demultiplexer (1).
+6. When all the items in the Event Queue are processed, the Event Loop blocks again on the Event Demultiplexer, which then triggers another cycle when a new event is available.
+
+
+
+A Node.js application will exit when there are no more pending operations in the event demultiplexer, and no more events to be processed inside the event queue.
+
+
+Handles I/O by blocking until new events are available from a set of observed resources, and then reacts by dispatching each event to an associated handler.
+
+
+
+
