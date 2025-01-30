@@ -1,0 +1,16 @@
+Another ideal construct for implementing callbacks is closures. With closures, we can reference the environment in which a function was created; this way, we can always maintain the context in which the asynchronous operation was requested, no matter when or where its callback is invoked.
+
+
+continuation-passing style (CPS):
+
+In JavaScript, a callback is a function that is passed as an argument to another function and is invoked with the result when the operation completes. In functional programming, this way of propagating the result is called continuation-passing style (CPS).
+
+
+A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives a function access to its outer scope.
+
+- callback comes last
+- error comes first and must be of type Error
+- propogate errors in callbacks by returning err
+- handle uncaught exceptions
+
+

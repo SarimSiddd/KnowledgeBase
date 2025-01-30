@@ -1,0 +1,5 @@
+UDP Datagram
+
+- UDP header is 8 bytes only
+- Datagram slides into an IP Packet as "data"
+- Ports are 16bits 

@@ -1,0 +1,38 @@
+In browser space, there is only the  global namespace. 
+
+Modules were created to fix this problem
+
+Modules use IIFE (Immediately invoked function expression) to hide information and execute module code in isolation so it doesn't pollute the global namespace
+
+Resolving algorithm:
+
+- File modules
+- Core modules
+- Package modules
+
+in that order
+
+CommonJS
+
+- Different syntax 
+- Synchronous loading
+- Allows for dynamically generated module names
+- File extensions are not necessary
+- use module.exports to export a single entity
+- module imports are shallow-copied to the consumer scope
+- can import json files as modules
+
+ECMAScript modules (ESM)
+
+- Support for cyclic dependencies
+- Possibility to load modules asynchronously
+- No dynamically generated module names
+- File extensions are necessary
+- default export using export default keyword
+- can use import() for async imports required at runtime
+- module imports are read-only bindings in the consumer scope, but "live-bindings" in the module scope(able to be changed in that scope)
+- can't import json files as modules
+
+* - namespace import 
+
+

@@ -1,0 +1,11 @@
+- Effecient (insertions and retrievals are faster - the entire object is retrieved each time)
+- Flexible schema
+- Built for scale (sharding)
+- Built for metrics/analysis/aggregations
+
+
+- not built for updates (delete + insert)
+- consistencty (ACID is not guaranteed)
+- Read times are slower
+- Relations are not implicit
+- Joins are hard

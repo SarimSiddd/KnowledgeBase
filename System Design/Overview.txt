@@ -1,0 +1,167 @@
+Distributed systems:
+
+Vertical scaling:
+
+Adding more resources to the same node that executes to increase output
+
+Preprocessing:
+
+Preprocessing data during non peak hours for faster execution (cron job)
+
+Keep backups and avoid single points of failure
+
+Hire more resources - horizontal scaling
+
+
+Microservices:
+
+1. Single responsibility
+2. Specialist services and scalable
+3. Extensible
+4. Decoupling
+
+
+Creating replica of service architecture:
+
+1) Quicker response times
+2) More fault tolerant
+
+
+Load Balancer : routes requests between different replicas or service infrastructure instances
+
+
+Scalibility
+
+
+Horizantal:
+
+1) Load balancer required
+2) resilient
+3) Network calls (RPC)
+4) Data inconsistency
+5) scales well as users increase
+
+Vertical:
+
+1) Single point of failure
+2) Inter process communication
+3) Consistency
+4) Hardware limit
+
+
+We normally combine:
+
+IPC and consistency from vertical scaling and resilence and scales well from horizontal
+
+
+
+Load balancing:
+
+Consistent hashing:
+
+How do we decide which server the request should go to? We use a consistent hashing algorithm. In consistent hashing we take part of the client's request (normally id ) and hash it to get the server that it should be assigned to. Since the hashing algorithm has an even distrubtion of results, the servers are equally balanced in this way
+
+
+Since the hash is consistent and the request ids can be consistently provide the same server to send the request to, we can store the user data in the cache of the server to keep serving the same client
+
+Message Queues and asynchronous programming:
+
+
+Allows us to handle multiple requests from different servers asynchronously, also allows for resilence and avoide duplication of requests
+
+MessageQueues:
+
+RabbitMQ, ZeroMQ ( good for encapsulating complexity )
+
+
+Monolith vs microservices:
+
+Monolith:
+
+- Tight coupling (no separation of concerns)
+- Easy to reason about and trace requests
+- Not easy to extend
+- Less complex
+- Harder to understand
+- Single point of failure (not very fault tolerant)
+- Faster
+
+
+Microservices:
+
+- Loose coupling (each service is a business unit) - developer time matters too!
+- Complexity in tracing requests and interservice communication
+- Extendable
+- Scalable
+- Fault tolerant
+- Not as fast
+- Harder to design
+
+
+
+DAtabase sharding:
+
+Horizontal Partitioning:
+
+Sharding:
+
+break data into ranges (nosql databases use sharding internally generally)
+
+Consistency
+Availability
+
+problems:
+
+1) Joins
+2) Fixed number of shards
+
+
+
+Vertical Partioning:
+
+
+Caching:
+
+LRU, LFU
+
+cache policy:
+
+
+1) how do i handle writes
+2) which data do I evict
+
+Drawbacks:
+
+1) High cache miss rate can result in thrashing
+2) Eventual consistency
+
+Cache placement:
+
+Where do we place the cache ( internal or external (can scale vertically, each service can connect to the cache without managing it))
+
+
+Single points of failure:
+
+1) can add more nodes
+2) master-slave replication on databases
+3) distribute across multiple regions
+
+
+Event driven system
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
