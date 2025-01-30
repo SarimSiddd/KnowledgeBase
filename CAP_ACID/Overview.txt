@@ -1,0 +1,13 @@
+The CAP theorem states that you cant have compelete consistency and availability, you always have a tradeoff between availability and consistency
+
+
+any distributed system or data store can simultaneously provide only two of three guarantees: consistency, availability, and partition tolerance
+
+
+2 phase commit
+
+1. Prepare
+
+2. Commit
+
+

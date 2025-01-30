@@ -1,0 +1,43 @@
+Streaming vs buffering:
+
+
+Stream:
+
+- faster and more effecient than buffering
+
+
+Buffer:
+
+- buffer size is limiteed
+
+
+
+
+Streams:
+
+Every stream in Node.js is an implementation of one of the four base abstract classes available in the stream core module:
+
+Readable
+Writable
+Duplex
+Transform
+
+
+
+Readable streams
+
+Flowing streams, non-flowing streams
+
+Non-flowing streams:
+
+The non-flowing or paused mode is the default pattern for reading from a Readable stream. It involves attaching a listener to the stream for the readable event, which signals the availability of new data to read. 
+
+Flowing mode:
+
+Another way to read from a stream is by attaching a listener to the data event. This will switch the stream into using flowing mode, where the data is not pulled using read(), but instead is pushed to the data listener as soon as it arrives.
+
+Default is non-flowing
+
+
+Implementing Readable streams:
+
